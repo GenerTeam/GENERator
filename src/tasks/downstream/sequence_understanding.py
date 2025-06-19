@@ -196,7 +196,7 @@ def parse_arguments() -> argparse.Namespace:
         "--length_extension_mode",
         type=str,
         default="yarn_rope_scaling",
-        choices=["yarn_rope_scaling", "sliding_window", "chunk_ensemble", "none"],
+        choices=["chunk_ensemble", "yarn_rope_scaling", "sliding_window", "none"],
         help="Mode for handling longer sequences when max_length > 16384 * 1.05. "
         "'chunk_ensemble' splits the sequence, gets representations, and averages them. "
         "'none' means no explicit extension method is applied from this script.",
@@ -541,59 +541,58 @@ def setup_model(
     attn_implementation = "sdpa"
     original_model_max_length_for_scaling = 16384.0
 
-    use_chunk_ensemble = (
-        length_extension_mode == "chunk_ensemble"
-        and max_length > original_model_max_length_for_scaling * 1.05
-    )
-
-    if use_chunk_ensemble:
-        if "llama" not in config.model_type.lower():
-            raise ValueError(
-                "Chunk Ensemble mode is currently only supported for Llama-based models."
-            )
-
-        dist_print(f"⚡️ Using Chunk Ensemble mode for Llama model.")
-
-        # Assuming zero overlap, so stride equals chunk_size.
-        calculated_max_chunks = (max_length - chunk_size) // chunk_size + 1
-        dist_print(
-            f"   Inferring max_chunks from max_length ({max_length}) and chunk_size ({chunk_size}) -> {calculated_max_chunks} chunks"
-        )
-
-        dist_print(
-            f"✅ Loading model using ChunkEnsembleLlamaForSequenceClassification..."
-        )
-
-        from liger_kernel.transformers import apply_liger_kernel_to_llama
-
-        apply_liger_kernel_to_llama()
-
-        model = ChunkEnsembleLlamaForSequenceClassification.from_pretrained(
+    if max_length <= original_model_max_length_for_scaling * 1.05:
+        model = AutoModelForSequenceClassification.from_pretrained(
             model_name,
             config=config,
             trust_remote_code=True,
             attn_implementation=attn_implementation,
-            chunk_size=chunk_size,
-            max_chunks=calculated_max_chunks,
+        )
+    else:
+        dist_print(
+            f"⚡️ Max_length ({max_length}) > {int(original_model_max_length_for_scaling)}. Enabling length extension mode: {length_extension_mode}"
         )
 
-    else:
-
-        if max_length > original_model_max_length_for_scaling * 1.05:
+        if (
+            hasattr(config, "max_position_embeddings")
+            and config.max_position_embeddings < max_length
+            and length_extension_mode != "chunk_ensemble"
+        ):
             dist_print(
-                f"⚡️ Max_length ({max_length}) > {int(original_model_max_length_for_scaling)}. Enabling length extension mode: {length_extension_mode}"
+                f"   Updating model config's max_position_embeddings from {config.max_position_embeddings} to {max_length}"
+            )
+            config.max_position_embeddings = max_length
+
+        if length_extension_mode == "chunk_ensemble":
+            if "llama" not in config.model_type.lower():
+                raise ValueError(
+                    "Chunk Ensemble mode is currently only supported for Llama-based models."
+                )
+
+            # Assuming zero overlap, so stride equals chunk_size.
+            calculated_max_chunks = (max_length - chunk_size) // chunk_size + 1
+            dist_print(
+                f"   Inferring max_chunks from max_length ({max_length}) and chunk_size ({chunk_size}) -> {calculated_max_chunks} chunks"
             )
 
-            if (
-                hasattr(config, "max_position_embeddings")
-                and config.max_position_embeddings < max_length
-                and length_extension_mode != "chunk_ensemble"
-            ):
-                dist_print(
-                    f"   Updating model config's max_position_embeddings from {config.max_position_embeddings} to {max_length}"
-                )
-                config.max_position_embeddings = max_length
+            dist_print(
+                f"✅ Loading model using ChunkEnsembleLlamaForSequenceClassification..."
+            )
 
+            from liger_kernel.transformers import apply_liger_kernel_to_llama
+
+            apply_liger_kernel_to_llama()
+
+            model = ChunkEnsembleLlamaForSequenceClassification.from_pretrained(
+                model_name,
+                config=config,
+                trust_remote_code=True,
+                attn_implementation=attn_implementation,
+                chunk_size=chunk_size,
+                max_chunks=calculated_max_chunks,
+            )
+
+        else:
             if length_extension_mode == "yarn_rope_scaling":
                 # Calculate rope_scaling_factor based on args.max_length and the fixed original_model_max_length_for_scaling
                 rope_scaling_factor = max_length / original_model_max_length_for_scaling
