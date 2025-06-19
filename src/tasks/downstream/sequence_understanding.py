@@ -609,7 +609,6 @@ def setup_model(
                     f"✅ Applied YaRN RoPE Scaling with calculated factor: {rope_scaling_factor:.4f}, "
                     f"original_max_position_embeddings: {yarn_original_max_pos_embed}"
                 )
-
             elif length_extension_mode == "sliding_window":
                 # Check if config already had sliding_window before our patch
                 had_sliding_before = hasattr(config, "sliding_window")
@@ -670,12 +669,12 @@ def setup_model(
                     "   Length extension mode is 'none'. No specific scaling or windowing technique applied from script beyond setting max_length."
                 )
 
-        model = AutoModelForSequenceClassification.from_pretrained(
-            model_name,
-            config=config,
-            trust_remote_code=True,
-            attn_implementation=attn_implementation,
-        )
+            model = AutoModelForSequenceClassification.from_pretrained(
+                model_name,
+                config=config,
+                trust_remote_code=True,
+                attn_implementation=attn_implementation,
+            )
 
     if model.config.pad_token_id is None:
         model.config.pad_token_id = model.config.eos_token_id
