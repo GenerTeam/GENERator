@@ -11,7 +11,7 @@ If you are using GENERator for **sequence generation**, please ensure that the l
 1. Padding the sequence on the left with `'A'` (**left padding**);  
 2. Truncating the sequence from the left (**left truncation**).  
 
-This requirement arises because **GENERator** employs a 6-mer tokenizer. If the input sequence length is not a multiple of **6**, the tokenizer will append an `'<oov>'` (out-of-vocabulary) token to the end of the token sequence. This can result in uninformative subsequent generations, such as repeated `'AAAAAA'`.  
+This requirement arises because GENERator employs a **6-mer** tokenizer. If the input sequence length is not a multiple of **6**, the tokenizer will append an `'<oov>'` (out-of-vocabulary) token to the end of the token sequence. This can result in uninformative subsequent generations, such as repeated `'AAAAAA'`.  
 
 We apologize for any inconvenience this may cause and recommend adhering to the above guidelines to ensure accurate and meaningful generation results.
 
