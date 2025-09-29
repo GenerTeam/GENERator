@@ -7,7 +7,7 @@
 <h1 align="center">GENERator: A Long-Context Generative Genomic Foundation Model</h1>
 
 ## ⚠️ Important Notice
-If you are using **GENERator** for sequence generation, please ensure that the length of each input sequence is a multiple of **6**. This can be achieved by either:  
+If you are using GENERator for **sequence generation**, please ensure that the length of each input sequence is a multiple of **6**. This can be achieved by either:  
 1. Padding the sequence on the left with `'A'` (**left padding**);  
 2. Truncating the sequence from the left (**left truncation**).  
 
