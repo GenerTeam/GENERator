@@ -31,7 +31,7 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument(
         "--hg38_path",
         type=str,
-        default="hf://datasets/GenerTeam/hg38/test.parquet",
+        default="hf://datasets/GenerTeam/variant-effect-prediction/test.parquet",
         help="Path to hg38 reference genome parquet file",
     )
     parser.add_argument(
