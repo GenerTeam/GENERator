@@ -62,7 +62,7 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument(
         "--output_path",
         type=str,
-        default="/vepfs-mlp2/mlp-public/liqiuyi/results/variant_effect_predictions.parquet",
+        default="./results/variant_effect_predictions.parquet",
         help="Path to save the output predictions",
     )
     parser.add_argument(
