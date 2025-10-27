@@ -99,6 +99,22 @@ python src/tasks/downstream/variant_effect_prediction.py --bf16
 ```
 Note: BF16 provides faster inference with minimal accuracy impact on supported hardware.
 
+#### Sequence Recovery
+
+This task (previously called Next Kmer Prediction) evaluates the model ability to recover DNA sequences.
+
+To run sequence recovery on our [datasets](https://huggingface.co/datasets/GenerTeam/sequence-recovery), you can use the
+following command:
+
+```shell
+# FP32 (default)
+python src/tasks/downstream/sequence_recovery.py
+
+# BF16 for faster inference (recommended if supported)
+python src/tasks/downstream/sequence_recovery.py --bf16
+```
+Note: BF16 provides faster inference with minimal accuracy impact on supported hardware.
+
 #### Sequence Understanding (Classification/Regression)
 
 To run the sequence understanding task
