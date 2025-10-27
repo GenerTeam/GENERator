@@ -1,8 +1,11 @@
+import os
+# os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
+
 import argparse
 import multiprocessing as mp
-import os
 import time
-from typing import Dict, List, Tuple, Union
+from typing import Dict, List, Tuple
+import hashlib
 
 import numpy as np
 import pandas as pd
@@ -14,9 +17,7 @@ from transformers import (
     AutoTokenizer,
     AutoModelForCausalLM,
     PreTrainedTokenizer,
-    PreTrainedModel,
 )
-
 
 def parse_arguments() -> argparse.Namespace:
     """
@@ -37,17 +38,20 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument(
         "--clinvar_path",
         type=str,
-        default="hf://datasets/songlab/clinvar/test.parquet",
+        default="hf://datasets/GenerTeam/variant-effect-prediction/ClinVar_VEP_results.parquet",
         help="Path to ClinVar variants parquet file",
     )
     parser.add_argument(
-        "--model_name",
+        "--model_path",
         type=str,
         default="GenerTeam/GENERator-eukaryote-1.2b-base",
         help="HuggingFace model path or name",
     )
     parser.add_argument(
-        "--batch_size", type=int, default=4, help="Batch size for model inference"
+        "--batch_size", 
+        type=int, 
+        default=4, 
+        help="Batch size for model inference"
     )
     parser.add_argument(
         "--num_processes",
@@ -56,15 +60,9 @@ def parse_arguments() -> argparse.Namespace:
         help="Number of processes for parallel computation",
     )
     parser.add_argument(
-        "--dp_size",
-        type=int,
-        default=1,
-        help="Number of GPUs to use for DataParallel (1 for single GPU)",
-    )
-    parser.add_argument(
         "--output_path",
         type=str,
-        default="results/variant_predictions.parquet",
+        default="/vepfs-mlp2/mlp-public/liqiuyi/results/variant_effect_predictions.parquet",
         help="Path to save the output predictions",
     )
     parser.add_argument(
@@ -73,37 +71,12 @@ def parse_arguments() -> argparse.Namespace:
         default=96000,
         help="Context length in base pairs (bp) for sequence extraction",
     )
+    parser.add_argument(
+        "--bf16",
+        action="store_true",
+        help="Use bf16 for faster inference, otherwise use fp32",
+    )
     return parser.parse_args()
-
-
-def extract_sequence(args: Tuple[str, int, int, pd.DataFrame]) -> str:
-    """
-    Extract sequence for a single variant.
-
-    Args:
-        args: Tuple containing (chrom_id, position, context_length, seq_df)
-
-    Returns:
-        Processed sequence
-    """
-    chrom_id, position, context_length, seq_df = args
-    location = position - 1
-
-    # Extract sequence upstream of the variant position
-    sequence = seq_df.loc[seq_df["ID"] == "chr" + chrom_id]["Sequence"].values[0][
-        max(0, location - context_length) : location
-    ]
-
-    # Remove leading 'N' characters if present
-    sequence = sequence.lstrip("N")
-
-    # Ensure sequence length is divisible by 6 for 6-mer tokenizer
-    truncate_length = len(sequence) % 6
-    if truncate_length > 0:
-        sequence = sequence[truncate_length:]
-
-    return sequence
-
 
 def load_and_prepare_data(
     hg38_path: str, clinvar_path: str, context_length: int
@@ -150,6 +123,14 @@ def load_and_prepare_data(
         sequences.append(sequence)
 
     clinvar_df["sequence"] = sequences
+    
+    # Generate unique hash indices for each sequence
+    print("Generating hash indices for sequences...")
+    clinvar_df['hash_index'] = clinvar_df.apply(
+        lambda row: hashlib.md5(f"{row['sequence']}_{row.name}".encode()).hexdigest()[:16], 
+        axis=1
+    )
+    
     print(
         f"✅ Sequence extraction completed in {time.time() - sequence_start_time:.2f} seconds"
     )
@@ -157,123 +138,156 @@ def load_and_prepare_data(
 
     return clinvar_df
 
-
-def setup_model(
-    model_name: str, dp_size: int = 1
-) -> Tuple[
-    Union[PreTrainedModel, torch.nn.DataParallel], PreTrainedTokenizer, torch.device
-]:
-    """
-    Load and setup the model with optional multi-GPU support.
-
-    Args:
-        model_name: Name or path of the HuggingFace model
-        dp_size: Number of GPUs to use for DataParallel (1 for single GPU)
-
-    Returns:
-        tuple of (model, tokenizer, device)
-    """
-    print(f"🤗 Loading model from Hugging Face: {model_name}")
-    start_time = time.time()
-
-    tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
-    dtype = "bfloat16" if torch.cuda.get_device_capability()[0] >= 8 else "float32"
+def compute_logits_shard(args):
+    """Compute logits shard on a single GPU"""
+    shard_id, sequences_data, model_path, dtype, batch_size = args
+    
+    # Set current GPU
+    torch.cuda.set_device(shard_id)
+    device = f"cuda:{shard_id}"
+    
+    print(f"Shard {shard_id}: Loading model on GPU {shard_id}...")
+    
+    # Load model and tokenizer
+    tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
     model = AutoModelForCausalLM.from_pretrained(
-        model_name, torch_dtype=dtype, trust_remote_code=True
-    )
+        model_path, 
+        trust_remote_code=True,
+        dtype=getattr(torch, dtype)
+    ).to(device)
+    
+    model.eval()
+    
+    # Extract sequence data
+    sequences_shard = [item['sequence'] for item in sequences_data]
+    indices_shard = [item['hash_index'] for item in sequences_data]
+    total_sequences = len(sequences_shard)
+    
+    logits_shard = []
+    
+    with tqdm(total=total_sequences, desc=f"Shard {shard_id}", unit="seq") as pbar:
+        for i in range(0, total_sequences, batch_size):
+            batch_sequences = sequences_shard[i:i + batch_size]
+            batch_indices = indices_shard[i:i + batch_size]
 
-    # Check available GPUs
-    if torch.cuda.is_available():
-        available_gpus = torch.cuda.device_count()
-        if dp_size > 1 and available_gpus >= dp_size:
-            print(f"🚀 Using DataParallel with {dp_size} GPUs")
-            model = torch.nn.DataParallel(model, device_ids=list(range(dp_size)))
-            device = torch.device("cuda")
-        else:
-            device = torch.device("cuda:0")
-            if dp_size > 1:
-                print(f"⚠️ Requested {dp_size} GPUs but only {available_gpus} available")
-                print(f"🔄 Using single GPU: {torch.cuda.get_device_name(0)}")
-            else:
-                print(f"💻 Using single GPU: {torch.cuda.get_device_name(0)}")
-    else:
-        device = torch.device("cpu")
-        print("⚠️ No GPU available, using CPU")
+            # Tokenize sequences
+            inputs = tokenizer(batch_sequences, return_tensors="pt", padding=True)
+            inputs = {k: v.to(device) for k, v in inputs.items()}
 
-    model.to(device)
-    print(f"⏱️ Model loading completed in {time.time() - start_time:.2f} seconds")
+            # Get model predictions
+            with torch.no_grad():
+                outputs = model(**inputs)
 
-    # Print model info
-    total_params = sum(p.numel() for p in model.parameters())
-    print(f"📊 Model size: {total_params/1e6:.1f}M parameters")
+            # Get logits for the last token in each sequence
+            for j, seq in enumerate(batch_sequences):
+                seq_len = len(tokenizer(seq).input_ids)
+                last_token_logits = outputs.logits[j, seq_len - 2, :]
+                
+                # Apply softmax to get probabilities
+                probs = F.softmax(last_token_logits, dim=0).cpu().float().numpy().tolist()
+                logits_shard.append({
+                    "hash_index": batch_indices[j],
+                    "logits": probs
+                })
 
-    return model, tokenizer, device
+            pbar.update(len(batch_sequences))
+    
+    # Clean up GPU memory
+    del model
+    torch.cuda.empty_cache()
+    
+    return logits_shard
 
-
-def compute_logits(
-    model: Union[PreTrainedModel, torch.nn.DataParallel],
-    tokenizer: PreTrainedTokenizer,
-    sequences: List[str],
-    device: torch.device,
-    batch_size: int = 4,
+def compute_logits_parallel(
+    clinvar_df: pd.DataFrame,
+    model_path: str,
+    dtype: str,
+    batch_size: int = 32
 ) -> List[List[float]]:
     """
-    Compute logits for each sequence using the specified model.
-
+    Compute logits using multi-GPU parallel processing
+    
     Args:
-        model: Pre-trained language model
-        tokenizer: Tokenizer for the model
-        sequences: List of DNA sequences
-        device: Computation device
-        batch_size: Batch size for inference
+        clinvar_df: DataFrame with variant information
+        model_path: Path to the model
+        dtype: Data type (bfloat16 or float32)
+        batch_size: Batch size per GPU
 
     Returns:
         List of softmax probabilities for next token prediction
     """
-    print("🧠 Computing logits using pre-trained model...")
-    model.eval()
+    print("🧠 Computing logits using parallel GPU processing...")
     start_time = time.time()
-
-    all_logits: List[List[float]] = []
-
-    # Adjust batch size based on available GPUs if using DataParallel
-    if isinstance(model, torch.nn.DataParallel):
-        effective_batch_size = batch_size * len(model.device_ids)
-        print(
-            f"⚡ Adjusted batch size: {effective_batch_size} (base: {batch_size} × {len(model.device_ids)} GPUs)"
-        )
-        batch_size = effective_batch_size
-
-    for i in tqdm(range(0, len(sequences), batch_size), desc="Processing Batches"):
-        batch_sequences = sequences[i : i + batch_size]
-
-        # Tokenize sequences
-        inputs = tokenizer(batch_sequences, return_tensors="pt", padding=True)
-        inputs = {k: v.to(device) for k, v in inputs.items()}
-
-        # Get model predictions
-        with torch.no_grad():
-            outputs = model(**inputs)
-
-        # Get logits for the last token in each sequence
-        for j, seq in enumerate(batch_sequences):
-            seq_len = len(tokenizer(seq).input_ids)
-
-            # Handle DataParallel output if needed
-            if isinstance(outputs.logits, torch.nn.parallel.scatter_gather.Scatter):
-                last_token_logits = outputs.logits.to_local[0][j, seq_len - 2, :]
-            else:
-                last_token_logits = outputs.logits[
-                    j, seq_len - 2, :
-                ]  # -2 because of the EOS token
-
-            # Apply softmax to get probabilities
-            probs = F.softmax(last_token_logits, dim=0).cpu().float().numpy().tolist()
-            all_logits.append(probs)
-
-    print(f"✅ Logit computation completed in {time.time() - start_time:.2f} seconds")
+    
+    # Get number of GPUs
+    num_gpus = torch.cuda.device_count()
+    print(f"Using {num_gpus} GPUs for parallel computation")
+    
+    # Prepare data
+    sequences_data = clinvar_df[['sequence', 'hash_index']].to_dict('records')
+    total_sequences = len(sequences_data)
+    
+    # Split data into multiple shards
+    shard_size = (total_sequences + num_gpus - 1) // num_gpus
+    shards = []
+    
+    for i in range(num_gpus):
+        start_idx = i * shard_size
+        end_idx = min((i + 1) * shard_size, total_sequences)
+        if start_idx < total_sequences:
+            shards.append({
+                'shard_id': i,
+                'sequences_data': sequences_data[start_idx:end_idx],
+                'start_idx': start_idx,
+                'end_idx': end_idx
+            })
+    
+    print(f"Data divided into {len(shards)} shards")
+    
+    # Prepare arguments
+    args_list = []
+    for shard in shards:
+        args_list.append((
+            shard['shard_id'],
+            shard['sequences_data'],
+            model_path,
+            dtype,
+            batch_size
+        ))
+    
+    # Use multiprocessing to process each shard in parallel
+    all_logits_dict = {}
+    
+    # Use spawn context to avoid CUDA multiprocessing issues
+    ctx = mp.get_context('spawn')
+    with ctx.Pool(processes=num_gpus) as pool:
+        results = list(tqdm(
+            pool.imap(compute_logits_shard, args_list),
+            total=len(args_list),
+            desc="Processing Shards"
+        ))
+    
+    # Merge results into dictionary
+    for shard_result in results:
+        for item in shard_result:
+            all_logits_dict[item['hash_index']] = item['logits']
+    
+    # Reconstruct logits list in original DataFrame order
+    all_logits = [all_logits_dict[hash_index] for hash_index in clinvar_df['hash_index']]
+    
+    # Verify all logits have been collected
+    missing_count = len([x for x in all_logits if x is None])
+    if missing_count > 0:
+        print(f"Warning: {missing_count} sequences missing logits")
+        # Get vocabulary size and fill missing values
+        tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
+        vocab_size = len(tokenizer)
+        for i in range(len(all_logits)):
+            if all_logits[i] is None:
+                all_logits[i] = [0.0] * vocab_size
+    
+    print(f"✅ Parallel logit computation completed in {time.time() - start_time:.2f} seconds")
     return all_logits
-
 
 def get_char_indices(vocab: Dict[str, int]) -> Dict[str, List[int]]:
     """
@@ -301,7 +315,6 @@ def get_char_indices(vocab: Dict[str, int]) -> Dict[str, List[int]]:
 
     return char_indices
 
-
 def compute_prob(
     args: Tuple[str, str, List[float], Dict[str, List[int]]]
 ) -> Tuple[float, float]:
@@ -318,7 +331,6 @@ def compute_prob(
     p_ref = sum(logits[i] for i in char_indices.get(ref, []) if i < len(logits))
     p_alt = sum(logits[i] for i in char_indices.get(alt, []) if i < len(logits))
     return p_ref, p_alt
-
 
 def parallel_compute_probabilities(
     clinvar_df: pd.DataFrame,
@@ -369,7 +381,6 @@ def parallel_compute_probabilities(
     )
     return list(p_ref), list(p_alt)
 
-
 def evaluate_predictions(labels: np.ndarray, scores: np.ndarray) -> Dict[str, float]:
     """
     Evaluate variant effect predictions using AUROC and AUPRC.
@@ -394,7 +405,6 @@ def evaluate_predictions(labels: np.ndarray, scores: np.ndarray) -> Dict[str, fl
     print(f"⏱️ Evaluation completed in {time.time() - start_time:.2f} seconds")
     return {"AUROC": auroc, "AUPRC": auprc}
 
-
 def save_results(df: pd.DataFrame, path: str) -> None:
     """
     Save results to a parquet file.
@@ -412,7 +422,6 @@ def save_results(df: pd.DataFrame, path: str) -> None:
     print(f"✅ Results saved in {time.time() - start_time:.2f} seconds")
     print(f"📊 Saved {len(df)} variant predictions")
 
-
 def display_progress_header() -> None:
     """
     Display a stylized header for the variant effect prediction.
@@ -420,7 +429,6 @@ def display_progress_header() -> None:
     print("\n" + "=" * 80)
     print("🧬  VARIANT EFFECT PREDICTION PIPELINE  🧬")
     print("=" * 80 + "\n")
-
 
 def main() -> None:
     """
@@ -440,27 +448,18 @@ def main() -> None:
         args.hg38_path, args.clinvar_path, args.context_length
     )
 
-    # Setup model and tokenizer with specified DP size
-    model, tokenizer, device = setup_model(args.model_name, args.dp_size)
+    dtype = "bfloat16" if args.bf16 else "float32"
 
-    # Compute logits for each sequence
-    logits = compute_logits(
-        model,
-        tokenizer,
-        clinvar_df["sequence"].tolist(),
-        device=device,
-        batch_size=args.batch_size,
+    # Load tokenizer (for subsequent probability calculation)
+    tokenizer = AutoTokenizer.from_pretrained(args.model_path, trust_remote_code=True)
+
+    # Compute logits using parallel processing
+    logits = compute_logits_parallel(
+        clinvar_df,
+        args.model_path,
+        dtype,
+        batch_size=args.batch_size
     )
-
-    # Free up GPU memory
-    if torch.cuda.is_available():
-        print("🧹 Cleaning up GPU memory...")
-        torch.cuda.empty_cache()
-        if isinstance(model, torch.nn.DataParallel):
-            model.module = model.module.cpu()
-        else:
-            model.cpu()
-        print("✅ GPU memory cleaned")
 
     # Compute probabilities for reference and alternate alleles
     p_ref, p_alt = parallel_compute_probabilities(
@@ -482,21 +481,19 @@ def main() -> None:
 
     # Print results
     print("\n" + "=" * 80)
-    print(f"🏆 EVALUATION RESULTS FOR {args.model_name} 🏆")
+    print(f"🏆 EVALUATION RESULTS FOR {args.model_path.split('/')[-1]} ({dtype}) 🏆")
     print("=" * 80)
     print(f"🎯 AUROC: {metrics['AUROC']:.4f}")
     print(f"📈 AUPRC: {metrics['AUPRC']:.4f}")
     print("=" * 80)
 
-    # Save results to parquet file
-    save_results(clinvar_df, args.output_path)
+    save_results(clinvar_df.drop(columns=["sequence", "hash_index"]), args.output_path)
 
     # Print total execution time
     total_time = time.time() - total_start_time
     minutes, seconds = divmod(total_time, 60)
     print(f"\n⏱️ Total execution time: {int(minutes)}m {seconds:.2f}s")
     print("✨ Completed successfully! ✨\n")
-
 
 if __name__ == "__main__":
     main()
