@@ -60,9 +60,9 @@ def parse_arguments() -> argparse.Namespace:
         help="Number of processes for parallel computation",
     )
     parser.add_argument(
-        "--output_path",
+        "--output_dir",
         type=str,
-        default="./results/variant_effect_predictions.parquet",
+        default="./vep_results",
         help="Path to save the output predictions",
     )
     parser.add_argument(
@@ -414,12 +414,10 @@ def save_results(df: pd.DataFrame, path: str) -> None:
         path: Path to save the output file
     """
     print(f"💾 Saving predictions to {path}")
-    start_time = time.time()
 
     os.makedirs(os.path.dirname(path), exist_ok=True)
     df.to_parquet(path)
 
-    print(f"✅ Results saved in {time.time() - start_time:.2f} seconds")
     print(f"📊 Saved {len(df)} variant predictions")
 
 def display_progress_header() -> None:
@@ -487,7 +485,9 @@ def main() -> None:
     print(f"📈 AUPRC: {metrics['AUPRC']:.4f}")
     print("=" * 80)
 
-    save_results(clinvar_df.drop(columns=["sequence", "hash_index"]), args.output_path)
+    output_filename = f"{args.model_path.split('/')[-1]}_{dtype}.parquet"
+    output_path = os.path.join(args.output_dir, output_filename)
+    save_results(clinvar_df.drop(columns=["sequence", "hash_index"]), output_path)
 
     # Print total execution time
     total_time = time.time() - total_start_time
