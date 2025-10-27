@@ -1,5 +1,5 @@
 import os
-os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
+# os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 
 import argparse
 import hashlib
@@ -80,17 +80,17 @@ def calculate_accuracy(predictions: List[str], labels: List[str], seq_length: in
     return accuracies
 
 def process_data_shard(shard_id, sequences_data, args, dtype):
-    """处理单个数据分片，返回包含hash_index的预测结果"""
-    # 设置当前进程使用的GPU
+    """Process a single data shard and return predictions with hash_index"""
+    # Set GPU for current process
     torch.cuda.set_device(shard_id)
     device = f"cuda:{shard_id}"
     
-    # 设置dtype
+    # Set data type
     dtype = torch.bfloat16 if dtype == "bfloat16" else torch.float32
     
     print(f"Shard {shard_id}: Loading model on GPU {shard_id}...")
     
-    # 加载模型和tokenizer
+    # Load model and tokenizer
     tokenizer = AutoTokenizer.from_pretrained(args.model_path, trust_remote_code=True)
     model = AutoModelForCausalLM.from_pretrained(
         args.model_path, 
@@ -100,13 +100,13 @@ def process_data_shard(shard_id, sequences_data, args, dtype):
     
     tokenizer.padding_side = "left"
     
-    # 设置logits processor
+    # Set up logits processor
     special_token_ids = tokenizer.convert_tokens_to_ids(tokenizer.special_tokens)
     logits_processor = LogitsProcessorList([
         SuppressSpecialTokensLogitsProcessor(special_token_ids)
     ])
     
-    # 提取序列数据
+    # Extract sequence data
     sequences_shard = [item['sequence'] for item in sequences_data]
     indices_shard = [item['hash_index'] for item in sequences_data]
     total_sequences = len(sequences_shard)
@@ -120,7 +120,7 @@ def process_data_shard(shard_id, sequences_data, args, dtype):
             batch_seqs = sequences_shard[i:i + args.batch_size]
             batch_indices = indices_shard[i:i + args.batch_size]
             
-            # 截断序列
+            # Truncate sequences
             truncated_seqs = [
                 '<s>' + seq[-((min(len(seq), args.max_seq_len) // 6) * 6):] 
                 for seq in batch_seqs
@@ -135,7 +135,7 @@ def process_data_shard(shard_id, sequences_data, args, dtype):
                 truncation=False,
             ).to(device)
             
-            # 生成
+            # Generate
             with torch.inference_mode():
                 outputs = model.generate(
                     **inputs, 
@@ -145,13 +145,13 @@ def process_data_shard(shard_id, sequences_data, args, dtype):
                     logits_processor=logits_processor
                 )
             
-            # 解码预测结果
+            # Decode predictions
             batch_preds = tokenizer.batch_decode(
                 outputs[:, -args.gen_len:], 
                 skip_special_tokens=True
             )
             
-            # 保存结果，包含hash_index
+            # Save results with hash_index
             for pred, hash_index in zip(batch_preds, batch_indices):
                 predictions.append({
                     "hash_index": hash_index,
@@ -160,7 +160,7 @@ def process_data_shard(shard_id, sequences_data, args, dtype):
             
             pbar.update(len(batch_seqs))
     
-    # 清理GPU内存
+    # Clean up GPU memory
     del model
     torch.cuda.empty_cache()
     
@@ -182,20 +182,20 @@ def process_checkpoint(
     df = pd.read_parquet(data_path)
     total_sequences = len(df)
     
-    # 为每个序列生成唯一的hash index
+    # Generate unique hash indices for each sequence
     print("Generating hash indices for sequences...")
 
-    # 直接为DataFrame添加hash_index列
+    # Add hash_index column directly to DataFrame
     df['hash_index'] = df.apply(
         lambda row: hashlib.md5(f"{row['sequence']}_{row.name}".encode()).hexdigest()[:16], 
         axis=1
     )
     
-    # 确定GPU数量
+    # Determine number of GPUs
     num_gpus = torch.cuda.device_count()
     print(f"Using {num_gpus} GPUs with data sharding")
     
-    # 将数据分成num_gpus个分片
+    # Split data into num_gpus shards
     shard_size = (total_sequences + num_gpus - 1) // num_gpus
     shards = []
     
@@ -213,11 +213,11 @@ def process_checkpoint(
     
     print(f"Data divided into {len(shards)} shards")
     
-    # 使用多进程并行处理每个分片
+    # Use multiprocessing to process each shard in parallel
     start_time = time.time()
     
     with ProcessPoolExecutor(max_workers=num_gpus) as executor:
-        # 提交所有分片任务
+        # Submit all shard tasks
         future_to_shard = {}
         for shard in shards:
             future = executor.submit(
@@ -229,7 +229,7 @@ def process_checkpoint(
             )
             future_to_shard[future] = shard['shard_id']
         
-        # 收集结果
+        # Collect results
         all_predictions = []
         for future in as_completed(future_to_shard):
             shard_id = future_to_shard[future]
@@ -243,39 +243,39 @@ def process_checkpoint(
     elapsed_time = time.time() - start_time
     print(f"All shards completed in {elapsed_time:.2f} seconds")
     
-    # 合并结果
+    # Merge results
     print("Merging results...")
     
-    # 将预测结果转换为DataFrame
+    # Convert predictions to DataFrame
     pred_df = pd.DataFrame(all_predictions)
     
-    # 使用hash_index作为键，将预测结果合并回原始DataFrame
+    # Merge predictions back to original DataFrame using hash_index as key
     results_df = df.merge(pred_df, on='hash_index', how='left', suffixes=('', '_pred'))
     
-    # 检查是否有缺失的预测
+    # Check for missing predictions
     missing_count = results_df['pred'].isna().sum()
     if missing_count > 0:
         print(f"Warning: {missing_count} sequences missing predictions")
         results_df['pred'] = results_df['pred'].fillna("")
     
-    # 验证合并后的数据顺序
+    # Verify merged data order
     if results_df['label'].equals(df['label']) and results_df['type'].equals(df['type']):
         print("✅ Merge verification passed: all data maintains original order")
     else:
         print("⚠️ Merge verification failed: data order may be corrupted")
     
-    # 计算准确率
+    # Calculate accuracy
     final_predictions = results_df['pred'].tolist()
     final_labels = results_df['label'].tolist()
     
     accuracies = calculate_accuracy(final_predictions, final_labels)
     results_df['accuracy'] = accuracies
     
-    # 计算统计信息
+    # Calculate statistics
     type_means = results_df.groupby('type')['accuracy'].mean()
     overall_mean = results_df['accuracy'].mean()
 
-    # 保存详细结果到JSONL
+    # Save detailed results to parquet
     os.makedirs(args.output_dir, exist_ok=True)
     model_name = args.model_path.split('/')[-1]
     output_filename = f"{model_name}_{dtype}.parquet"
