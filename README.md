@@ -94,9 +94,10 @@ following command:
 # FP32 (default)
 python src/tasks/downstream/variant_effect_prediction.py
 
-# BF16 provides faster inference with minimal accuracy impact on supported hardware.
+# BF16 for faster inference (recommended if supported)
 python src/tasks/downstream/variant_effect_prediction.py --bf16
 ```
+Note: BF16 provides faster inference with minimal accuracy impact on supported hardware.
 
 #### Sequence Understanding (Classification/Regression)
 
