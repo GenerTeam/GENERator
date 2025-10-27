@@ -414,10 +414,12 @@ def save_results(df: pd.DataFrame, path: str) -> None:
         path: Path to save the output file
     """
     print(f"💾 Saving predictions to {path}")
+    start_time = time.time()
 
     os.makedirs(os.path.dirname(path), exist_ok=True)
     df.to_parquet(path)
 
+    print(f"✅ Results saved in {time.time() - start_time:.2f} seconds")
     print(f"📊 Saved {len(df)} variant predictions")
 
 def display_progress_header() -> None:
@@ -477,6 +479,10 @@ def main() -> None:
         clinvar_df["label"].values, clinvar_df["score"].values
     )
 
+    output_filename = f"{args.model_path.split('/')[-1]}_{dtype}.parquet"
+    output_path = os.path.join(args.output_dir, output_filename)
+    save_results(clinvar_df.drop(columns=["sequence", "hash_index"]), output_path)
+    
     # Print results
     print("\n" + "=" * 80)
     print(f"🏆 EVALUATION RESULTS FOR {args.model_path.split('/')[-1]} ({dtype}) 🏆")
@@ -484,10 +490,6 @@ def main() -> None:
     print(f"🎯 AUROC: {metrics['AUROC']:.4f}")
     print(f"📈 AUPRC: {metrics['AUPRC']:.4f}")
     print("=" * 80)
-
-    output_filename = f"{args.model_path.split('/')[-1]}_{dtype}.parquet"
-    output_path = os.path.join(args.output_dir, output_filename)
-    save_results(clinvar_df.drop(columns=["sequence", "hash_index"]), output_path)
 
     # Print total execution time
     total_time = time.time() - total_start_time
