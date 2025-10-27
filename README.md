@@ -206,7 +206,7 @@ torchrun --nnodes=${NUM_NODES} \
 
 * [Eukaryotic Gener Tasks](https://huggingface.co/datasets/GenerTeam/gener-tasks)
 * [Prokaryotic Gener Tasks](https://huggingface.co/datasets/GenerTeam/prokaryotic-gener-tasks)
-* [Next Kmer Prediction](https://huggingface.co/datasets/GenerTeam/next-kmer-prediction)
+* [Sequence Recovery](https://huggingface.co/datasets/GenerTeam/sequence-recovery)
 
 ## 📜 Citation
 
