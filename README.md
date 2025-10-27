@@ -91,11 +91,11 @@ To run the variant effect prediction task on [clinvar](https://huggingface.co/da
 following command:
 
 ```shell
-# Using single GPU
+# FP32 (default)
 python src/tasks/downstream/variant_effect_prediction.py
 
-# Using multiple GPUs (Data Parallel)
-python src/tasks/downstream/variant_effect_prediction.py --dp_size ${NUM_GPUS}
+# BF16 provides faster inference with minimal accuracy impact on supported hardware.
+python src/tasks/downstream/variant_effect_prediction.py --bf16
 ```
 
 #### Sequence Understanding (Classification/Regression)
