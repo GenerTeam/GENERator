@@ -33,19 +33,19 @@ def parse_arguments() -> argparse.Namespace:
         "--hg38_path",
         type=str,
         default="hf://datasets/GenerTeam/variant-effect-prediction/test.parquet",
-        help="Path to hg38 reference genome parquet file",
+        help="Download from https://huggingface.co/datasets/GenerTeam/variant-effect-prediction",
     )
     parser.add_argument(
         "--clinvar_path",
         type=str,
         default="hf://datasets/GenerTeam/variant-effect-prediction/ClinVar_VEP_results.parquet",
-        help="Path to ClinVar variants parquet file",
+        help="Download from https://huggingface.co/datasets/GenerTeam/variant-effect-prediction",
     )
     parser.add_argument(
         "--model_path",
         type=str,
         default="GenerTeam/GENERator-eukaryote-1.2b-base",
-        help="HuggingFace model path or name",
+        help="Download from https://huggingface.co/GenerTeam/GENERator-eukaryote-1.2b-base",
     )
     parser.add_argument(
         "--batch_size", 
