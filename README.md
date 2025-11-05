@@ -17,6 +17,7 @@ We apologize for any inconvenience this may cause and recommend adhering to the 
 
 ## 📰 News
 
+* 🤗 **[2025-11-05]** GENERator-v2 series are now available on [HuggingFace](https://huggingface.co/GenerTeam/)!!
 * 📑 **[2025-02-12]** Our paper is now available on [arXiv](https://arxiv.org/abs/2502.07272)!
 * 🤗 **[2025-02-11]** Our models `GENERator-eukaryote-1.2b-base`,
   `GENERator-eukaryote-3b-base` are now available on [HuggingFace](https://huggingface.co/GenerTeam/)!
@@ -44,12 +45,14 @@ For more technical details, please refer to our paper on [arXiv](https://arxiv.o
 
 In this repository, you will find the following model checkpoints:
 
-| Model Name                       | Parameters | Data  |          Category          |                                   Status                                    |
-|----------------------------------|:----------:|:-----:|:--------------------------:|:---------------------------------------------------------------------------:|
-| `GENERator-eukaryote-1.2b-base`  |    1.2B    | 386B  |         Eukaryote          | [Available](https://huggingface.co/GenerTeam/GENERator-eukaryote-1.2b-base) |
-| `GENERator-eukaryote-3b-base`    |     3B     | 386B  |         Eukaryote          |  [Available](https://huggingface.co/GenerTeam/GENERator-eukaryote-3b-base)  |
-| `GENERator-prokaryote-1.2b-base` |    1.2B    | 715B  |         Prokaryote         |                                  Coming Soon                                |
-| `GENERator-prokaryote-3b-base`   |     3B     | 715B  |         Prokaryote         |                                  Coming Soon                                |
+| Model Name                          | Parameters | Data  |          Category          |                                    Status                                     |
+|-------------------------------------|:----------:|:-----:|:--------------------------:|:-----------------------------------------------------------------------------:|
+| `GENERator-eukaryote-1.2b-base`     |    1.2B    | 386B  |         Eukaryote          |[Available](https://huggingface.co/GenerTeam/GENERator-eukaryote-1.2b-base)    |
+| `GENERator-eukaryote-3b-base`       |     3B     | 386B  |         Eukaryote          |[Available](https://huggingface.co/GenerTeam/GENERator-eukaryote-3b-base)      |
+| `GENERator-v2-eukaryote-1.2b-base`  |    1.2B    | 422B  |         Eukaryote          |[Available](https://huggingface.co/GenerTeam/GENERator-v2-eukaryote-1.2b-base) |
+| `GENERator-v2-eukaryote-3b-base`    |     3B     | 422B  |         Eukaryote          |[Available](https://huggingface.co/GenerTeam/GENERator-v2-eukaryote-3b-base)   |
+| `GENERator-v2-prokaryote-1.2b-base` |    1.2B    | 515B  |         Prokaryote         |[Available](https://huggingface.co/GenerTeam/GENERator-v2-prokaryote-1.2b-base)|
+| `GENERator-v2-prokaryote-3b-base`   |     3B     | 515B  |         Prokaryote         |[Available](https://huggingface.co/GenerTeam/GENERator-v2-prokaryote-3b-base)  |
 
 ## 📈 Benchmark Performance
 
