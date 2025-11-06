@@ -25,7 +25,8 @@ We apologize for any inconvenience this may cause and recommend adhering to the 
 ## 🔭 Overview
 
 <div align="center">
-  <img src="figures/sequence_recovery.png" />
+  <img src="figures/sequence_recovery_eukaryote.png" />
+  <img src="figures/sequence_recovery_prokaryote.png" />
   <img src="figures/clinvar.png" />
   <img src="figures/generation_time.png" width="60%" />
   <img src="figures/embedding.png" width="60%" />
