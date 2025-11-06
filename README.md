@@ -17,14 +17,19 @@ We apologize for any inconvenience this may cause and recommend adhering to the 
 
 ## 📰 News
 
-* 🤗 **[2025-11-05]** GENERator-v2 series are now available on [HuggingFace](https://huggingface.co/GenerTeam/)!!
+* 🤗 **[2025-11-05]** GENERator-v2 series are now available on [HuggingFace](https://huggingface.co/GenerTeam/)!
 * 📑 **[2025-02-12]** Our paper is now available on [arXiv](https://arxiv.org/abs/2502.07272)!
 * 🤗 **[2025-02-11]** Our models `GENERator-eukaryote-1.2b-base`,
   `GENERator-eukaryote-3b-base` are now available on [HuggingFace](https://huggingface.co/GenerTeam/)!
 
 ## 🔭 Overview
 
-![overview](figures/model_overview.png)
+<div align="center">
+  <img src="figures/sequence_recovery.png" />
+  <img src="figures/clinvar.png" />
+  <img src="figures/generation_time.png" width="60%" />
+  <img src="figures/embedding.png" width="60%" />
+</div>
 
 In this repository, we present GENERator, a collection of generative genomic foundation models utilizing the transformer
 decoder architecture, trained on expansive DNA datasets derived from
