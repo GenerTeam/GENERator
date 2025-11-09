@@ -32,7 +32,7 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument(
         "--hg38_path",
         type=str,
-        default="hf://datasets/GenerTeam/variant-effect-prediction/test.parquet",
+        default="hf://datasets/GenerTeam/variant-effect-prediction/hg38.parquet",
         help="Download from https://huggingface.co/datasets/GenerTeam/variant-effect-prediction",
     )
     parser.add_argument(
