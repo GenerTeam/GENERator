@@ -969,9 +969,9 @@ def setup_training_args(yaml_path=None, cli_args=None, **kwargs):
     elif cli_args.problem_type == "single_label_classification":
         if cli_args.main_metrics not in ["accuracy", "f1_score", "mcc", "auroc"]:
             dist_print(
-                f"⚠️ Warning: {cli_args.main_metrics} is not a valid metric for single-label classification. Defaulting to 'mcc'."
+                f"⚠️ Warning: {cli_args.main_metrics} is not a valid metric for single-label classification. Defaulting to 'f1_score'."
             )
-            cli_args.main_metrics = "mcc"
+            cli_args.main_metrics = "f1_score"
     elif cli_args.problem_type == "multi_label_classification":
         if cli_args.main_metrics not in ["f1_max", "auprc_micro"]:
             dist_print(
