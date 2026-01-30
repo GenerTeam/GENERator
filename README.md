@@ -17,7 +17,7 @@ We apologize for any inconvenience this may cause and recommend adhering to the 
 
 ## 📰 News
 
-* 🤗 **[2026-01-31]** GENERator-v2 technical report is now available on [bioRxiv](https://www.biorxiv.org/content/10.64898/2026.01.27.702015v1)!
+* 📑 **[2026-01-31]** GENERator-v2 technical report is now available on [bioRxiv](https://www.biorxiv.org/content/10.64898/2026.01.27.702015v1)!
 * 🤗 **[2025-11-05]** GENERator-v2 series are now available on [HuggingFace](https://huggingface.co/GenerTeam/)!
 * 📑 **[2025-02-12]** Our paper is now available on [arXiv](https://arxiv.org/abs/2502.07272)!
 * 🤗 **[2025-02-11]** Our models `GENERator-eukaryote-1.2b-base`,
