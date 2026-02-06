@@ -1,0 +1,27 @@
+{
+  "optimizer": {
+    "type": "AdamW",
+    "params": {
+      "lr": "auto",
+      "betas": "auto",
+      "eps": "auto",
+      "weight_decay": "auto"
+    }
+  },
+  "bf16": {
+    "enabled": "auto"
+  },
+  "train_micro_batch_size_per_gpu": "auto",
+  "gradient_accumulation_steps": "auto",
+  "train_batch_size": "auto",
+  "gradient_clipping": "auto",
+  "zero_optimization": {
+    "stage": 0 
+  },
+  "gradient_checkpointing": {
+    "enabled": true,
+    "cpu_checkpointing": false,
+    "contiguous_memory_optimization": false,
+    "synchronize_checkpoint_boundary": false
+  }
+}

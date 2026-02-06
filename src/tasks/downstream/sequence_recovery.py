@@ -26,7 +26,7 @@ def parse_args():
     )
     parser.add_argument(
         "--model_path",
-        default="GenerTeam/GENERator-eukaryote-1.2b-base",
+        default="GenerTeam/GENERator-v2-eukaryote-1.2b-base",
         help="Download from https://huggingface.co/GenerTeam/GENERator-eukaryote-1.2b-base",
     )
     parser.add_argument(

@@ -2,6 +2,7 @@ import argparse
 import os
 import time
 from typing import Dict, Tuple, Union, Optional, Callable
+from pathlib import Path
 
 import numpy as np
 import torch
@@ -34,6 +35,9 @@ from transformers import (
     LlamaConfig,
 )
 from transformers.modeling_outputs import SequenceClassifierOutput
+
+ROOT_DIR = Path(__file__).resolve().parents[3]
+config_dir = ROOT_DIR / "configs"
 
 # Set logging level for transformers
 transformers.logging.set_verbosity_info()
@@ -104,7 +108,7 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument(
         "--model_name",
         type=str,
-        default="GenerTeam/GENERator-eukaryote-1.2b-base",
+        default="GenerTeam/GENERator-eukaryote-v2-1.2b-base",
         help="HuggingFace model path or name",
     )
     parser.add_argument(
@@ -182,7 +186,7 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument(
         "--hf_config_path",
         type=str,
-        default="configs/hf_configs/sequence_understanding.yaml",
+        default=str(config_dir / "hf_configs" / "sequence_understanding.yaml"),
         help="Path to the YAML configuration file for HuggingFace Trainer",
     )
     parser.add_argument(
@@ -950,10 +954,10 @@ def setup_training_args(yaml_path=None, cli_args=None, **kwargs):
         # Handle distributed training configurations
         if hasattr(cli_args, "distributed_type"):
             if cli_args.distributed_type == "deepspeed":
-                cli_kwargs["deepspeed"] = "configs/ds_configs/zero1.json"
+                cli_kwargs["deepspeed"] = str(config_dir / "distributed_configs" / "ds_config.json")
             elif cli_args.distributed_type == "fsdp":
                 cli_kwargs["fsdp"] = "shard_grad_op auto_wrap"
-                cli_kwargs["fsdp_config"] = "configs/ds_configs/fsdp.json"
+                cli_kwargs["fsdp_config"] = str(config_dir / "distributed_configs" / "fsdp_config.json")
 
     # Handle BF16 precision based on GPU capability
     if torch.cuda.is_available() and torch.cuda.get_device_capability()[0] >= 8:

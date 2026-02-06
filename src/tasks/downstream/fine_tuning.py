@@ -1,474 +1,415 @@
-import argparse
 import os
-import time
-from typing import Optional
+# os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
+# os.environ["HF_HUB_DISABLE_XET"] = "1"
+# os.environ["WANDB_BASE_URL"] = "https://api.bandw.top"
 
+import argparse
+import wandb
+import logging
 import torch
-import torch.distributed as dist
-import transformers
-import yaml
-from datasets import (
-    Dataset,
-    load_dataset,
-)
-from transformers import (
-    AutoTokenizer,
-    AutoModelForCausalLM,
-    PreTrainedTokenizer,
-    TrainingArguments,
-    Trainer,
-    DataCollatorForLanguageModeling,
-    PreTrainedModel,
-)
 
-# Set logging level for transformers
-transformers.logging.set_verbosity_info()
+from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, Optional
+from transformers import TrainingArguments
+from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers.trainer_utils import get_last_checkpoint
+from datasets import Dataset, DatasetDict, load_dataset
 
+import sys
+ROOT_DIR = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT_DIR / "src"))
 
-def is_main_process() -> bool:
-    """
-    Check if current process is the main process (rank 0) in distributed training.
+from custom_trainer import BPTrainer
+from custom_dataset import ParquetSequenceDataset, SequenceDataCollator
 
-    Returns:
-        bool: True if this is the main process, False otherwise
-    """
-    if dist.is_initialized():
-        return dist.get_rank() == 0
-    return True
+config_dir = ROOT_DIR / "configs"
 
+# Logging setup
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
-def dist_print(*args, **kwargs) -> None:
-    """
-    Print only from the main process (rank 0) in distributed training.
-    Prevents duplicate outputs in multi-GPU settings.
-
-    Args:
-        *args: Arguments to pass to print function
-        **kwargs: Keyword arguments to pass to print function
-    """
-    if is_main_process():
-        print(*args, **kwargs)
-
-
-def parse_arguments() -> argparse.Namespace:
-    """
-    Parse command line arguments for causal language model fine-tuning.
-
-    Returns:
-        argparse.Namespace: Parsed arguments namespace
-    """
-    parser = argparse.ArgumentParser(
-        description="Fine-tune a model for causal language modeling"
-    )
-    parser.add_argument(
-        "--dataset_name",
-        type=str,
-        default=None,
-        required=True,
-        help="Name of the dataset on HuggingFace Hub",
-    )
-    parser.add_argument(
-        "--subset_name",
-        type=str,
-        default=None,
-        help="Name of the subset of the dataset (if applicable)",
-    )
-    parser.add_argument(
-        "--model_name",
-        type=str,
-        default="GenerTeam/GENERator-eukaryote-1.2b-base",
+def parse_args():
+    parser = argparse.ArgumentParser(description="Fine-tune GENERator model")
+    # Data & model
+    parser.add_argument("--model_name", type=str, default="GenerTeam/GENERator-v2-eukaryote-1.2b-base",
         help="HuggingFace model path or name",
     )
-    parser.add_argument(
-        "--batch_size",
-        type=int,
-        default=16,
-        help="Batch size per GPU for training",
+    data_group = parser.add_mutually_exclusive_group(required=True)
+    data_group.add_argument("--parquet_path", type=str, default=None,
+        help="Parquet file or directory (must include sequence column)",
     )
-    parser.add_argument(
-        "--max_length",
-        type=int,
-        default=16384,
-        help="Maximum sequence length for tokenization",
+    data_group.add_argument("--dataset_name", type=str, default=None,
+        help="HuggingFace dataset name/path (loaded via datasets.load_dataset)",
     )
-    parser.add_argument(
-        "--num_train_epochs",
-        type=int,
-        default=1,
-        help="Number of epochs to train the model",
+    parser.add_argument("--subset_name", type=str, default=None,
+        help="Dataset subset/config name for --dataset_name (optional)",
     )
-    parser.add_argument(
-        "--gradient_accumulation_steps",
-        type=int,
-        default=1,
-        help="Number of steps to accumulate gradients before updating model",
+    parser.add_argument("--dataset_split", type=str, default="train",
+        help="Dataset split to use for training",
     )
-    parser.add_argument(
-        "--learning_rate", type=float, default=2e-5, help="Learning rate for training"
+    parser.add_argument("--sequence_col", type=str, default="sequence",
+        help="Sequence column name",
     )
-    parser.add_argument(
-        "--output_dir",
-        type=str,
-        default="results/fine_tuning",
-        help="Path to save the fine-tuned model",
+
+    # Model runtime
+    parser.add_argument("--max_token_length", type=int, default=16384,
+        help="Maximum sequence length in tokens",
     )
-    # In appropriate situations, we recommend setting --pad_to_multiple_of_six true by default to avoid generating <oov> at the end of sequences.
-    parser.add_argument(
-        "--pad_to_multiple_of_six",
-        action="store_true",
-        help="Pad sequences to multiple of 6 with 'A'. ",
+    parser.add_argument("--attn_implementation", type=str, default="flash_attention_2", 
+        choices=["flash_attention_2", "sdpa", "eager"],
+        help="Attention implementation: flash_attention_2, sdpa, eager",
     )
-    parser.add_argument(
-        "--hf_config_path",
-        type=str,
-        default="configs/hf_configs/fine_tuning.yaml",
-        help="Path to the YAML configuration file for HuggingFace Trainer",
+    parser.add_argument("--bf16", action='store_true',
+        help="Enable BF16 (recommended for A100)",
     )
-    parser.add_argument(
-        "--distributed_type",
-        type=str,
-        default="ddp",
-        choices=["ddp", "deepspeed", "fsdp"],
+
+    # Run / outputs
+    parser.add_argument("--output_dir", type=str, default=None,
+        help="Training checkpoints output directory",
+    )
+    parser.add_argument("--saved_model_dir", type=str, default=None,
+        help="Final model output directory",
+    )
+    parser.add_argument("--tmp_dir", type=str, default=None,
+        help="Temporary directory (sets TMPDIR)",
+    )
+
+    # Training schedule
+    parser.add_argument("--epochs", type=float, default=3,
+        help="Training epochs",
+    )
+    parser.add_argument("--batch_size", type=int, default=4,
+        help="Per-device batch size",
+    )
+    parser.add_argument("--gradient_accumulation", type=int, default=1,
+        help="Gradient accumulation steps",
+    )
+    parser.add_argument("--lr", type=float, default=5e-5,
+        help="Learning rate",
+    )
+    parser.add_argument("--warm_up", type=int, default=2000,
+        help="Warmup steps",
+    )
+    parser.add_argument("--save_steps", type=int, default=2000,
+        help="Steps between checkpoints",
+    )
+    parser.add_argument("--save_total_limit", type=int, default=10,
+        help="Max number of checkpoints",
+    )
+    parser.add_argument("--logging_steps", type=int, default=10,
+        help="Logging steps",
+    )
+
+    # Logging / tracking
+    parser.add_argument("--report_to", type=str, default="wandb",
+        help="Reporting tool",
+    )
+    parser.add_argument("--wandb_project", type=str, default="GENERator-finetuning",
+        help="W&B project name",
+    )
+    parser.add_argument("--wandb_key", type=str, default=None,
+        help="W&B API key (optional)",
+    )
+    parser.add_argument("--run_name", type=str, default=None,
+        help="W&B run name",
+    )
+
+    # Distributed training
+    parser.add_argument("--distributed_type", type=str, default="ddp", choices=["ddp", "fsdp", "deepspeed"],
         help="Type of distributed training to use",
     )
+    parser.add_argument("--fsdp_config", type=str, default=str(config_dir / "distributed_configs" / "fsdp_config.json"),
+        help="FSDP config path",
+    )
+    parser.add_argument("--ds_config", type=str, default=str(config_dir / "distributed_configs" / "ds_config.json"),
+        help="DeepSpeed config path",
+    )
+    parser.add_argument("--local_rank", type=int, default=0,
+        help="Local rank for distributed training",
+    )
+    
     return parser.parse_args()
 
+def resolve_precision(args):
+    cuda_available = torch.cuda.is_available()
+    bf16_supported = cuda_available and torch.cuda.is_bf16_supported()
 
-def setup_tokenizer(model_name: str) -> PreTrainedTokenizer:
-    """
-    Load and configure tokenizer for causal language modeling.
+    if args.bf16 and not bf16_supported:
+        if not cuda_available:
+            logger.warning("BF16 requested but CUDA is not available; using FP32.")
+        else:
+            logger.warning("BF16 requested but not supported on this hardware; using FP32.")
+        args.bf16 = False
 
-    Args:
-        model_name: Name or path of the HuggingFace model
+    dtype = torch.bfloat16 if args.bf16 else torch.float32
+    logger.info("Using %s precision.", "BF16" if args.bf16 else "FP32")
+    return dtype
 
-    Returns:
-        PreTrainedTokenizer: Configured tokenizer for the model
-    """
-    dist_print(f"🔤 Loading tokenizer from: {model_name}")
-    start_time = time.time()
+def should_use_wandb(report_to):
+    if isinstance(report_to, (list, tuple)):
+        targets = {str(x).lower() for x in report_to}
+    else:
+        targets = {s.strip().lower() for s in str(report_to).split(",")}
+    return "wandb" in targets
 
-    # Load tokenizer with trust_remote_code to support custom models
-    tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
+def setup_logging_and_wandb(args):
+    if not should_use_wandb(args.report_to):
+        logger.info(f"W&B disabled (report_to={args.report_to}).")
+        return
 
-    # Set pad_token to eos_token if not defined
-    if tokenizer.pad_token is None:
-        tokenizer.pad_token = tokenizer.eos_token
+    if str(os.environ.get("WANDB_DISABLED", "")).lower() in {"1", "true", "yes"}:
+        logger.info("W&B disabled via WANDB_DISABLED.")
+        return
 
-    dist_print(
-        f"⏱️ Tokenizer loading completed in {time.time() - start_time:.2f} seconds"
+    os.environ["WANDB_PROJECT"] = args.wandb_project
+    os.environ["WANDB_NAME"] = args.run_name
+
+    env_key = os.environ.get("WANDB_API_KEY") or os.environ.get("WANDB_KEY")
+    has_key = bool(args.wandb_key or env_key)
+
+    if has_key:
+        if "WANDB_MODE" not in os.environ:
+            os.environ["WANDB_MODE"] = "online"
+        if args.wandb_key:
+            wandb.login(key=args.wandb_key, force=True)
+        else:
+            wandb.login(force=True)
+        logger.info(f"W&B online, project: {args.wandb_project}, run: {args.run_name}")
+    else:
+        if "WANDB_MODE" not in os.environ:
+            os.environ["WANDB_MODE"] = "offline"
+        logger.info("W&B offline mode (no API key provided).")
+
+def get_training_args(args):
+    kwargs = dict(
+        output_dir=args.output_dir,
+        overwrite_output_dir=True,
+        num_train_epochs=args.epochs,
+        per_device_train_batch_size=args.batch_size,
+        gradient_accumulation_steps=args.gradient_accumulation,
+        save_steps=args.save_steps,
+        save_total_limit=args.save_total_limit,
+        logging_steps=args.logging_steps,
+        report_to=args.report_to,
+        fp16=False,
+        bf16=args.bf16,
+        max_grad_norm=1.0,
+        
+        # Optimizer & learning rate
+        run_name=args.run_name,
+        warmup_steps=args.warm_up,
+        weight_decay=0.01,
+        learning_rate=args.lr,
+        lr_scheduler_type='cosine_with_min_lr',
+        lr_scheduler_kwargs={'min_lr_rate': 0.1},
+        
+        # Gradient checkpointing
+        gradient_checkpointing=True,
+        gradient_checkpointing_kwargs={"use_reentrant": False, "preserve_rng_state": False},
+        
+        # Dataset columns
+        remove_unused_columns=False,
     )
 
-    return tokenizer
+    # Distributed training
+    if args.distributed_type == "fsdp":
+        kwargs['fsdp'] = "shard_grad_op auto_wrap"
+        kwargs['fsdp_config'] = args.fsdp_config
+    elif args.distributed_type == "deepspeed":
+        kwargs['deepspeed'] = args.ds_config
+    
+    return TrainingArguments(**kwargs)
 
+def load_model(args, dtype):
+    """Try attention backends in list order starting from the requested one."""
+    order = ["flash_attention_2", "sdpa", "eager"]
+    requested = args.attn_implementation
+    if requested not in order:
+        raise ValueError(f"Unsupported attention implementation: {args.attn_implementation}")
 
-def setup_dataset(
+    tried = []
+    for impl in order[order.index(requested):]:
+        try:
+            if impl == "flash_attention_2" and dtype == torch.float32:
+                raise ValueError("flash_attention_2 requires FP16/BF16 (got FP32)")
+            model = AutoModelForCausalLM.from_pretrained(
+                args.model_name,
+                attn_implementation=impl,
+                dtype=dtype,
+                trust_remote_code=True,
+            )
+            if impl != requested:
+                logger.warning(f"Falling back to attention implementation: {impl}")
+            return model
+        except Exception as e:
+            tried.append((impl, str(e)))
+            logger.warning(f"Failed to load model with attn_implementation={impl}: {e}")
+
+    details = "; ".join([f"{impl}: {err}" for impl, err in tried])
+    raise RuntimeError(f"Failed to load model with any attention backend. {details}")
+
+def load_hf_sequence_dataset(
     dataset_name: str,
-    subset_name: Optional[str] = None,
-    tokenizer: Optional[PreTrainedTokenizer] = None,
-    max_length: int = 512,
-    pad_to_multiple_of_six: bool = False,
-) -> Dataset:
-    """
-    Load and prepare dataset for causal language modeling.
-
-    Args:
-        dataset_name: Name of the dataset on HuggingFace Hub
-        subset_name: Name of the dataset subset (if applicable)
-        tokenizer: Tokenizer for the model
-        max_length: Maximum sequence length for tokenization
-        pad_to_multiple_of_six: Whether to pad sequences to multiple of 6
-
-    Returns:
-        Dataset: Preprocessed dataset
-    """
-    dist_print(f"📚 Loading dataset {dataset_name}...")
-    start_time = time.time()
-
-    # Load dataset from HuggingFace
+    subset_name: Optional[str],
+    dataset_split: Optional[str],
+    sequence_col: str,
+):
     if subset_name is None:
         dataset = load_dataset(dataset_name, trust_remote_code=True)
     else:
         dataset = load_dataset(dataset_name, subset_name, trust_remote_code=True)
 
-    dist_print(f"⚡ Dataset loaded in {time.time() - start_time:.2f} seconds")
-
-    if "train" in dataset:
-        dataset = dataset["train"]
-        dist_print("🔍 Using 'train' split of the dataset")
-    elif "test" in dataset:
-        dataset = dataset["test"]
-        dist_print("🔍 Using 'test' split of the dataset")
-    elif "validation" in dataset:
-        dataset = dataset["validation"]
-        dist_print("🔍 Using 'validation' split of the dataset")
-    else:
-        raise ValueError("No valid split found in dataset")
-
-    # Process dataset with tokenizer
-    def _process_function(examples):
-        # Find the correct field containing the sequence
-        if "sequence" in examples:
-            sequences = examples["sequence"]
-        elif "seq" in examples:
-            sequences = examples["seq"]
-        elif "dna_sequence" in examples:
-            sequences = examples["dna_sequence"]
-        elif "dna_seq" in examples:
-            sequences = examples["dna_seq"]
-        elif "text" in examples:
-            sequences = examples["text"]
-        else:
+    split: Optional[str] = None
+    if isinstance(dataset, DatasetDict):
+        split = dataset_split or "train"
+        if split not in dataset:
             raise ValueError(
-                "No sequence column found in dataset. Expected 'sequence', 'seq', 'dna_sequence', 'dna_seq', or 'text'."
+                f"Unable to pick a training split for dataset '{dataset_name}'. "
+                f"Requested split: {split}. Available splits: {list(dataset.keys())}. "
+                "Please set --dataset_split."
             )
+        dataset = dataset[split]
 
-        # Apply padding to original sequences if requested
-        if pad_to_multiple_of_six:
-            padded_sequences = []
-            for seq in sequences:
-                remainder = len(seq) % 6
-                if remainder != 0:
-                    pad_len = 6 - remainder
-                    seq = seq + "A" * pad_len  # Add "A" characters for padding
-                padded_sequences.append(seq)
-            sequences = padded_sequences
+    if not isinstance(dataset, Dataset):
+        raise TypeError(f"Unexpected dataset type returned by load_dataset: {type(dataset)}")
 
-        # Tokenize sequences
-        tokenized = tokenizer(
-            sequences,
-            truncation=True,
-            max_length=max_length,
-            add_special_tokens=True,
-            padding=False,
+    if sequence_col not in set(dataset.column_names):
+        raise ValueError(
+            f"sequence_col '{sequence_col}' not found in dataset columns: {dataset.column_names}"
+        )
+    logger.info(
+        "Loaded HF dataset: name=%s subset=%s split=%s sequence_col=%s",
+        dataset_name,
+        subset_name,
+        split,
+        sequence_col,
+    )
+
+    def _process(batch: Dict[str, Any]) -> Dict[str, Any]:
+        seqs = batch[sequence_col]
+        processed = []
+        for s in seqs:
+            if s is None:
+                processed.append("")
+                continue
+            processed.append(str(s).strip().upper())
+        return {"text": processed}
+
+    return dataset.map(_process, batched=True, remove_columns=dataset.column_names)
+
+def load_train_dataset(args):
+    if args.parquet_path is not None:
+        return ParquetSequenceDataset(
+            parquet_path=args.parquet_path,
+            sequence_col=args.sequence_col,
+            uppercase=True,
+            strip=True,
         )
 
-        return tokenized
+    if args.dataset_name is not None:
+        return load_hf_sequence_dataset(
+            dataset_name=args.dataset_name,
+            subset_name=args.subset_name,
+            dataset_split=args.dataset_split,
+            sequence_col=args.sequence_col,
+        )
 
-    # Apply tokenization to dataset
-    dataset = dataset.map(
-        _process_function,
-        batched=True,
-        remove_columns=dataset.column_names,
+    raise ValueError("Either --parquet_path or --dataset_name must be provided.")
+
+def main():
+    args = parse_args()
+
+    if args.tmp_dir is not None:
+        os.environ["TMPDIR"] = args.tmp_dir
+
+    # Resolve run name
+    if args.run_name is None:
+        args.run_name = f"GENERator-finetuning_{args.max_token_length}_{datetime.now().strftime('%Y%m%d_%H%M')}"
+    
+    # Resolve output directories
+    if args.output_dir is None:
+        args.output_dir = str(Path("checkpoints") / args.run_name)
+    if args.saved_model_dir is None:
+        args.saved_model_dir = str(Path("saved_model") / args.run_name)
+
+    if args.distributed_type == "fsdp" and not Path(args.fsdp_config).exists():
+        raise FileNotFoundError(f"FSDP config not found: {args.fsdp_config}")
+    if args.distributed_type == "deepspeed" and not Path(args.ds_config).exists():
+        raise FileNotFoundError(f"DeepSpeed config not found: {args.ds_config}")
+    
+    # W&B setup
+    setup_logging_and_wandb(args)
+    
+    # Load tokenizer
+    tokenizer = AutoTokenizer.from_pretrained(args.model_name, trust_remote_code=True)
+    
+    # Create model with requested attention backend and precision (with fallbacks)
+    model_dtype = resolve_precision(args)
+    model = load_model(args, model_dtype)
+    model.vocab_size = tokenizer.vocab_size
+
+    # Prepare data
+    logger.info("Preparing data...")
+    train_dataset = load_train_dataset(args)
+    logger.info(f"Dataset size: {len(train_dataset)}")
+
+    data_collator = SequenceDataCollator(
+        tokenizer=tokenizer,
+        max_length=args.max_token_length,
+        pad_to_multiple_of=None,
+        add_special_tokens=True,  # Let tokenizer add <s> and </s>
     )
-
-    return dataset
-
-
-def setup_model(model_name: str) -> PreTrainedModel:
-    """
-    Load and configure model for causal language modeling.
-
-    Args:
-        model_name: Name or path of the HuggingFace model
-
-    Returns:
-        PreTrainedModel: Configured pre-trained model for causal language modeling
-    """
-    dist_print(f"🤖 Loading AutoModelForCausalLM from: {model_name}")
-    start_time = time.time()
-
-    # Load model with trust_remote_code to support custom models
-    model = AutoModelForCausalLM.from_pretrained(
-        model_name,
-        trust_remote_code=True,
+    
+    # Training arguments
+    training_args = get_training_args(args)
+    
+    # Auto-resume
+    output_dir_path = Path(args.output_dir)
+    resume_from_checkpoint = (
+        get_last_checkpoint(str(output_dir_path)) if output_dir_path.exists() else None
     )
-
-    # Ensure pad_token_id is set
-    if model.config.pad_token_id is None and hasattr(model.config, "eos_token_id"):
-        model.config.pad_token_id = model.config.eos_token_id
-
-    # Report model size for reference
-    total_params = sum(p.numel() for p in model.parameters())
-    dist_print(f"📊 Model size: {total_params / 1e6:.1f}M parameters")
-    dist_print(f"⏱️ Model loading completed in {time.time() - start_time:.2f} seconds")
-
-    return model
-
-
-def setup_training_args(yaml_path=None, cli_args=None, **kwargs):
-    """
-    Create a TrainingArguments instance from YAML, CLI arguments, and code arguments.
-    Priority: code kwargs > CLI args > YAML config
-
-    Args:
-        yaml_path: Path to YAML configuration file
-        cli_args: Parsed command line arguments
-        **kwargs: Direct arguments that take highest priority
-
-    Returns:
-        TrainingArguments: Configured training arguments
-    """
-    # Start with yaml configuration if provided
-    yaml_kwargs = {}
-    if yaml_path and os.path.exists(yaml_path):
-        with open(yaml_path, "r") as f:
-            yaml_kwargs = yaml.safe_load(f)
-
-    # Create a dictionary from CLI arguments
-    cli_kwargs = {}
-    if cli_args is not None:
-        # Add basic training parameters
-        if hasattr(cli_args, "output_dir"):
-            cli_kwargs["output_dir"] = cli_args.output_dir
-        if hasattr(cli_args, "batch_size"):
-            cli_kwargs["per_device_train_batch_size"] = cli_args.batch_size
-        if hasattr(cli_args, "learning_rate"):
-            cli_kwargs["learning_rate"] = cli_args.learning_rate
-        if hasattr(cli_args, "gradient_accumulation_steps"):
-            cli_kwargs["gradient_accumulation_steps"] = (
-                cli_args.gradient_accumulation_steps
-            )
-        if hasattr(cli_args, "num_train_epochs"):
-            cli_kwargs["num_train_epochs"] = cli_args.num_train_epochs
-
-        # Handle distributed training configurations
-        if hasattr(cli_args, "distributed_type"):
-            if cli_args.distributed_type == "deepspeed":
-                cli_kwargs["deepspeed"] = "configs/ds_configs/zero1.json"
-            elif cli_args.distributed_type == "fsdp":
-                cli_kwargs["fsdp"] = "shard_grad_op auto_wrap"
-                cli_kwargs["fsdp_config"] = "configs/ds_configs/fsdp.json"
-
-    # Handle BF16 precision based on GPU capability
-    if torch.cuda.is_available() and torch.cuda.get_device_capability()[0] >= 8:
-        cli_kwargs["bf16"] = True
-
-    # Merge all configurations, with priority: kwargs > cli_kwargs > yaml_kwargs
-    final_kwargs = {**yaml_kwargs, **cli_kwargs, **kwargs}
-
-    # Add defaults for saving strategy
-    if "save_strategy" not in final_kwargs:
-        final_kwargs["save_strategy"] = "epoch"
-
-    # Add logging steps if not provided
-    if "logging_steps" not in final_kwargs:
-        final_kwargs["logging_steps"] = 10
-
-    # Create and return the TrainingArguments instance
-    return TrainingArguments(**final_kwargs)
-
-
-def train_model(
-    model: PreTrainedModel,
-    tokenizer: PreTrainedTokenizer,
-    dataset: Dataset,
-    args: argparse.Namespace,
-) -> Trainer:
-    """
-    Train the model for causal language modeling.
-
-    Args:
-        model: Pre-trained language model
-        tokenizer: Tokenizer for the model
-        dataset: Training dataset
-        args: Command line arguments
-
-    Returns:
-        Trainer: Trained model trainer
-    """
-    dist_print("🚀 Setting up training...")
-    start_time = time.time()
-
-    # Configure training arguments
-    training_args = setup_training_args(yaml_path=args.hf_config_path, cli_args=args)
-
+    if resume_from_checkpoint:
+        logger.info(f"Resuming from checkpoint: {resume_from_checkpoint}")
+    
     # Initialize Trainer
-    trainer = Trainer(
+    trainer = BPTrainer(
         model=model,
         args=training_args,
-        train_dataset=dataset,
-        tokenizer=tokenizer,
-        data_collator=DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False),
+        train_dataset=train_dataset,
+        processing_class=tokenizer,
+        bp_loss_only=True,
+        data_collator=data_collator,
+    )
+    
+    # Train
+    logger.info("Starting training...")
+    trainer.train(resume_from_checkpoint=resume_from_checkpoint)
+    
+    # Save model
+    logger.info(f"Saving final model to {args.saved_model_dir}")
+    acc = trainer.accelerator
+    acc.wait_for_everyone()
+
+    if acc.distributed_type.name == "FSDP":
+        acc.state.fsdp_plugin.set_state_dict_type("FULL_STATE_DICT")
+
+    unwrapped = acc.unwrap_model(trainer.model)
+
+    unwrapped.save_pretrained(
+        args.saved_model_dir,
+        is_main_process=acc.is_main_process,
+        save_function=acc.save,
+        state_dict=acc.get_state_dict(trainer.model),
+        safe_serialization=True,
     )
 
-    dist_print(f"⏱️ Training setup completed in {time.time() - start_time:.2f} seconds")
-    dist_print("🏋️ Starting model training...")
-    training_start_time = time.time()
+    if acc.is_main_process:
+        tokenizer.save_pretrained(args.saved_model_dir)
 
-    # Train the model
-    trainer.train()
+    acc.wait_for_everyone()
 
-    dist_print(
-        f"✅ Training completed in {(time.time() - training_start_time) / 60:.2f} minutes"
-    )
-    return trainer
-
-
-def save_model(
-    trainer: Trainer, tokenizer: PreTrainedTokenizer, output_dir: str
-) -> None:
-    """
-    Save the fine-tuned model and tokenizer.
-
-    Args:
-        trainer: Trained model trainer
-        tokenizer: Tokenizer for the model
-        output_dir: Directory to save the model
-    """
-    dist_print(f"💾 Saving fine-tuned model to {output_dir}")
-    start_time = time.time()
-
-    # Save the model
-    trainer.save_model(output_dir)
-
-    # Save the tokenizer
-    tokenizer.save_pretrained(output_dir)
-
-    dist_print(f"✅ Model saved in {time.time() - start_time:.2f} seconds")
-
-
-def display_progress_header() -> None:
-    """
-    Display a stylized header for the causal language model fine-tuning.
-    """
-    dist_print("\n" + "=" * 80)
-    dist_print("🔥  CAUSAL LANGUAGE MODEL FINE-TUNING PIPELINE  🔥")
-    dist_print("=" * 80 + "\n")
-
-
-def main() -> None:
-    """
-    Main function to run the causal language model fine-tuning pipeline.
-    """
-    # Display header
-    display_progress_header()
-
-    # Start timer for total execution
-    total_start_time = time.time()
-
-    # Parse command line arguments
-    args = parse_arguments()
-
-    # Create output directory
-    os.makedirs(args.output_dir, exist_ok=True)
-
-    # Setup tokenizer first
-    tokenizer = setup_tokenizer(args.model_name)
-
-    # Load and prepare data
-    dataset = setup_dataset(
-        args.dataset_name,
-        args.subset_name,
-        tokenizer,
-        args.max_length,
-        args.pad_to_multiple_of_six,
-    )
-
-    # Initialize model
-    model = setup_model(args.model_name)
-
-    # Train model
-    trainer = train_model(model, tokenizer, dataset, args)
-
-    # Save fine-tuned model
-    save_model(trainer, tokenizer, args.output_dir)
-
-    # Print total execution time
-    total_time = time.time() - total_start_time
-    minutes, seconds = divmod(total_time, 60)
-    dist_print(f"\n⏱️ Total execution time: {int(minutes)}m {seconds:.2f}s")
-    dist_print("✨ Fine-tuning completed successfully! ✨\n")
-
+    logger.info("Training complete!")
 
 if __name__ == "__main__":
     main()

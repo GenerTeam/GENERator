@@ -149,7 +149,7 @@ on following command:
 ```shell
 # Using single GPU
 python src/tasks/downstream/sequence_understanding.py \
-    --model_name GenerTeam/GENERator-eukaryote-1.2b-base \
+    --model_name GenerTeam/GENERator-v2-eukaryote-1.2b-base \
     --dataset_name ${DATASET_NAME} \
     --subset_name ${SUBSET_NAME} \
     --batch_size ${BATCH_SIZE} \
@@ -160,14 +160,16 @@ python src/tasks/downstream/sequence_understanding.py \
 torchrun --nnodes=1 \
     --nproc_per_node=${NUM_GPUS} \
     --rdzv_backend=c10d \
-    src/tasks/downstream/sequence_understanding.py
+    src/tasks/downstream/sequence_understanding.py \
+    --dataset_name ${DATASET_NAME}
 
 # Using multiple GPUs on multiple nodes (DDP)
 torchrun --nnodes=${NUM_NODES} \
     --nproc_per_node=${NUM_GPUS_PER_NODE} \
     --rdzv_backend=c10d \
     --rdzv_endpoint=${MASTER_ADDR}:${MASTER_PORT} \
-    src/tasks/downstream/sequence_understanding.py
+    src/tasks/downstream/sequence_understanding.py \
+    --dataset_name ${DATASET_NAME}
 
 # Using DeepSpeed or Full Sharded Data Parallel (FSDP)
 torchrun --nnodes=${NUM_NODES} \
@@ -175,42 +177,54 @@ torchrun --nnodes=${NUM_NODES} \
     --rdzv_backend=c10d \
     --rdzv_endpoint=${MASTER_ADDR}:${MASTER_PORT} \
     src/tasks/downstream/sequence_understanding.py \
-    --distributed_type deepspeed # or fsdp
+    --distributed_type deepspeed \ # or fsdp
+    --dataset_name ${DATASET_NAME}
 ```
 
 #### Causal Language Modeling Fine-tuning
 
-You can use the following command to fine-tune the GENERator-base model for generating specific DNA sequences, such as [DeepSTARR Enhancer](https://huggingface.co/datasets/GenerTeam/DeepSTARR-enhancer-activity), [Histone coding DNA sequence (CDS)](https://huggingface.co/datasets/GenerTeam/histone-cds), [Cytochrome P450 CDS](https://huggingface.co/datasets/GenerTeam/cytochrome-p450-cds).
+To fine-tune a GENERator base model for DNA sequence generation (e.g., [DeepSTARR Enhancer](https://huggingface.co/datasets/GenerTeam/DeepSTARR-enhancer-activity), [Histone coding DNA sequence (CDS)](https://huggingface.co/datasets/GenerTeam/histone-cds), [Cytochrome P450 CDS](https://huggingface.co/datasets/GenerTeam/cytochrome-p450-cds)),
+you can use the following arguments:
+
+Data input (choose exactly one):
+
+* HuggingFace datasets
+    * DeepSTARR Enhancer Activity: `--dataset_name GenerTeam/DeepSTARR-enhancer-activity`
+    * Histone CDS: `--dataset_name GenerTeam/histone-cds`
+    * Cytochrome P450 CDS: `--dataset_name GenerTeam/cytochrome-p450-cds`
+    * Optional: `--subset_name ${SUBSET_NAME}`, `--dataset_split train` (default), `--sequence_col sequence` (default).
+* Local parquet
+    * `--parquet_path ${PARQUET_PATH}` (file or directory of parquet files)
+    * Optional: `--sequence_col sequence` (default).
+
+on following command:
 
 ```shell
 # Using single GPU
 python src/tasks/downstream/fine_tuning.py \
     --model_name GenerTeam/GENERator-eukaryote-1.2b-base \
     --dataset_name ${DATASET_NAME} \
-    --batch_size ${BATCH_SIZE} \
-    --num_train_epochs ${NUM_EPOCHS}
+    --epochs ${NUM_EPOCHS} \
+    --batch_size ${BATCH_SIZE}
 
-# Using multiple GPUs on single node (DDP)
+# Using multiple GPUs on single node
 torchrun --nnodes=1 \
     --nproc_per_node=${NUM_GPUS} \
     --rdzv_backend=c10d \
-    src/tasks/downstream/fine_tuning.py
+    src/tasks/downstream/fine_tuning.py \
+    --distributed_type fsdp \ # or deepspeed/ddp
+    --dataset_name ${DATASET_NAME}
 
-# Using multiple GPUs on multiple nodes (DDP)
-torchrun --nnodes=${NUM_NODES} \
-    --nproc_per_node=${NUM_GPUS_PER_NODE} \
-    --rdzv_backend=c10d \
-    --rdzv_endpoint=${MASTER_ADDR}:${MASTER_PORT} \
-    src/tasks/downstream/fine_tuning.py
-
-# Using DeepSpeed or Full Sharded Data Parallel (FSDP)
+# Using multiple GPUs on multiple nodes
 torchrun --nnodes=${NUM_NODES} \
     --nproc_per_node=${NUM_GPUS_PER_NODE} \
     --rdzv_backend=c10d \
     --rdzv_endpoint=${MASTER_ADDR}:${MASTER_PORT} \
     src/tasks/downstream/fine_tuning.py \
-    --distributed_type deepspeed # or fsdp
+    --distributed_type fsdp \ # or deepspeed/ddp
+    --dataset_name ${DATASET_NAME}
 ```
+Note: Replace `--dataset_name ${DATASET_NAME}` with `--parquet_path ${PARQUET_PATH}` for local parquet.
 
 ## 📚 Datasets
 
