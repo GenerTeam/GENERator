@@ -68,7 +68,7 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument(
         "--context_length",
         type=int,
-        default=96000,
+        default=6144,
         help="Context length in base pairs (bp) for sequence extraction",
     )
     parser.add_argument(
