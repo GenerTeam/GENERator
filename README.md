@@ -235,13 +235,21 @@ Note: Replace `--dataset_name ${DATASET_NAME}` with `--parquet_path ${PARQUET_PA
 ## 📜 Citation
 
 ```
-@misc{wu2025generator,
-      title={GENERator: A Long-Context Generative Genomic Foundation Model}, 
-      author={Wei Wu and Qiuyi Li and Mingyang Li and Kun Fu and Fuli Feng and Jieping Ye and Hui Xiong and Zheng Wang},
-      year={2025},
-      eprint={2502.07272},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2502.07272}, 
+@article {li2026generator2,
+	author = {Li, Qiuyi and Zhan, Zhihao and Feng, Shikun and Zhu, Yiheng and He, Yuan and Wu, Wei and Shi, Zhenghang and Wang, Shengjie and Hu, Zongyong and Yang, Zhao and Li, Jiaoyang and Tang, Jian and Liu, Haiguang and Qin, Tao},
+	title = {Functional In-Context Learning in Genomic Language Models with Nucleotide-Level Supervision and Genome Compression},
+	elocation-id = {2026.01.27.702015},
+	year = {2026},
+	doi = {10.64898/2026.01.27.702015},
+	publisher = {Cold Spring Harbor Laboratory},
+	URL = {https://www.biorxiv.org/content/early/2026/01/29/2026.01.27.702015},
+	journal = {bioRxiv}
+}
+
+@article{wu2025generator,
+  title={GENERator: a long-context generative genomic foundation model},
+  author={Wu, Wei and Li, Qiuyi and Li, Mingyang and Fu, Kun and Feng, Fuli and Ye, Jieping and Xiong, Hui and Wang, Zheng},
+  journal={arXiv preprint arXiv:2502.07272},
+  year={2025}
 }
 ```
