@@ -1,0 +1,70 @@
+LOCUS       AB539742                 982 bp    RNA     linear   VRL 26-JUN-2010
+DEFINITION  Influenza A virus (A/Shanghai/P1/2009(H1N1)) M gene for M1,
+            complete cds.
+ACCESSION   AB539742
+VERSION     AB539742.1
+DBLINK      BioProject: PRJNA37813
+KEYWORDS    .
+SOURCE      Influenza A virus (A/Shanghai/P1/2009(H1N1))
+  ORGANISM  Influenza A virus (A/Shanghai/P1/2009(H1N1))
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Alphainfluenzavirus; Alphainfluenzavirus
+            influenzae.
+REFERENCE   1
+  AUTHORS   Weng,L.
+  TITLE     The pandemic swin-origin influenza A virus (H1N1) shedding after
+            oseltamivir admiistration
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 982)
+  AUTHORS   Toyoda,T.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (25-DEC-2009) Contact:Tetuya Toyoda Institut Pasteur of
+            Shanghai, Unit of Viral Genome Regulation; 411 Hefei Road, Shanghai
+            200025, China
+FEATURES             Location/Qualifiers
+     source          1..982
+                     /organism="Influenza A virus (A/Shanghai/P1/2009(H1N1))"
+                     /mol_type="genomic RNA"
+                     /strain="A/Shanghai/P1/2009"
+                     /serotype="H1N1"
+                     /isolation_source="pharyngeal swab"
+                     /host="homo sapiens 24 year-old female"
+                     /db_xref="taxon:702719"
+                     /segment="7"
+                     /clone="M1M2 CDS"
+                     /geo_loc_name="China:Shanghai"
+                     /collection_date="21-Sep-2009"
+                     /note="lineage: swl"
+     gene            1..759
+                     /gene="M"
+     CDS             1..759
+                     /gene="M"
+                     /codon_start=1
+                     /product="M1"
+                     /protein_id="BAJ10046.1"
+                     /translation="MSLLTEVETYVLSIIPSGPLKAEIAQRLESVFAGKNTDLEALME
+                     WLKTRPILSPLTKGILGFVFTLTVPSERGLQRRRFVQNALNGNGDPNNMDRAVKLYKK
+                     LKREITFHGAKEVSLSYSTGALASCMGLIYNRMGTVTTEAAFGLVCATCEQIADSQHR
+                     SHRQMATTTNPLIRHENRMVLASTTAKAMEQMAGSSEQAAEAMEVANQTRQMVHAMRT
+                     IGTHPSSSAGLKDDLLENLQAYQKRMGVQMQRFK"
+ORIGIN      
+        1 atgagtcttc taaccgaggt cgaaacgtac gttctttcta tcatcccgtc aggccccctc
+       61 aaagccgaga tcgcgcagag actggaaagt gtctttgcag gaaagaacac agatcttgag
+      121 gctctcatgg aatggctaaa gacaagacca atcttgtcac ctctgactaa gggaatttta
+      181 ggatttgtgt tcacgctcac cgtgcccagt gagcgaggac tgcagcgtag acgctttgtc
+      241 caaaatgccc taaatgggaa tggggacccg aacaacatgg atagagcagt taaactatac
+      301 aagaagctca aaagagaaat aacgttccat ggggccaagg aggtgtcact aagctattca
+      361 actggtgcac ttgccagttg catgggcctc atatacaaca ggatgggaac agtgaccaca
+      421 gaagctgctt ttggtctagt gtgtgccact tgtgaacaga ttgctgattc acagcatcgg
+      481 tctcacagac aaatggctac taccaccaat ccactaatca ggcatgaaaa tagaatggtg
+      541 ctggctagca ctacggcaaa ggctatggaa cagatggctg gatcgagtga acaggcagca
+      601 gaggccatgg aggttgctaa tcagactagg cagatggtac atgcaatgag aactattggg
+      661 actcatccta gctccagtgc tggtctgaaa gatgaccttc ttgaaaattt gcaggcctac
+      721 cagaagcgaa tgggagtgca gatgcagcga ttcaagtgat cctctcgtca ttgcagcaaa
+      781 tatcattggg atcttgcacc tgatattgtg gattactgat cgtctttttt tcaaatgtat
+      841 ttatcgtcgc tttaaatacg gtttgaaaag agggccttct acggaaggag tgcctgagtc
+      901 catgagggaa gaatatcaac aggaacagca gagtgctgtg gatgttgacg atggtcattt
+      961 tgtcaacata gagctagagt aa
+//
+

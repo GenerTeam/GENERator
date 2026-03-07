@@ -1,0 +1,87 @@
+LOCUS       MH348117                1776 bp    cRNA    linear   VRL 13-JUL-2018
+DEFINITION  Influenza C virus (C/Bovine/Montana/12/2016) segment 5
+            nucleoprotein (NP) gene, complete cds.
+ACCESSION   MH348117
+VERSION     MH348117.1
+KEYWORDS    .
+SOURCE      Influenza C virus
+  ORGANISM  Influenza C virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Gammainfluenzavirus; Gammainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 1776)
+  AUTHORS   Zhang,H., Porter,E.P., Lohman,M., Lu,N., Peddireddi,L.,
+            Hanzlicek,G., Marthaler,D., Liu,X. and Bai,J.
+  TITLE     Complete Genome Sequence of an Influenza C Virus Strain Identified
+            from a Sick Calf in the United States
+  JOURNAL   Microbiol Resour Announc 7 (1) (2018)
+  REMARK    Publication Status: Online-Only
+REFERENCE   2  (bases 1 to 1776)
+  AUTHORS   Liu,X., Zhang,H. and Bai,J.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (15-MAY-2018) Kansas State Veterinary Diagnostic
+            Laboratory, Kansas State University, 2005 Research Park Cir.,
+            Manhattan, KS 66502, USA
+FEATURES             Location/Qualifiers
+     source          1..1776
+                     /organism="Influenza C virus"
+                     /mol_type="viral cRNA"
+                     /strain="C/Bovine/Montana/12/2016"
+                     /isolate="12"
+                     /isolation_source="sick calve's nasal swab"
+                     /host="bovine"
+                     /db_xref="taxon:11552"
+                     /segment="5"
+                     /geo_loc_name="USA: Montana"
+                     /collection_date="18-Nov-2016"
+     gene            11..1708
+                     /gene="NP"
+     CDS             11..1708
+                     /gene="NP"
+                     /codon_start=1
+                     /product="nucleoprotein"
+                     /protein_id="AWK48715.1"
+                     /translation="MSDRRQNRKTPDEQRKANALIINENIEAYIAICKEVGLNGDEML
+                     ILENGIAIEKAIRICCDGKYQEKREKKARDAQRVDSNFDADSIGIRLVKRAGSGTNIT
+                     YHSVVELTSRSRIVQILKSHWGNELNKAKVAGKRLGFSALFASNLEAIIYQRGKNAAR
+                     RNGPAELFTLTQGAGIETRYKWIMEKHIGIGVLIADAKGLINGKREGKRGVDASVKLR
+                     AGTTGSPLERAMQGIEKKAFPGPLRALARRVVKANYNDAREALNVIAEASLLLKPQIT
+                     NKMTMPWCMWLAARLTLKDEFANFCAYAGRRAFEVFNIAMEKIGICSFQGTIMNDDEI
+                     ESIEDKAQALMMACFGLAYEDFSLVSAMVSHPLKLRNRMKIGNFRVGEKVSTVLSPLL
+                     RFTRWAEFAQRFALQANTSREGAQISNSAVFAVERKITTDVQRVEELLNKVQAHEDEP
+                     LQTLYKKVREQISIIGRNKSEIKEFLGSSMYDLNDQEKQNPINFRSGAHPFFFEFDPD
+                     YNPIRVKRPKKPTAKRSSNISRLEEEGMDENSEIGQAKKMKPLDQLASTSNNIPGEN"
+ORIGIN      
+        1 attttcaaaa atgtctgaca gacgtcaaaa cagaaagacg ccagatgagc aacgcaaagc
+       61 caatgctctc ataataaatg agaacattga ggcctacatt gccatttgta aggaagtggg
+      121 ccttaatggc gatgaaatgt tgatcctgga aaatggcata gcaattgaaa aagctataag
+      181 aatatgttgt gatggaaagt atcaagaaaa aagagaaaag aaagcaagag acgcccaaag
+      241 agtggacagt aacttcgacg cagattccat tgggatcagg ctagtcaaaa gagctggttc
+      301 aggcaccaat attacctacc attcagttgt tgaattaaca agccgctcaa gaattgttca
+      361 aattctcaaa tctcattggg gaaatgaact aaacaaagca aaagttgcag gaaaaagact
+      421 cggcttctct gcactctttg cttccaactt ggaggcaatt atttatcaaa gaggaaagaa
+      481 cgcagcaaga agaaacggtc ctgccgaatt gttcactctc actcaagggg ctggaatcga
+      541 aaccagatac aaatggataa tggaaaagca tatcggaatt ggggttctta tagctgacgc
+      601 aaagggctta ataaatggaa agagagaagg caaaagagga gttgatgcca gtgtaaagtt
+      661 aagagcagga acaactggtt cccctctgga aagagccatg caaggaattg agaaaaaagc
+      721 gtttcctgga ccattaagag cactagcgag aagagttgta aaagcaaact acaatgacgc
+      781 cagagaggct ctaaatgtta tcgcagaagc atcactcctg ttaaaacccc agataaccaa
+      841 caagatgaca atgccttggt gtatgtggtt ggctgccaga cttactctga aagatgagtt
+      901 tgccaatttc tgtgcatacg caggaagaag agcctttgag gtcttcaata ttgcaatgga
+      961 aaaaattgga atttgttcct ttcaagggac aataatgaac gatgatgaaa ttgaatcaat
+     1021 agaggacaag gctcaagcat taatgatggc atgctttgga cttgcttatg aagacttcag
+     1081 tttggtctct gctatggtta gccaccccct caagttgaga aacagaatga aaataggaaa
+     1141 cttcagagtc ggtgaaaaag tttcaacagt gctttctccc ttattgagat tcacaagatg
+     1201 ggcagaattt gctcaaagat ttgctcttca ggcgaatact tcaagagaag gtgctcaaat
+     1261 cagcaattca gcagtttttg cagtggaaag gaaaataacc acagatgttc aaagggttga
+     1321 agagctatta aataaagttc aagcccatga agatgagcca ttacaaacac tttacaagaa
+     1381 agtaagagaa caaatttcca taattggaag gaacaagtct gagataaagg agtttctagg
+     1441 atcttcaatg tatgatttaa atgatcaaga aaaacaaaat ccaataaatt tcaggtctgg
+     1501 agcacacccc ttcttcttcg aattcgaccc agattacaac cccataagag tgaagagacc
+     1561 caaaaaacca acagcaaaga gaagttcaaa cattagcaga ctggaagaag aaggaatgga
+     1621 cgaaaattca gagattggac aagccaagaa gatgaagccc ttggatcagt tggccagcac
+     1681 tagcaacaac attcctggag aaaattaaag tcagattaaa ctcatcacat attttatgat
+     1741 caactgttat attgctatat ataattcaaa aatctc
+//
+

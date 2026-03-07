@@ -1,0 +1,91 @@
+LOCUS       ON142491                1815 bp    cRNA    linear   VRL 10-APR-2022
+DEFINITION  Influenza B virus (B/Kazakhstan/isolate_NP/2018) segment 5
+            nucleoprotein (NP) gene, complete cds.
+ACCESSION   ON142491
+VERSION     ON142491.1
+KEYWORDS    .
+SOURCE      Influenza B virus
+  ORGANISM  Influenza B virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Betainfluenzavirus; Betainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 1815)
+  AUTHORS   Karamendin,K., Kydyrmanonov,A., Klivleyeva,N., Glebova,T.,
+            Sabyrzhan,T. and Suleimen,B.
+  TITLE     Nearly Complete Genome Sequence of Human Influenza Virus Strain
+            B/Almaty/8/2018 from Central Asia
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 1815)
+  AUTHORS   Karamendin,K., Kydyrmanonov,A. and Klivleyeva,N.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (04-APR-2022) The laboratory for ecology of viruses,
+            Research and production center for microbiology and virology,
+            Bogenbai batyr 105, Almaty 050010, Kazakhstan
+COMMENT     ##Assembly-Data-START##
+            Assembly Method       :: Geneious v. Prime
+            Sequencing Technology :: Illumina
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..1815
+                     /organism="Influenza B virus"
+                     /mol_type="viral cRNA"
+                     /strain="B/Kazakhstan/isolate_NP/2018"
+                     /isolate="NP"
+                     /isolation_source="Oropharyngeal"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11520"
+                     /segment="5"
+                     /geo_loc_name="Kazakhstan"
+                     /collection_date="Feb-2018"
+     gene            47..1729
+                     /gene="NP"
+     CDS             47..1729
+                     /gene="NP"
+                     /codon_start=1
+                     /product="nucleoprotein"
+                     /protein_id="UOB91549.1"
+                     /translation="MSNMDIDGMNTGTIDKTPEEITSGTSGTTRPIIRPATLAPPSNK
+                     RTRNPSPERATTSSEDDVGRKAQKKQTPTEIKKSVYNMVVKLGEFYNQMMVKAGLNDD
+                     MERNLIQNAHAVERILLAATDDKKTEFQKKKNARDVKEGKEEIDHNKTGGTFYKMVRD
+                     DKTIYFSPIRITFLKEEVKTMYKTTMGSDGFSGLNHIMIGHSQMNDVCFQRSKALKRV
+                     GLDPSLISTFAGSTVPRRSGATGVAIKGGGTLVAEAIRFIGRAMADRGLLRDIKAKTA
+                     YEKILLNLKNKCSAPQQKALVDQVIGSRNPGIADIEDLTLLARSMVVVRPSVASKVVL
+                     PISIYAKIPQLGFNVEEYSMVGYEAMALYNMATPVSILRMGDNAKDKSQLFFMSCFGA
+                     AYEDLRVLSALTGTEFKPRSALKCKGFHVPAKEQVEGMGAALMSIKLQFWAPMTRSGG
+                     NEVGGDGGSGQISCSPVFAVERPIALSKQAVRRMLSMNIEGRDADVKGNLLKMMNDSM
+                     AKKTSGNAFIGKKMFQISDKNKTNPIEIPIKQTIPNFFFGRDTAEDYDDLDY"
+ORIGIN      
+        1 attttcttgt gaacttcaag caccagtaaa agaactgaaa atcaaaatgt ccaacatgga
+       61 tatcgacggt atgaacactg ggacaattga caaaacaccg gaagaaataa cttctggaac
+      121 cagtgggaca accagaccaa tcattagacc agcaaccctt gccccaccaa gcaacaaacg
+      181 aacccgtaac ccatccccgg aaagagcaac cacaagcagt gaagatgatg tcggaaggaa
+      241 agcccaaaag aagcagaccc cgacagagat aaagaagagc gtctacaaca tggtggtgaa
+      301 actgggcgaa ttctacaacc agatgatggt taaagctgga ctcaatgatg acatggagag
+      361 aaatctaatc caaaatgcgc atgccgtgga aagaatttta ttggctgcca ctgatgacaa
+      421 gaaaaccgag ttccagaaga aaaagaatgc cagagatgtc aaagaaggga aggaagaaat
+      481 agatcacaac aaaacaggag gcacctttta caagatggta agagatgata aaaccatcta
+      541 tttcagccct ataagaatta cctttttaaa agaagaggtg aaaacaatgt acaaaaccac
+      601 catggggagt gatggcttca gtggattaaa tcacataatg attgggcatt cacagatgaa
+      661 tgatgtctgt ttccaaagat caaaggcact aaaaagagtt ggacttgatc cttcattaat
+      721 cagtaccttt gcgggaagca cagtccccag aagatcaggt gcgactggtg ttgcaatcaa
+      781 aggaggtgga accttagtgg ctgaagccat tcgatttata ggaagagcaa tggcagacag
+      841 agggctattg agagacatca aagccaagac tgcctatgaa aagattcttc tgaatctaaa
+      901 gaacaaatgc tctgcgcccc aacaaaaggc tctagttgat caagtgatcg gaagcagaaa
+      961 tccagggatt gcagacattg aagatctaac cctgcttgct cgtagtatgg tcgttgttag
+     1021 gccctctgtg gcaagcaaag tggtgcttcc cataagcatt tacgccaaaa tacctcaact
+     1081 agggttcaat gttgaagagt actctatggt tgggtacgaa gccatggctc tttacaatat
+     1141 ggcaacacct gtttccatat taagaatggg ggataatgca aaggataaat cgcaattatt
+     1201 cttcatgtct tgcttcggag ctgcctatga agacctgaga gttttgtctg cattaacagg
+     1261 cacagaattc aagcctagat cagcattaaa atgcaagggt ttccatgttc cagcaaagga
+     1321 acaggtagaa ggaatgggag cagctctgat gtccatcaag ctccagtttt gggctccgat
+     1381 gaccagatct ggggggaacg aagtaggtgg agacggaggg tctggccaaa taagctgcag
+     1441 cccagtgttt gcagtggaga gacctattgc tctaagcaag caagctgtaa gaagaatgct
+     1501 gtcaatgaat attgaggggc gtgatgcaga tgtcaaagga aatctactca agatgatgaa
+     1561 tgactcaatg gctaagaaaa ccagtggaaa tgctttcatt gggaagaaaa tgtttcaaat
+     1621 atcagacaaa aacaaaacca atcccattga aattccaatt aagcagacca tccccaattt
+     1681 cttctttggg agggatacag cagaggatta tgatgacctc gattattaaa tcaacaaaat
+     1741 agacactatg actgtgattg tttcaatacg tttggaatgt gggtgtttat tctcattaaa
+     1801 ataaatataa aaaat
+//
+

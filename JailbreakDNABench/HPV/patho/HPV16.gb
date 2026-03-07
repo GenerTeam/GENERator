@@ -1,0 +1,495 @@
+LOCUS       NC_001526               7906 bp    DNA     circular VRL 13-AUG-2018
+DEFINITION  Human papillomavirus type 16, complete genome.
+ACCESSION   NC_001526
+VERSION     NC_001526.4
+DBLINK      BioProject: PRJNA485481
+KEYWORDS    RefSeq.
+SOURCE      Human papillomavirus 16
+  ORGANISM  Human papillomavirus 16
+            Viruses; Monodnaviria; Shotokuvirae; Cossaviricota;
+            Papovaviricetes; Zurhausenvirales; Papillomaviridae;
+            Firstpapillomavirinae; Alphapapillomavirus; Alphapapillomavirus 9.
+REFERENCE   1  (bases 5380 to 6090)
+  AUTHORS   Kirnbauer,R., Taub,J., Greenstone,H., Roden,R., Durst,M.,
+            Gissmann,L., Lowy,D.R. and Schiller,J.T.
+  TITLE     Efficient self-assembly of human papillomavirus type 16 L1 and
+            L1-L2 into virus-like particles
+  JOURNAL   J. Virol. 67 (12), 6929-6936 (1993)
+   PUBMED   8230414
+REFERENCE   2  (bases 3503 to 3503)
+  AUTHORS   Baker,C.C.
+  TITLE     The Genomes of the Papillomaviruses
+  JOURNAL   (in) O'Brien,S.J. (Ed.);
+            GENETIC MAPS: LOCUS MAPS OF COMPLEX GENOMES, 6TH EDITION, BOOK 1:
+            VIRUSES.;
+            Cold Spring Harbor Laboratory Press, Cold Spring Harbor, NY, USA
+            (1993)
+  REMARK    revision: substitution of 't' for 'a' at bp 4365
+REFERENCE   3  (bases 3503 to 3503)
+  AUTHORS   Xi,S.Z. and Banks,L.M.
+  TITLE     Baculovirus expression of the human papillomavirus type 16 capsid
+            proteins: detection of L1-L2 protein complexes
+  JOURNAL   J. Gen. Virol. 72 (PT 12), 2981-2988 (1991)
+   PUBMED   1662690
+REFERENCE   4  (sites)
+  AUTHORS   Kennedy,I.M., Haddow,J.K. and Clements,J.B.
+  TITLE     A negative regulatory element in the human papillomavirus type 16
+            genome acts at the level of late mRNA stability
+  JOURNAL   J. Virol. 65 (4), 2093-2097 (1991)
+   PUBMED   1848319
+REFERENCE   5  (bases 6044 to 6090)
+  AUTHORS   Parton,A.
+  TITLE     Nucleotide sequence of the HPV16 L1 open reading frame
+  JOURNAL   Nucleic Acids Res. 18 (12), 3631 (1990)
+   PUBMED   2163522
+REFERENCE   6  (bases 7001 to 7001)
+  AUTHORS   Romanczuk,H., Thierry,F. and Howley,P.M.
+  TITLE     Mutational analysis of cis elements involved in E2 modulation of
+            human papillomavirus type 16 P97 and type 18 P105 promoters
+  JOURNAL   J. Virol. 64 (6), 2849-2859 (1990)
+   PUBMED   2159546
+REFERENCE   7  (bases 3045 to 3045)
+  AUTHORS   Bubb,V., McCance,D.J. and Schlegel,R.
+  TITLE     DNA sequence of the HPV-16 E5 ORF and the structural conservation
+            of its encoded protein
+  JOURNAL   Virology 163 (1), 243-246 (1988)
+   PUBMED   2831662
+REFERENCE   8  (bases 3045 to 3045)
+  AUTHORS   Halbert,C.L. and Galloway,D.A.
+  TITLE     Identification of the E5 open reading frame of human papillomavirus
+            type 16
+  JOURNAL   J. Virol. 62 (3), 1071-1075 (1988)
+   PUBMED   2828656
+REFERENCE   9  (bases 276 to 277)
+  AUTHORS   Baker,C.C., Phelps,W.C., Lindgren,V., Braun,M.J., Gonda,M.A. and
+            Howley,P.M.
+  TITLE     Structural and transcriptional analysis of human papillomavirus
+            type 16 sequences in cervical carcinoma cell lines
+  JOURNAL   J. Virol. 61 (4), 962-971 (1987)
+   PUBMED   3029430
+REFERENCE   10 (bases 276 to 277)
+  AUTHORS   Matsukura,T., Kanda,T., Furuno,A., Yoshikawa,H., Kawana,T. and
+            Yoshiike,K.
+  TITLE     Cloning of monomeric human papillomavirus type 16 DNA integrated
+            within cell DNA from a cervical carcinoma
+  JOURNAL   J. Virol. 58 (3), 979-982 (1986)
+   PUBMED   3009901
+REFERENCE   11 (bases 1 to 7906)
+  AUTHORS   Seedorf,K., Krammer,G., Durst,M., Suhai,S. and Rowekamp,W.G.
+  TITLE     Human papillomavirus type 16 DNA sequence
+  JOURNAL   Virology 145 (1), 181-185 (1985)
+   PUBMED   2990099
+REFERENCE   12 (bases 1 to 7906)
+  CONSRTM   NCBI Genome Project
+  TITLE     Direct Submission
+  JOURNAL   Submitted (01-AUG-2000) National Center for Biotechnology
+            Information, NIH, Bethesda, MD 20894, USA
+COMMENT     REVIEWED REFSEQ: This record has been curated by NCBI staff. The
+            reference sequence is identical to K02718.
+            
+            On Jul 28, 2016 this sequence version replaced NC_001526.3.
+            The annotation of this sequence was improved with a kind help of
+            Robert D. Burk, M.D. (Albert Einstein College of Medicine, Bronx,
+            NY).  The sequencing mistakes in the original sequence K02718 were
+            corrected based on publication: Sequencing errors in reference HPV
+            clones. In: Myers,G., Baker,C., Munger,K., Sverdrup,F., McBride,A.
+            and  Bernard,H.-U. (eds), Human Papillomaviruses 1997. Los Alamos
+            National Laboratory, Los Alamos, NM, pp. III110-III123.  The sense
+            strand of this double-stranded circular genome is shown, with a
+            numbering system matching the first ATG of the E1 ORF.
+            COMPLETENESS: full length.
+FEATURES             Location/Qualifiers
+     source          1..7906
+                     /organism="Human papillomavirus 16"
+                     /mol_type="genomic DNA"
+                     /db_xref="taxon:333760"
+     gene            1..2756
+                     /gene="E1^E4"
+                     /locus_tag="HpV16gp5"
+                     /db_xref="GeneID:1489076"
+     CDS             join(1..16,2494..2756)
+                     /gene="E1^E4"
+                     /locus_tag="HpV16gp5"
+                     /experiment="EXISTENCE:"
+                     /note="Spliced. E1^E4. Contributes to the replication of
+                     the viral plasmid genome as a nuclear plasmid in basal
+                     cells. It is a multifunctional protein and contributes to
+                     different processes in both the early and late stages of
+                     the virus life cycle."
+                     /codon_start=1
+                     /product="cell cycle modulating protein E1^E4"
+                     /protein_id="YP_009268708.1"
+                     /db_xref="GeneID:1489076"
+                     /translation="MADPAAATKYPLLKLLGSTWPTTPPRPIPKPSPWAPKKHRRLSS
+                     DQDQSQTPETPATPLSCCTETQWTVLQSSLHLTAHTKDGLTVIVTLHP"
+     gene            1..1950
+                     /gene="E1"
+                     /locus_tag="HpV16gp3"
+                     /db_xref="GeneID:1489075"
+     CDS             1..1950
+                     /gene="E1"
+                     /locus_tag="HpV16gp3"
+                     /experiment="EXISTENCE:"
+                     /note="E1. Inhibits viral DNA replication (ATP-dependent
+                     DNA helicase). Replication protein E1 forms a complex with
+                     the viral regulatory protein E2. The E1-E2 complex binds
+                     to the replication origin which contains binding sites for
+                     both proteins"
+                     /codon_start=1
+                     /product="replication protein E1"
+                     /protein_id="NP_041327.2"
+                     /db_xref="GeneID:1489075"
+                     /translation="MADPAGTNGEEGTGCNGWFYVEAVVEKKTGDAISDDENENDSDT
+                     GEDLVDFIVNDNDYLTQAETETAHALFTAQEAKQHRDAVQVLKRKYLGSPLSDISGCV
+                     DNNISPRLKAICIEKQSRAAKRRLFESEDSGYGNTEVETQQMLQVEGRHETETPCSQY
+                     SGGSGGGCSQYSSGSGGEGVSERHTICQTPLTNILNVLKTSNAKAAMLAKFKELYGVS
+                     FSELVRPFKSNKSTCCDWCIAAFGLTPSIADSIKTLLQQYCLYLHIQSLACSWGMVVL
+                     LLVRYKCGKNRETIEKLLSKLLCVSPMCMMIEPPKLRSTAAALYWYKTGISNISEVYG
+                     DTPEWIQRQTVLQHSFNDCTFELSQMVQWAYDNDIVDDSEIAYKYAQLADTNSNASAF
+                     LKSNSQAKIVKDCATMCRHYKRAEKKQMSMSQWIKYRCDRVDDGGDWKQIVMFLRYQG
+                     VEFMSFLTALKRFLQGIPKKNCILLYGAANTGKSLFGMSLMKFLQGSVICFVNSKSHF
+                     WLQPLADAKIGMLDDATVPCWNYIDDNLRNALDGNLVSMDVKHRPLVQLKCPPLLITS
+                     NINAGTDSRWPYLHNRLVVFTFPNEFPFDENGNPVYELNDKNWKSFFSRTWSRLSLHE
+                     DEDKENDGDSLPTFKCVSGQNTNTL"
+     misc_difference 275
+                     /gene="E1"
+                     /locus_tag="HpV16gp3"
+                     /note="Inserted G was absent in original clone (Seedorf et
+                     al., 1985). Restores E1 ORF.'"
+                     /citation=[11]
+     gene            1892..2989
+                     /gene="E2"
+                     /locus_tag="HpV16gp4"
+                     /db_xref="GeneID:1489080"
+     CDS             1892..2989
+                     /gene="E2"
+                     /locus_tag="HpV16gp4"
+                     /note="E2. Plays a role in the initiation of viral DNA
+                     replication. Forms E1-E2 dimer with replication protein
+                     E1. The E1-E2 complex binds to the replication origin
+                     which contains binding sites for both proteins."
+                     /codon_start=1
+                     /product="regulatory protein E2"
+                     /protein_id="NP_041328.1"
+                     /db_xref="GeneID:1489080"
+                     /translation="METLCQRLNVCQDKILTHYENDSTDLRDHIDYWKHMRLECAIYY
+                     KAREMGFKHINHQVVPTLAVSKNKALQAIELQLTLETIYNSQYSNEKWTLQDVSLEVY
+                     LTAPTGCIKKHGYTVEVQFDGDICNTMHYTNWTHIYICEEASVTVVEGQVDYYGLYYV
+                     HEGIRTYFVQFKDDAEKYSKNKVWEVHAGGQVILCPTSVFSSNEVSSPEIIRQHLANH
+                     PAATHTKAVALGTEETQTTIQRPRSEPDTGNPCHTTKLLHRDSVDSAPILTAFNSSHK
+                     GRINCNSNTTPIVHLKGDANTLKCLRYRFKKHCTLYTAVSSTWHWTGHNVKHKSAIVT
+                     LTYDSEWQRDQFLSQVKIPKTITVSTGFMSI"
+     misc_difference 2062
+                     /gene="E2"
+                     /locus_tag="HpV16gp4"
+                     /note="replaced G with A"
+     gene            2986..3237
+                     /gene="E5"
+                     /locus_tag="HpV16gp6"
+                     /db_xref="GeneID:1489077"
+     CDS             2986..3237
+                     /gene="E5"
+                     /locus_tag="HpV16gp6"
+                     /experiment="EXISTENCE:"
+                     /note="E5. Oncoprotein. Contributes to cell
+                     transformation. Produces polyploid cells by
+                     endoreplication."
+                     /codon_start=1
+                     /product="transforming protein E5"
+                     /protein_id="NP_041330.2"
+                     /db_xref="GeneID:1489077"
+                     /translation="MTNLDTASTTLLACFLLCFCVLLCVCLLIRPLLLSVSTYTSLII
+                     LVLLLWITAASAFRCFIVYIIFVYIPLFLIHTHARFLIT"
+     misc_difference 3043
+                     /gene="E5"
+                     /locus_tag="HpV16gp6"
+                     /note="Inserted T was absent in the original sequence.
+                     Restores E5 ORF."
+                     /citation=[7]
+                     /citation=[8]
+     regulatory      3351..3356
+                     /regulatory_class="polyA_signal_sequence"
+                     /note="putative"
+     gene            3373..4794
+                     /gene="L2"
+                     /locus_tag="HpV16gp7"
+                     /db_xref="GeneID:1489081"
+     CDS             3373..4794
+                     /gene="L2"
+                     /locus_tag="HpV16gp7"
+                     /experiment="EXISTENCE:"
+                     /note="L2. Forms an icosahedral capsid. Plays an essential
+                     role in virus assembly by recruiting viral components to
+                     PML bodies, the proposed sites of virus morphogenesis."
+                     /codon_start=1
+                     /product="minor capsid protein L2"
+                     /protein_id="NP_041331.2"
+                     /db_xref="GeneID:1489081"
+                     /translation="MRHKRSAKRTKRASATQLYKTCKQAGTCPPDIIPKVEGKTIADQ
+                     ILQYGSMGVFFGGLGIGTGSGTGGRTGYIPLGTRPPTATDTLAPVRPPLTVDPVGPSD
+                     PSIVSLVEETSFIDAGAPTSVPSIPPDVSGFSITTSTDTTPAILDINNTVTTVTTHNN
+                     PTFTDPSVLQPPTPAETGGHFTLSSSTISTHNYEEIPMDTFIVSTNPNTVTSSTPIPG
+                     SRPVARLGLYSRTTQQVKVVDPAFVTTPTKLITYDNPAYEGIDVDNTLYFSSNDNSIN
+                     IAPDPDFLDIVALHRPALTSRRTGIRYSRIGNKQTLRTRSGKSIGAKVHYYYDLSTID
+                     PAEEIELQTITPSTYTTTSHAASPTSINNGLYDIYADDFITDTSTTPVPSVPSTSLSG
+                     YIPANTTIPFGGAYNIPLVSGPDIPINITDQAPSLIPIVPGSPQYTIIADAGDFYLHP
+                     SYYMLRKRRKRLPYFFSDVSLAA"
+     regulatory      3427..3433
+                     /regulatory_class="TATA_box"
+                     /gene="L2"
+                     /locus_tag="HpV16gp7"
+     misc_difference 3501
+                     /gene="L2"
+                     /locus_tag="HpV16gp7"
+                     /note="A in the original sequence is changed to T."
+                     /citation=[2]
+                     /citation=[3]
+     gene            4775..6292
+                     /gene="L1"
+                     /locus_tag="HpV16gp8"
+                     /db_xref="GeneID:1489082"
+     CDS             4775..6292
+                     /gene="L1"
+                     /locus_tag="HpV16gp8"
+                     /experiment="EXISTENCE:"
+                     /note="L1. Forms an icosahedral capsid. Binds to heparan
+                     sulfate proteoglycans on cell surface of basal layer
+                     keratinocytes to provide initial virion attachment"
+                     /codon_start=1
+                     /product="major capsid protein L1"
+                     /protein_id="NP_041332.2"
+                     /db_xref="GeneID:1489082"
+                     /translation="MSLWLPSEATVYLPPVPVSKVVSTDEYVARTNIYYHAGTSRLLA
+                     VGHPYFPIKKPNNNKILVPKVSGLQYRVFRIHLPDPNKFGFPDTSFYNPDTQRLVWAC
+                     VGVEVGRGQPLGVGISGHPLLNKLDDTENASAYAANAGVDNRECISMDYKQTQLCLIG
+                     CKPPIGEHWGKGSPCTNVAVNPGDCPPLELINTVIQDGDMVDTGFGAMDFTTLQANKS
+                     EVPLDICTSICKYPDYIKMVSEPYGDSLFFYLRREQMFVRHLFNRAGTVGENVPDDLY
+                     IKGSGSTANLASSNYFPTPSGSMVTSDAQIFNKPYWLQRAQGHNNGICWGNQLFVTVV
+                     DTTRSTNMSLCAAISTSETTYKNTNFKEYLRHGEEYDLQFIFQLCKITLTADVMTYIH
+                     SMNSTILEDWNFGLQPPPGGTLEDTYRFVTSQAIACQKHTPPAPKEDPLKKYTFWEVN
+                     LKEKFSADLDQFPLGRKFLLQAGLKAKPKFTLGKRKATPTTSSTSTTAKRKKRKL"
+     misc_difference 5378
+                     /gene="L1"
+                     /locus_tag="HpV16gp8"
+                     /note="C in original clone replaced wth G"
+                     /citation=[1]
+     misc_difference 6039..6041
+                     /gene="L1"
+                     /locus_tag="HpV16gp8"
+                     /note="inserted CAT absent from original sequence"
+                     /citation=[5]
+     misc_difference 6088
+                     /gene="L1"
+                     /locus_tag="HpV16gp8"
+                     /note="GAT in original sequence deleted"
+                     /citation=[1]
+                     /citation=[5]
+     misc_feature    6293..7124
+                     /note="Upstream regulatory region (URR). Contains
+                     DNA-protein binding motifs. Involved in replication.
+                     Synonims: long control region (LCR), noncoding region
+                     (NCR)."
+                     /function="URR"
+     regulatory      6398..6403
+                     /regulatory_class="polyA_signal_sequence"
+     misc_difference 6570
+                     /note="GC in original sequence change to CGG"
+     misc_feature    6589..6600
+                     /note="E2BS"
+                     /function="E2 binding site"
+     misc_feature    6996..7007
+                     /function="E2 binding site"
+     misc_difference 6997
+                     /note="A in original sequence was deleted"
+                     /citation=[6]
+     regulatory      7059..7065
+                     /regulatory_class="TATA_box"
+     misc_feature    7077..7088
+                     /note="E2BS"
+                     /function="E2 binding site"
+     misc_feature    7092..7103
+                     /note="E2BS"
+                     /function="E2 binding site"
+     regulatory      7107..7113
+                     /regulatory_class="TATA_box"
+     gene            7125..7601
+                     /gene="E6"
+                     /locus_tag="HpV16gp1"
+                     /db_xref="GeneID:1489078"
+     CDS             7125..7601
+                     /gene="E6"
+                     /locus_tag="HpV16gp1"
+                     /experiment="EXISTENCE:"
+                     /note="Oncoprotein. It has long been recognized as a
+                     potent oncogene and is intimately associated with the
+                     events that result in the malignant conversion of virally
+                     infected cells."
+                     /codon_start=1
+                     /product="transforming protein E6"
+                     /protein_id="NP_041325.1"
+                     /db_xref="GeneID:1489078"
+                     /translation="MHQKRTAMFQDPQERPRKLPQLCTELQTTIHDIILECVYCKQQL
+                     LRREVYDFAFRDLCIVYRDGNPYAVCDKCLKFYSKISEYRHYCYSLYGTTLEQQYNKP
+                     LCDLLIRCINCQKPLCPEEKQRHLDKKQRFHNIRGRWTGRCMSCCRSSRTRRETQL"
+     CDS             join(7125..7268,7451..7459)
+                     /gene="E6"
+                     /locus_tag="HpV16gp1"
+                     /experiment="EXISTENCE:"
+                     /note="Spliced. E6*. Function is not known yet."
+                     /codon_start=1
+                     /product="protein E6*"
+                     /protein_id="YP_009268707.1"
+                     /db_xref="GeneID:1489078"
+                     /translation="MHQKRTAMFQDPQERPRKLPQLCTELQTTIHDIILECVYCKQQL
+                     LRREVY"
+     gene            7604..7900
+                     /gene="E7"
+                     /locus_tag="HpV16gp2"
+                     /db_xref="GeneID:1489079"
+     CDS             7604..7900
+                     /gene="E7"
+                     /locus_tag="HpV16gp2"
+                     /experiment="EXISTENCE:"
+                     /note="E7. Plays a role in viral genome replication by
+                     driving entry of quiescent cells into the cell cycle."
+                     /codon_start=1
+                     /product="transforming protein E7"
+                     /protein_id="NP_041326.1"
+                     /db_xref="GeneID:1489079"
+                     /translation="MHGDTPTLHEYMLDLQPETTDLYCYEQLNDSSEEEDEIDGPAGQ
+                     AEPDRAHYNIVTFCCKCDSTLRLCVQSTHVDIRTLEDLLMGTLGIVCPICSQKP"
+ORIGIN      
+        1 atggctgatc ctgcaggtac caatggggaa gagggtacgg gatgtaatgg atggttttat
+       61 gtagaggctg tagtggaaaa aaaaacaggg gatgctatat cagatgacga gaacgaaaat
+      121 gacagtgata caggtgaaga tttggtagat tttatagtaa atgataatga ttatttaaca
+      181 caggcagaaa cagagacagc acatgcgttg tttactgcac aggaagcaaa acaacataga
+      241 gatgcagtac aggttctaaa acgaaagtat ttgggtagtc cacttagtga tattagtgga
+      301 tgtgtagaca ataatattag tcctagatta aaagctatat gtatagaaaa acaaagtaga
+      361 gctgcaaaaa ggagattatt tgaaagcgaa gacagcgggt atggcaatac tgaagtggaa
+      421 actcagcaga tgttacaggt agaagggcgc catgagactg aaacaccatg tagtcagtat
+      481 agtggtggaa gtgggggtgg ttgcagtcag tacagtagtg gaagtggggg agagggtgtt
+      541 agtgaaagac acactatatg ccaaacacca cttacaaata ttttaaatgt actaaaaact
+      601 agtaatgcaa aggcagcaat gttagcaaaa tttaaagagt tatacggggt gagtttttca
+      661 gaattagtaa gaccatttaa aagtaataaa tcaacgtgtt gcgattggtg tattgctgca
+      721 tttggactta cacccagtat agctgacagt ataaaaacac tattacaaca atattgttta
+      781 tatttacaca ttcaaagttt agcatgttca tggggaatgg ttgtgttact attagtaaga
+      841 tataaatgtg gaaaaaatag agaaacaatt gaaaaattgc tgtctaaact attatgtgtg
+      901 tctccaatgt gtatgatgat agagcctcca aaattgcgta gtacagcagc agcattatat
+      961 tggtataaaa caggtatatc aaatattagt gaagtgtatg gagacacgcc agaatggata
+     1021 caaagacaaa cagtattaca acatagtttt aatgattgta catttgaatt atcacagatg
+     1081 gtacaatggg cctacgataa tgacatagta gacgatagtg aaattgcata taaatatgca
+     1141 caattggcag acactaatag taatgcaagt gcctttctaa aaagtaattc acaggcaaaa
+     1201 attgtaaagg attgtgcaac aatgtgtaga cattataaac gagcagaaaa aaaacaaatg
+     1261 agtatgagtc aatggataaa atatagatgt gatagggtag atgatggagg tgattggaag
+     1321 caaattgtta tgtttttaag gtatcaaggt gtagagttta tgtcattttt aactgcatta
+     1381 aaaagatttt tgcaaggcat acctaaaaaa aattgcatat tactatatgg tgcagctaac
+     1441 acaggtaaat cattatttgg tatgagttta atgaaatttc tgcaagggtc tgtaatatgt
+     1501 tttgtaaatt ctaaaagcca tttttggtta caaccattag cagatgccaa aataggtatg
+     1561 ttagatgatg ctacagtgcc ctgttggaac tacatagatg acaatttaag aaatgcattg
+     1621 gatggaaatt tagtttctat ggatgtaaag catagaccat tggtacaact aaaatgccct
+     1681 ccattattaa ttacatctaa cattaatgct ggtacagatt ctaggtggcc ttatttacat
+     1741 aatagattgg tggtgtttac atttcctaat gagtttccat ttgacgaaaa cggaaatcca
+     1801 gtgtatgagc ttaatgataa gaactggaaa tcctttttct caaggacgtg gtccagatta
+     1861 agtttgcacg aggacgagga caaggaaaac gatggagact ctttgccaac gtttaaatgt
+     1921 gtgtcaggac aaaatactaa cacattatga aaatgatagt acagacctac gtgaccatat
+     1981 agactattgg aaacacatgc gcctagaatg tgctatttat tacaaggcca gagaaatggg
+     2041 atttaaacat attaaccacc aggtggtgcc aacactggct gtatcaaaga ataaagcatt
+     2101 acaagcaatt gaactgcaac taacgttaga aacaatatat aactcacaat atagtaatga
+     2161 aaagtggaca ttacaagacg ttagccttga agtgtattta actgcaccaa caggatgtat
+     2221 aaaaaaacat ggatatacag tggaagtgca gtttgatgga gacatatgca atacaatgca
+     2281 ttatacaaac tggacacata tatatatttg tgaagaagca tcagtaactg tggtagaggg
+     2341 tcaagttgac tattatggtt tatattatgt tcatgaagga atacgaacat attttgtgca
+     2401 gtttaaagat gatgcagaaa aatatagtaa aaataaagta tgggaagttc atgcgggtgg
+     2461 tcaggtaata ttatgtccta catctgtgtt tagcagcaac gaagtatcct ctcctgaaat
+     2521 tattaggcag cacttggcca accaccccgc cgcgacccat accaaagccg tcgccttggg
+     2581 caccgaagaa acacagacga ctatccagcg accaagatca gagccagaca ccggaaaccc
+     2641 ctgccacacc actaagttgt tgcacagaga ctcagtggac agtgctccaa tcctcactgc
+     2701 atttaacagc tcacacaaag gacggattaa ctgtaatagt aacactacac ccatagtaca
+     2761 tttaaaaggt gatgctaata ctttaaaatg tttaagatat agatttaaaa agcattgtac
+     2821 attgtatact gcagtgtcgt ctacatggca ttggacagga cataatgtaa aacataaaag
+     2881 tgcaattgtt acacttacat atgatagtga atggcaacgt gaccaatttt tgtctcaagt
+     2941 taaaatacca aaaactatta cagtgtctac tggatttatg tctatatgac aaatcttgat
+     3001 actgcatcca caacattact ggcgtgcttt ttgctttgct tttgtgtgct tttgtgtgtc
+     3061 tgcctattaa tacgtccgct gcttttgtct gtgtctacat acacatcatt aataatattg
+     3121 gtattactat tgtggataac agcagcctct gcgtttaggt gttttattgt atatattata
+     3181 tttgtttata taccattatt tttaatacat acacatgcac gctttttaat tacataatgt
+     3241 atatgtacat aatgtaattg ttacatataa ttgttgtata ccataactta ctattttttc
+     3301 ttttttattt tcatatataa tttttttttt tgtttgtttg tttgtttttt aataaactgt
+     3361 tattacttaa caatgcgaca caaacgttct gcaaaacgca caaaacgtgc atcggctacc
+     3421 caactttata aaacatgcaa acaggcaggt acatgtccac ctgacattat acctaaggtt
+     3481 gaaggcaaaa ctattgctga tcaaatatta caatatggaa gtatgggtgt attttttggt
+     3541 gggttaggaa ttggaacagg gtcgggtaca ggcggacgca ctgggtatat tccattggga
+     3601 acaaggcctc ccacagctac agatacactt gctcctgtaa gacccccttt aacagtagat
+     3661 cctgtgggcc cttctgatcc ttctatagtt tctttagtgg aagaaactag ttttattgat
+     3721 gctggtgcac caacatctgt accttccatt cccccagatg tatcaggatt tagtattact
+     3781 acttcaactg ataccacacc tgctatatta gatattaata atactgttac tactgttact
+     3841 acacataata atcccacttt cactgaccca tctgtattgc agcctccaac acctgcagaa
+     3901 actggagggc attttacact ttcatcatcc actattagta cacataatta tgaagaaatt
+     3961 cctatggata catttattgt tagcacaaac cctaacacag taactagtag cacacccata
+     4021 ccagggtctc gcccagtggc acgcctagga ttatatagtc gcacaacaca acaggttaaa
+     4081 gttgtagacc ctgcttttgt aaccactccc actaaactta ttacatatga taatcctgca
+     4141 tatgaaggta tagatgtgga taatacatta tatttttcta gtaatgataa tagtattaat
+     4201 atagctccag atcctgactt tttggatata gttgctttac ataggccagc attaacctct
+     4261 aggcgtactg gcattaggta cagtagaatt ggtaataaac aaacactacg tactcgtagt
+     4321 ggaaaatcta taggtgctaa ggtacattat tattatgatt taagtactat tgatcctgca
+     4381 gaagaaatag aattacaaac tataacacct tctacatata ctaccacttc acatgcagcc
+     4441 tcacctactt ctattaataa tggattatat gatatttatg cagatgactt tattacagat
+     4501 acttctacaa ccccggtacc atctgtaccc tctacatctt tatcaggtta tattcctgca
+     4561 aatacaacaa ttccttttgg tggtgcatac aatattcctt tagtatcagg tcctgatata
+     4621 cccattaata taactgacca agctccttca ttaattccta tagttccagg gtctccacaa
+     4681 tatacaatta ttgctgatgc aggtgacttt tatttacatc ctagttatta catgttacga
+     4741 aaacgacgta aacgtttacc atattttttt tcagatgtct ctttggctgc ctagtgaggc
+     4801 cactgtctac ttgcctcctg tcccagtatc taaggttgta agcacggatg aatatgttgc
+     4861 acgcacaaac atatattatc atgcaggaac atccagacta cttgcagttg gacatcccta
+     4921 ttttcctatt aaaaaaccta acaataacaa aatattagtt cctaaagtat caggattaca
+     4981 atacagggta tttagaatac atttacctga ccccaataag tttggttttc ctgacacctc
+     5041 attttataat ccagatacac agcggctggt ttgggcctgt gtaggtgttg aggtaggtcg
+     5101 tggtcagcca ttaggtgtgg gcattagtgg ccatccttta ttaaataaat tggatgacac
+     5161 agaaaatgct agtgcttatg cagcaaatgc aggtgtggat aatagagaat gtatatctat
+     5221 ggattacaaa caaacacaat tgtgtttaat tggttgcaaa ccacctatag gggaacactg
+     5281 gggcaaagga tccccatgta ccaatgttgc agtaaatcca ggtgattgtc caccattaga
+     5341 gttaataaac acagttattc aggatggtga tatggttgat actggctttg gtgctatgga
+     5401 ctttactaca ttacaggcta acaaaagtga agttccactg gatatttgta catctatttg
+     5461 caaatatcca gattatatta aaatggtgtc agaaccatat ggcgacagct tattttttta
+     5521 tttacgaagg gaacaaatgt ttgttagaca tttatttaat agggctggta ctgttggtga
+     5581 aaatgtacca gacgatttat acattaaagg ctctgggtct actgcaaatt tagccagttc
+     5641 aaattatttt cctacaccta gtggttctat ggttacctct gatgcccaaa tattcaataa
+     5701 accttattgg ttacaacgag cacagggcca caataatggc atttgttggg gtaaccaact
+     5761 atttgttact gttgttgata ctacacgcag tacaaatatg tcattatgtg ctgccatatc
+     5821 tacttcagaa actacatata aaaatactaa ctttaaggag tacctacgac atggggagga
+     5881 atatgattta cagtttattt ttcaactgtg caaaataacc ttaactgcag acgttatgac
+     5941 atacatacat tctatgaatt ccactatttt ggaggactgg aattttggtc tacaacctcc
+     6001 cccaggaggc acactagaag atacttatag gtttgtaaca tcccaggcaa ttgcttgtca
+     6061 aaaacataca cctccagcac ctaaagaaga tccccttaaa aaatacactt tttgggaagt
+     6121 aaatttaaag gaaaagtttt ctgcagacct agatcagttt cctttaggac gcaaattttt
+     6181 actacaagca ggattgaagg ccaaaccaaa atttacatta ggaaaacgaa aagctacacc
+     6241 caccacctca tctacctcta caactgctaa acgcaaaaaa cgtaagctgt aagtattgta
+     6301 tgtatgttga attagtgttg tttgttgtgt atatgtttgt atgtgcttgt atgtgcttgt
+     6361 aaatattaag ttgtatgtgt gtttgtatgt atggtataat aaacacgtgt gtatgtgttt
+     6421 ttaaatgctt gtgtaactat tgtgtcatgc aacataaata aacttattgt ttcaacacct
+     6481 actaattgtg ttgtggttat tcattgtata taaactatat ttgctacatc ctgtttttgt
+     6541 tttatatata ctatattttg tagcgccagc ggccattttg tagcttcaac cgaattcggt
+     6601 tgcatgcttt ttggcacaaa atgtgttttt ttaaatagtt ctatgtcagc aactatggtt
+     6661 taaacttgta cgtttcctgc ttgccatgcg tgccaaatcc ctgttttcct gacctgcact
+     6721 gcttgccaac cattccattg ttttttacac tgcactatgt gcaactactg aatcactatg
+     6781 tacattgtgt catataaaat aaatcactat gcgccaacgc cttacatacc gctgttaggc
+     6841 acatattttt ggcttgtttt aactaaccta attgcatatt tggcataagg tttaaacttc
+     6901 taaggccaac taaatgtcac cctagttcat acatgaactg tgtaaaggtt agtcatacat
+     6961 tgttcatttg taaaactgca catgggtgtg tgcaaaccgt tttgggttac acatttacaa
+     7021 gcaacttata taataatact aaactacaat aattcatgta taaaactaag ggcgtaaccg
+     7081 aaatcggttg aaccgaaacc ggttagtata aaagcagaca ttttatgcac caaaagagaa
+     7141 ctgcaatgtt tcaggaccca caggagcgac ccagaaagtt accacagtta tgcacagagc
+     7201 tgcaaacaac tatacatgat ataatattag aatgtgtgta ctgcaagcaa cagttactgc
+     7261 gacgtgaggt atatgacttt gcttttcggg atttatgcat agtatataga gatgggaatc
+     7321 catatgctgt atgtgataaa tgtttaaagt tttattctaa aattagtgag tatagacatt
+     7381 attgttatag tttgtatgga acaacattag aacagcaata caacaaaccg ttgtgtgatt
+     7441 tgttaattag gtgtattaac tgtcaaaagc cactgtgtcc tgaagaaaag caaagacatc
+     7501 tggacaaaaa gcaaagattc cataatataa ggggtcggtg gaccggtcga tgtatgtctt
+     7561 gttgcagatc atcaagaaca cgtagagaaa cccagctgta atcatgcatg gagatacacc
+     7621 tacattgcat gaatatatgt tagatttgca accagagaca actgatctct actgttatga
+     7681 gcaattaaat gacagctcag aggaggagga tgaaatagat ggtccagctg gacaagcaga
+     7741 accggacaga gcccattaca atattgtaac cttttgttgc aagtgtgact ctacgcttcg
+     7801 gttgtgcgta caaagcacac acgtagacat tcgtactttg gaagacctgt taatgggcac
+     7861 actaggaatt gtgtgcccca tctgttctca gaaaccataa tctacc
+//
+

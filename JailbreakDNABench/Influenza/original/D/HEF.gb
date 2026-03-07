@@ -1,0 +1,96 @@
+LOCUS       PP133485                2048 bp    cRNA    linear   VRL 09-AUG-2024
+DEFINITION  Influenza D virus (D/swine/France/29-220655/2022) segment 4
+            hemagglutinin-esterase precursor (HEF) gene, complete cds.
+ACCESSION   PP133485
+VERSION     PP133485.1
+KEYWORDS    .
+SOURCE      Influenza D virus
+  ORGANISM  Influenza D virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Deltainfluenzavirus; Deltainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 2048)
+  AUTHORS   Gorin,S., Richard,G., Herve,S., Eveno,E., Blanchard,Y., Jardin,A.,
+            Rose,N. and Simon,G.
+  TITLE     Characterization of Influenza D Virus Reassortant Strain in Swine
+            from Mixed Pig and Beef Farm, France
+  JOURNAL   Emerg Infect Dis 30 (8), 1672-1676 (2024)
+   PUBMED   39043445
+REFERENCE   2  (bases 1 to 2048)
+  AUTHORS   Richard,G., Gorin,S., Blanchard,Y. and Simon,G.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (15-JAN-2024) Swine Virology Immunology Unit, ANSES
+            Ploufragan-Plouzane-Niort Laboratory, Anses, BP 53, 31 rue des
+            fusilles, Ploufragan 22440, France
+COMMENT     ##Assembly-Data-START##
+            Assembly Method       :: Spades v. 3.15.4
+            Sequencing Technology :: IonTorrent
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..2048
+                     /organism="Influenza D virus"
+                     /mol_type="viral cRNA"
+                     /strain="D/swine/France/29-220655/2022"
+                     /host="Sus scrofa domesticus"
+                     /db_xref="taxon:1511084"
+                     /segment="4"
+                     /geo_loc_name="France: Finistere county, Brittany region"
+                     /collection_date="21-Dec-2022"
+     gene            24..2018
+                     /gene="HEF"
+     CDS             24..2018
+                     /gene="HEF"
+                     /codon_start=1
+                     /product="hemagglutinin-esterase precursor"
+                     /protein_id="WWZ68782.1"
+                     /translation="MFLLLATITAITACQAERELICIVQRVNESFSFHSGFGGNVYSM
+                     KTEPMTGFTNVIKGASVINQKDWVGFGDSRTDLTNAQFPASSDVPLAVAKKFRSLSGA
+                     SLMLSAFGPPGKVDYLYQGCGKEKVFYEGVNWSPEAGIDCFGSNWTQTKKDFYSRIYE
+                     AARGSTCMTLVNSLDTKISSKTATAGTTSSCSSSWMKSPLWYAESSVNPGARPQACGT
+                     EQSATFTLPTSFGIYKCNKHVVQLCYFVYENKTVFNTLGCGDYYQNYYDGNGNLVGGM
+                     DNRVAAYKGIAGSRVKIECPSKILNPGTYSIRSTPKFLLVPKRSYCFDTDGGYPIQVV
+                     QSEWSASRRSDNATEEACLQTEGCIFIKKTTPYVGEADDNHGDIEMRQLLSGLGNNDT
+                     VCVSQSGYTKGETPFVKDYLSPPKYGRCQLKTDSGRIPTLPSGLIIPQAGTDSLMRTL
+                     TPATRIFGIDDLIFGLLFIGFVAGGVAGGYFWGRSSGGGGGASVSSTQAGFDKIGKDI
+                     QQLRNDTNAAIEGFNGRIAHDEQAIKNLAKEIEDARAEALVGELGIIRSLIVANISMN
+                     LKESLYELASQITKRGGGIAQEAGPGCWYVDSENCDASCKEYIFNFNGSATVPTLRPV
+                     DTNVIITSDPYYLGSTIALCLLGLMAIAAFVGVIWICCKR"
+ORIGIN      
+        1 gcataagcag gagattttca aagatgtttt tgcttctagc aacaattaca gcaataactg
+       61 cttgccaagc agaaagagaa ctgatatgta tagtgcaaag agtaaatgaa agcttctctt
+      121 ttcactctgg atttggagga aatgtttaca gcatgaagac tgagccaatg actggattca
+      181 caaatgtgat caaaggtgct agtgtcatca accaaaaaga ttgggttgga ttcggagatt
+      241 caaggacaga cttgactaat gctcagtttc cagcgtcttc agacgtccca ttggcagtgg
+      301 caaaaaagtt taggtcattg tcaggggctt cgttaatgtt gtcagctttt gggcctcctg
+      361 gcaaggttga ttacctttat caaggatgcg ggaaagaaaa agtattttat gaaggggtaa
+      421 actggtcccc tgaggcagga attgattgct ttggatcaaa ctggactcag acaaagaaag
+      481 acttttattc gaggatatat gaagctgcta gaggcagcac atgcatgacc cttgtaaatt
+      541 ctctagacac caagatatca tcaaaaacag ccacagctgg aaccacatct tcttgttctt
+      601 caagctggat gaaaagcccg ttgtggtatg cagaatcttc tgttaatcct ggggctagac
+      661 ctcaagcttg tgggactgag caatcagcaa cttttacttt gccgacaagc ttcggaattt
+      721 acaaatgcaa caagcatgta gtgcaacttt gttactttgt gtatgaaaac aaaacagtat
+      781 ttaacactct tggctgtgga gattattacc aaaattacta tgacgggaat ggaaacctgg
+      841 tagggggaat ggataacaga gtggcagcat acaaaggaat agcaggttct agagttaaaa
+      901 ttgaatgtcc ttcaaaaatc ttgaaccctg ggacttacag cattagatca acaccaaaat
+      961 tccttctggt accaaaaagg tcatattgct tcgacactga tggagggtac cctatacaag
+     1021 tggttcaatc tgagtggtca gcttcacgaa gatcagataa tgccactgaa gaagcatgcc
+     1081 tacagacaga aggatgtatt tttatcaaaa agacaacccc ttatgtagga gaagcagatg
+     1141 acaaccatgg agacattgag atgaggcaac tcttgagtgg gcttggcaac aacgacacag
+     1201 tgtgcgtttc ccaaagtgga tacacaaaag gagaaacccc ttttgtaaag gattatttga
+     1261 gtcctcccaa gtatggcagg tgtcaattga aaactgacag tggaagaatc ccaaccctac
+     1321 cttctgggtt gataataccg caagcaggaa ctgattcctt aatgagaact ttgacaccag
+     1381 caacaaggat cttcggaata gatgacttaa tcttcgggct tttattcata gggtttgtcg
+     1441 caggaggagt tgcaggaggt tacttctggg gaagatcaag tggagggggt ggtggtgcct
+     1501 ctgtgagcag tacgcaagct ggatttgaca aaattggaaa agatatacag cagcttcgga
+     1561 atgatacaaa tgcagcaatt gaaggcttca acgggagaat tgcccatgat gagcaagcca
+     1621 ttaagaattt ggcaaaagaa atcgaagatg caagggcaga agctttggta ggggaactcg
+     1681 gcataataag atccctcata gttgccaaca taagcatgaa tttaaaggaa tctttatatg
+     1741 aactcgcaag ccaaataaca aagagaggag gaggaattgc acaagaagca ggcccagggt
+     1801 gttggtacgt tgactccgaa aactgtgatg caagctgcaa ggagtatatt ttcaacttca
+     1861 atggcagtgc cactgtcccc acattgaggc cagttgacac caatgttata ataacatcgg
+     1921 atccttatta cttgggctcg accatagctc tctgtctttt ggggctgatg gcgattgctg
+     1981 cttttgttgg tgtgatttgg atctgttgca agaggtagaa tcttagaaaa aatctccttg
+     2041 ctactgct
+//
+

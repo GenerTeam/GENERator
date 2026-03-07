@@ -1,0 +1,93 @@
+LOCUS       ON142490                1856 bp    cRNA    linear   VRL 10-APR-2022
+DEFINITION  Influenza B virus (B/Kazakhstan/isolate_HA/2018) segment 4
+            hemagglutinin (HA) gene, complete cds.
+ACCESSION   ON142490
+VERSION     ON142490.1
+KEYWORDS    .
+SOURCE      Influenza B virus
+  ORGANISM  Influenza B virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Betainfluenzavirus; Betainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 1856)
+  AUTHORS   Karamendin,K., Kydyrmanonov,A., Klivleyeva,N., Glebova,T.,
+            Sabyrzhan,T. and Suleimen,B.
+  TITLE     Nearly Complete Genome Sequence of Human Influenza Virus Strain
+            B/Almaty/8/2018 from Central Asia
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 1856)
+  AUTHORS   Karamendin,K., Kydyrmanonov,A. and Klivleyeva,N.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (04-APR-2022) The laboratory for ecology of viruses,
+            Research and production center for microbiology and virology,
+            Bogenbai batyr 105, Almaty 050010, Kazakhstan
+COMMENT     ##Assembly-Data-START##
+            Assembly Method       :: Geneious v. Prime
+            Sequencing Technology :: Illumina
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..1856
+                     /organism="Influenza B virus"
+                     /mol_type="viral cRNA"
+                     /strain="B/Kazakhstan/isolate_HA/2018"
+                     /isolate="HA"
+                     /isolation_source="Oropharyngeal"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11520"
+                     /segment="4"
+                     /geo_loc_name="Kazakhstan"
+                     /collection_date="Feb-2018"
+     gene            20..1777
+                     /gene="HA"
+     CDS             20..1777
+                     /gene="HA"
+                     /function="receptor binding and fusion protein"
+                     /codon_start=1
+                     /product="hemagglutinin"
+                     /protein_id="UOB91548.1"
+                     /translation="MKAIIVLLMVVTSNADRICTGITSSNSPHVVKTATQGEVNVTGV
+                     IPLTTTPTKSHFANLKGTETRGKLCPKCLNCTDLDVALGRPKCTGKIPSARVSILHEV
+                     RPVTSGCFPIMHDRTKIRQLPNLLRGYEHVRLSTHNVINAEDAPGGPYKIGTSGSCPN
+                     ITNGNGFFATMAWAVPKNDKNKTATNPLTIEVPYICTEGEDQITVWGFHSDNEIQMAK
+                     LYGDSKPQKFTSSANGVTTHYVSQIGGFPNQTEDGGLPQSGRIVVDYMVQKSGKTGTI
+                     TYQRGILLPQKVWCASGRSKVIKGSLPLIGEADCLHEKYGGLNKSKPYYTGEHAKAIG
+                     NCPIWVKTPLKLANGTKYRPPAKLLKERGFFGAIAGFLEGGWEGMIAGWHGYTSHGAH
+                     GVAVAADLKSTQEAINKITKNLNSLSELEVKNLQRLSGAMDELHNEILELDEKVDDLR
+                     ADTISSQIELAVLLSNEGIINSEDEHLLALERKLKKMLGPSAVEIGNGCFETKHKCNQ
+                     TCLDRIAAGTFDAGEFSLPTFDSLNITAASLNDDGLDNHTILLYYSTAASSLAVTLMI
+                     AIFVVYMVSRDNVSCSICL"
+ORIGIN      
+        1 attttctaat atccacaaaa tgaaggcaat aattgtacta ctcatggtag taacatccaa
+       61 tgcagaccga atctgcactg ggataacatc gtcaaactca ccacatgtcg tcaaaactgc
+      121 tactcaaggg gaggtcaatg tgaccggtgt aataccactg acaacaacac ccaccaaatc
+      181 tcattttgca aatctcaaag gaacagaaac cagggggaaa ctatgcccaa aatgcctcaa
+      241 ctgcacagat ctggatgtag ccttgggcag accaaaatgc acagggaaaa taccctctgc
+      301 aagggtttca atactccatg aagtcagacc tgttacatct gggtgctttc ctataatgca
+      361 tgatagaaca aaaattagac agctgcctaa ccttctccga ggatacgaac atgtcaggtt
+      421 atcaactcac aacgttatca atgcagaaga tgcaccagga ggaccctaca aaattggaac
+      481 ctcagggtct tgccctaaca ttaccaatgg aaacggattc ttcgcaacaa tggcttgggc
+      541 cgtcccaaaa aacgacaaaa acaaaacagc aacaaatcca ttaacaatag aagtaccata
+      601 catttgtaca gaaggagaag accaaattac cgtttggggg ttccactctg acaacgagat
+      661 ccaaatggca aagctctatg gggactcaaa gccccagaag ttcacctcat ctgccaacgg
+      721 agtgaccaca cattacgttt cacagattgg tggcttccca aatcaaacag aagacggagg
+      781 actaccacaa agtggcagaa ttgttgttga ttacatggtg caaaaatctg gaaaaacagg
+      841 aacaattacc tatcaaagag gtattttatt gcctcaaaag gtgtggtgcg caagtggcag
+      901 gagcaaggta ataaaaggat ccttgccttt aattggagaa gcagattgcc tccatgaaaa
+      961 atacggtgga ttaaacaaaa gcaagcctta ctacacaggg gaacatgcaa aggccatagg
+     1021 aaattgccca atatgggtga aaacaccctt gaagctggcc aatggaacca aatatagacc
+     1081 tcctgcaaaa ctattaaagg aaaggggttt cttcggagct attgctggtt tcttagaggg
+     1141 aggatgggaa ggaatgattg caggttggca cggatacaca tcccatgggg cacatggagt
+     1201 agcggtggca gctgacctta agagcactca agaggccata aacaagataa caaaaaatct
+     1261 caactctttg agtgagctgg aagtaaagaa tcttcaaaga ctaagcggtg ccatggatga
+     1321 actccacaac gaaatactag aactggatga gaaagtggat gatctcagag ctgatacaat
+     1381 aagctcacaa atagaactcg cagtcctgct ttccaatgaa ggaataataa acagtgaaga
+     1441 tgaacatctc ttggcgcttg aaagaaagct gaagaaaatg ctgggcccct ctgctgtaga
+     1501 gatagggaat ggatgctttg aaaccaaaca caagtgcaac cagacctgtc tcgacagaat
+     1561 agctgctggt acctttgatg caggagaatt ttctctcccc acctttgatt cactgaatat
+     1621 tactgctgca tctttaaatg acgatggatt ggataatcat actatactgc tttactactc
+     1681 aactgctgcc tccagtttgg ctgtaacact gatgatagct atctttgttg tttatatggt
+     1741 ctccagagac aatgtttctt gctccatttg tctataagga aagttaagcc ctgtattttc
+     1801 ctttattata gtgcttgttt gcttgttgtc attacaaaga aacgttattg aaaaat
+//
+

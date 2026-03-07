@@ -1,0 +1,94 @@
+LOCUS       ON142492                1528 bp    cRNA    linear   VRL 10-APR-2022
+DEFINITION  Influenza B virus (B/Kazakhstan/isolate_NA/2018) segment 6 NB
+            protein (NB) and neuraminidase (NA) genes, complete cds.
+ACCESSION   ON142492
+VERSION     ON142492.1
+KEYWORDS    .
+SOURCE      Influenza B virus
+  ORGANISM  Influenza B virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Betainfluenzavirus; Betainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 1528)
+  AUTHORS   Karamendin,K., Kydyrmanonov,A., Klivleyeva,N., Glebova,T.,
+            Sabyrzhan,T. and Suleimen,B.
+  TITLE     Nearly Complete Genome Sequence of Human Influenza Virus Strain
+            B/Almaty/8/2018 from Central Asia
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 1528)
+  AUTHORS   Karamendin,K., Kydyrmanonov,A. and Klivleyeva,N.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (04-APR-2022) The laboratory for ecology of viruses,
+            Research and production center for microbiology and virology,
+            Bogenbai batyr 105, Almaty 050010, Kazakhstan
+COMMENT     ##Assembly-Data-START##
+            Assembly Method       :: Geneious v. Prime
+            Sequencing Technology :: Illumina
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..1528
+                     /organism="Influenza B virus"
+                     /mol_type="viral cRNA"
+                     /strain="B/Kazakhstan/isolate_NA/2018"
+                     /isolate="NA"
+                     /isolation_source="Oropharyngeal"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11520"
+                     /segment="6"
+                     /geo_loc_name="Kazakhstan"
+                     /collection_date="Feb-2018"
+     gene            33..335
+                     /gene="NB"
+     CDS             33..335
+                     /gene="NB"
+                     /codon_start=1
+                     /product="NB protein"
+                     /protein_id="UOB91550.1"
+                     /translation="MNNATFNYTNVNPISHIRGSIIITICVSFIIILTIFGYIAKILT
+                     NRNNCTNNAIGLCKRIKCSGYEPFCNKRGDTSSPRTGVDIPAFILPGLNLSESTPN"
+     gene            40..1440
+                     /gene="NA"
+     CDS             40..1440
+                     /gene="NA"
+                     /codon_start=1
+                     /product="neuraminidase"
+                     /protein_id="UOB91551.1"
+                     /translation="MLPSTIQTLTLFLTSGGVLLSLYVSASLSYLLYSDILLKFSPTE
+                     ITAPTMPLDCANASNVQAMNRSATKGVTLLLPEPEWTYPRLSCPGSTFQKALLISPHR
+                     FGETKGNSAPLIIREPFVACGPNECKHFALTHYAAQPGGYYNGTRGDRNKLRHLISVK
+                     LGKIPTVENSIFHMAAWSGSACHDGKEWTYIGVDGPDNNALLKVKYGEAYTDTYHSYA
+                     NNILRTQESACNCMGGNCYLMITDGSASGVSECRFLKIREGRIIKEIFPTGRVKHTEE
+                     CTCGFASNKTIECACRDNRYTAKRPFVKLNVETDTAEIRLMCTDTYLDTPRPNDGSIT
+                     GPCESDGDKGSGGIKGGFVHQRMKSKIGRWYSRTMSKTERMGMGLYVKYDGDPWADSD
+                     ALAFSGVMVSMKEPGWYSFGFEIKDKKCDVPCIGIEMVHDGGKETWHSAATAIYCLMG
+                     SGQLLWDTVTGVDMAL"
+ORIGIN      
+        1 atcttctcaa aactgaagca aataggccaa aaatgaacaa tgctaccttc aactatacaa
+       61 acgttaaccc tatttctcac atcaggggga gtattattat cactatatgt gtcagcttca
+      121 ttatcatact tactatattc ggatatattg ctaaaattct caccaacaga aataactgca
+      181 ccaacaatgc cattggattg tgcaaacgca tcaaatgttc aggctatgaa ccgttctgca
+      241 acaaaagggg tgacacttct tctcccagaa ccggagtgga catacccgcg tttatcttgc
+      301 ccgggctcaa cctttcagaa agcactccta attagccctc atagattcgg agaaaccaaa
+      361 ggaaactcag ctcccttgat aataagggaa ccttttgttg cttgtggacc aaatgaatgc
+      421 aaacactttg ctttaaccca ttatgcagcc caaccagggg gatactacaa tggaacaaga
+      481 ggagacagaa acaagctgag gcatctaatt tcagtcaaat tgggcaaaat cccaacagta
+      541 gagaactcca ttttccacat ggcagcatgg agcgggtccg cgtgccatga tggtaaggaa
+      601 tggacatata tcggagttga tggccctgac aataatgcat tgctcaaagt aaaatatgga
+      661 gaagcatata ctgacacata ccattcctat gcaaacaaca tcctaagaac acaagaaagt
+      721 gcctgcaatt gcatgggggg aaattgttat ctaatgataa ctgatggctc agcttcaggt
+      781 gttagtgaat gcagatttct taagattcga gagggccgaa taataaaaga aatatttcca
+      841 acaggaagag taaaacacac tgaggaatgc acatgcggat ttgccagcaa taaaaccata
+      901 gaatgtgcct gtagagacaa caggtacaca gcaaaaagac cttttgtcaa attaaacgtg
+      961 gagactgata cagcagaaat aaggttgatg tgcacagata cttatttgga cacccccaga
+     1021 ccaaatgatg gaagcataac aggcccttgt gaatctgatg gggacaaagg gagtggaggc
+     1081 atcaagggag gatttgttca tcaaagaatg aaatccaaga ttggaaggtg gtactctcga
+     1141 acgatgtcta aaactgaaag gatggggatg ggactgtatg tcaagtatga tggagaccca
+     1201 tgggctgaca gtgatgccct agcttttagt ggagtaatgg tttcaatgaa agaacctggt
+     1261 tggtattcct ttggcttcga aataaaagat aagaaatgcg atgtcccctg tattgggata
+     1321 gagatggtac atgatggtgg aaaagagact tggcactcag cagcaacagc catttactgt
+     1381 ttaatgggct caggacagct gctgtgggac actgtcacag gtgttgacat ggctctgtaa
+     1441 tggaggagtg gttaagtctg ttctaaaccc tttgttccta ttttgtttga acaattgtcc
+     1501 ttactaaact taattgtttc tgaaaaat
+//
+

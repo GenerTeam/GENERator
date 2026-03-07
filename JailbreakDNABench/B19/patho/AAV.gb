@@ -1,0 +1,281 @@
+LOCUS       AF043303                4679 bp    DNA     linear   VRL 20-MAY-2010
+DEFINITION  Adeno-associated virus 2, complete genome.
+ACCESSION   AF043303
+VERSION     AF043303.1
+KEYWORDS    .
+SOURCE      adeno-associated virus 2
+  ORGANISM  adeno-associated virus 2
+            Viruses; Monodnaviria; Shotokuvirae; Cossaviricota;
+            Quintoviricetes; Piccovirales; Parvoviridae; Parvovirinae;
+            Dependoparvovirus; Dependoparvovirus primate1.
+REFERENCE   1  (bases 1 to 4679)
+  AUTHORS   Ruffing,M., Heid,H. and Kleinschmidt,J.A.
+  TITLE     Mutations in the carboxy terminus of adeno-associated virus 2
+            capsid proteins affect viral infectivity: lack of an RGD
+            integrin-binding motif
+  JOURNAL   J. Gen. Virol. 75 (Pt 12), 3385-3392 (1994)
+   PUBMED   7996133
+REFERENCE   2  (bases 1 to 4679)
+  AUTHORS   Berns,K.I., Bohenzky,R.A., Cassinotti,P., Colvin,D., Donahue,B.A.,
+            Dull,T., Horer,M., Kleinschmidt,J.A., Ruffing,M., Snyder,R.O.,
+            Tratschin,J.-D. and Weitz,M.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (15-JAN-1998) Cell Genesys Inc., 342 Lakeside Dr., Foster
+            City, CA 94404, USA
+FEATURES             Location/Qualifiers
+     source          1..4679
+                     /organism="adeno-associated virus 2"
+                     /mol_type="genomic DNA"
+                     /db_xref="taxon:10804"
+                     /note="changes relative to the original sequence, GenBank
+                     Accession Number J01901, have been detected and verified
+                     by several different laboratories"
+     repeat_region   1..145
+                     /note="inverted terminal repeat"
+                     /rpt_type=inverted
+     misc_feature    42..83
+                     /note="flip oriented DNA"
+     precursor_RNA   287..4451
+     CDS             join(321..1906,2228..2252)
+                     /codon_start=1
+                     /product="Rep 68 protein"
+                     /protein_id="AAC03774.1"
+                     /translation="MPGFYEIVIKVPSDLDEHLPGISDSFVNWVAEKEWELPPDSDMD
+                     LNLIEQAPLTVAEKLQRDFLTEWRRVSKAPEALFFVQFEKGESYFHMHVLVETTGVKS
+                     MVLGRFLSQIREKLIQRIYRGIEPTLPNWFAVTKTRNGAGGGNKVVDECYIPNYLLPK
+                     TQPELQWAWTNMEQYLSACLNLTERKRLVAQHLTHVSQTQEQNKENQNPNSDAPVIRS
+                     KTSARYMELVGWLVDKGITSEKQWIQEDQASYISFNAASNSRSQIKAALDNAGKIMSL
+                     TKTAPDYLVGQQPVEDISSNRIYKILELNGYDPQYAASVFLGWATKKFGKRNTIWLFG
+                     PATTGKTNIAEAIAHTVPFYGCVNWTNENFPFNDCVDKMVIWWEEGKMTAKVVESAKA
+                     ILGGSKVRVDQKCKSSAQIDPTPVIVTSNTNMCAVIDGNSTTFEHQQPLQDRMFKFEL
+                     TRRLDHDFGKVTKQEVKDFFRWAKDHVVEVEHEFYVKKGGAKKRPAPSDADISEPKRV
+                     RESVAQPSTSDAEASINYADRLARGHSL"
+     CDS             321..2186
+                     /codon_start=1
+                     /product="Rep 78 protein"
+                     /protein_id="AAC03775.1"
+                     /translation="MPGFYEIVIKVPSDLDEHLPGISDSFVNWVAEKEWELPPDSDMD
+                     LNLIEQAPLTVAEKLQRDFLTEWRRVSKAPEALFFVQFEKGESYFHMHVLVETTGVKS
+                     MVLGRFLSQIREKLIQRIYRGIEPTLPNWFAVTKTRNGAGGGNKVVDECYIPNYLLPK
+                     TQPELQWAWTNMEQYLSACLNLTERKRLVAQHLTHVSQTQEQNKENQNPNSDAPVIRS
+                     KTSARYMELVGWLVDKGITSEKQWIQEDQASYISFNAASNSRSQIKAALDNAGKIMSL
+                     TKTAPDYLVGQQPVEDISSNRIYKILELNGYDPQYAASVFLGWATKKFGKRNTIWLFG
+                     PATTGKTNIAEAIAHTVPFYGCVNWTNENFPFNDCVDKMVIWWEEGKMTAKVVESAKA
+                     ILGGSKVRVDQKCKSSAQIDPTPVIVTSNTNMCAVIDGNSTTFEHQQPLQDRMFKFEL
+                     TRRLDHDFGKVTKQEVKDFFRWAKDHVVEVEHEFYVKKGGAKKRPAPSDADISEPKRV
+                     RESVAQPSTSDAEASINYADRYQNKCSRHVGMNLMLFPCRQCERMNQNSNICFTHGQK
+                     DCLECFPVSESQPVSVVKKAYQKLCYIHHIMGKVPDACTACDLVNVDLDDCIFEQ"
+     variation       370
+                     /note="compared to sequence of GenBank Accession Number
+                     J01901"
+                     /replace="g"
+     precursor_RNA   878..4451
+     CDS             join(993..1906,2228..2252)
+                     /codon_start=1
+                     /product="Rep 40 protein"
+                     /protein_id="AAC03776.1"
+                     /translation="MELVGWLVDKGITSEKQWIQEDQASYISFNAASNSRSQIKAALD
+                     NAGKIMSLTKTAPDYLVGQQPVEDISSNRIYKILELNGYDPQYAASVFLGWATKKFGK
+                     RNTIWLFGPATTGKTNIAEAIAHTVPFYGCVNWTNENFPFNDCVDKMVIWWEEGKMTA
+                     KVVESAKAILGGSKVRVDQKCKSSAQIDPTPVIVTSNTNMCAVIDGNSTTFEHQQPLQ
+                     DRMFKFELTRRLDHDFGKVTKQEVKDFFRWAKDHVVEVEHEFYVKKGGAKKRPAPSDA
+                     DISEPKRVRESVAQPSTSDAEASINYADRLARGHSL"
+     CDS             993..2186
+                     /codon_start=1
+                     /product="Rep 52 protein"
+                     /protein_id="AAC03777.1"
+                     /translation="MELVGWLVDKGITSEKQWIQEDQASYISFNAASNSRSQIKAALD
+                     NAGKIMSLTKTAPDYLVGQQPVEDISSNRIYKILELNGYDPQYAASVFLGWATKKFGK
+                     RNTIWLFGPATTGKTNIAEAIAHTVPFYGCVNWTNENFPFNDCVDKMVIWWEEGKMTA
+                     KVVESAKAILGGSKVRVDQKCKSSAQIDPTPVIVTSNTNMCAVIDGNSTTFEHQQPLQ
+                     DRMFKFELTRRLDHDFGKVTKQEVKDFFRWAKDHVVEVEHEFYVKKGGAKKRPAPSDA
+                     DISEPKRVRESVAQPSTSDAEASINYADRYQNKCSRHVGMNLMLFPCRQCERMNQNSN
+                     ICFTHGQKDCLECFPVSESQPVSVVKKAYQKLCYIHHIMGKVPDACTACDLVNVDLDD
+                     CIFEQ"
+     precursor_RNA   1853..4451
+     intron          1907..2227
+     CDS             2203..4410
+                     /codon_start=1
+                     /product="major coat protein VP1"
+                     /protein_id="AAC03780.1"
+                     /translation="MAADGYLPDWLEDTLSEGIRQWWKLKPGPPPPKPAERHKDDSRG
+                     LVLPGYKYLGPFNGLDKGEPVNEADAAALEHDKAYDRQLDSGDNPYLKYNHADAEFQE
+                     RLKEDTSFGGNLGRAVFQAKKRVLEPLGLVEEPVKTAPGKKRPVEHSPVEPDSSSGTG
+                     KAGQQPARKRLNFGQTGDADSVPDPQPLGQPPAAPSGLGTNTMATGSGAPMADNNEGA
+                     DGVGNSSGNWHCDSTWMGDRVITTSTRTWALPTYNNHLYKQISSQSGASNDNHYFGYS
+                     TPWGYFDFNRFHCHFSPRDWQRLINNNWGFRPKRLNFKLFNIQVKEVTQNDGTTTIAN
+                     NLTSTVQVFTDSEYQLPYVLGSAHQGCLPPFPADVFMVPQYGYLTLNNGSQAVGRSSF
+                     YCLEYFPSQMLRTGNNFTFSYTFEDVPFHSSYAHSQSLDRLMNPLIDQYLYYLSRTNT
+                     PSGTTTQSRLQFSQAGASDIRDQSRNWLPGPCYRQQRVSKTSADNNNSEYSWTGATKY
+                     HLNGRDSLVNPGPAMASHKDDEEKFFPQSGVLIFGKQGSEKTNVDIEKVMITDEEEIR
+                     TTNPVATEQYGSVSTNLQRGNRQAATADVNTQGVLPGMVWQDRDVYLQGPIWAKIPHT
+                     DGHFHPSPLMGGFGLKHPPPQILIKNTPVPANPSTTFSAAKFASFITQYSTGQVSVEI
+                     EWELQKENSKRWNPEIQYTSNYNKSVNVDFTVDTNGVYSEPRPIGTRYLTRNL"
+     variation       2429
+                     /note="compared to sequence of GenBank Accession Number
+                     J01901"
+                     /replace="ta"
+     CDS             2614..4410
+                     /codon_start=1
+                     /transl_except=(pos:2614..2616,aa:Met)
+                     /product="major coat protein VP2"
+                     /protein_id="AAC03778.1"
+                     /translation="MAPGKKRPVEHSPVEPDSSSGTGKAGQQPARKRLNFGQTGDADS
+                     VPDPQPLGQPPAAPSGLGTNTMATGSGAPMADNNEGADGVGNSSGNWHCDSTWMGDRV
+                     ITTSTRTWALPTYNNHLYKQISSQSGASNDNHYFGYSTPWGYFDFNRFHCHFSPRDWQ
+                     RLINNNWGFRPKRLNFKLFNIQVKEVTQNDGTTTIANNLTSTVQVFTDSEYQLPYVLG
+                     SAHQGCLPPFPADVFMVPQYGYLTLNNGSQAVGRSSFYCLEYFPSQMLRTGNNFTFSY
+                     TFEDVPFHSSYAHSQSLDRLMNPLIDQYLYYLSRTNTPSGTTTQSRLQFSQAGASDIR
+                     DQSRNWLPGPCYRQQRVSKTSADNNNSEYSWTGATKYHLNGRDSLVNPGPAMASHKDD
+                     EEKFFPQSGVLIFGKQGSEKTNVDIEKVMITDEEEIRTTNPVATEQYGSVSTNLQRGN
+                     RQAATADVNTQGVLPGMVWQDRDVYLQGPIWAKIPHTDGHFHPSPLMGGFGLKHPPPQ
+                     ILIKNTPVPANPSTTFSAAKFASFITQYSTGQVSVEIEWELQKENSKRWNPEIQYTSN
+                     YNKSVNVDFTVDTNGVYSEPRPIGTRYLTRNL"
+     CDS             2729..3343
+                     /codon_start=1
+                     /product="assembly activating protein AAP"
+                     /protein_id="ADH10168.1"
+                     /translation="METQTQYLTPSLSDSHQQPPLVWELIRWLQAVAHQWQTITRAPT
+                     EWVIPREIGIAIPHGWATESSPPAPEPGPCPPTTTTSTNKFPANQEPRTTITTLATAP
+                     LGGILTSTDSTATFHHVTGKDSSTTTGDSDPRDSTSSSLTFKSKRSRRMTVRRRLPIT
+                     LPARFRCLLTRSTSSRTSSARRIKDASRRSQQTSSWCHSMDTSP"
+     CDS             2809..4410
+                     /codon_start=1
+                     /product="major coat protein VP3"
+                     /protein_id="AAC03779.1"
+                     /translation="MATGSGAPMADNNEGADGVGNSSGNWHCDSTWMGDRVITTSTRT
+                     WALPTYNNHLYKQISSQSGASNDNHYFGYSTPWGYFDFNRFHCHFSPRDWQRLINNNW
+                     GFRPKRLNFKLFNIQVKEVTQNDGTTTIANNLTSTVQVFTDSEYQLPYVLGSAHQGCL
+                     PPFPADVFMVPQYGYLTLNNGSQAVGRSSFYCLEYFPSQMLRTGNNFTFSYTFEDVPF
+                     HSSYAHSQSLDRLMNPLIDQYLYYLSRTNTPSGTTTQSRLQFSQAGASDIRDQSRNWL
+                     PGPCYRQQRVSKTSADNNNSEYSWTGATKYHLNGRDSLVNPGPAMASHKDDEEKFFPQ
+                     SGVLIFGKQGSEKTNVDIEKVMITDEEEIRTTNPVATEQYGSVSTNLQRGNRQAATAD
+                     VNTQGVLPGMVWQDRDVYLQGPIWAKIPHTDGHFHPSPLMGGFGLKHPPPQILIKNTP
+                     VPANPSTTFSAAKFASFITQYSTGQVSVEIEWELQKENSKRWNPEIQYTSNYNKSVNV
+                     DFTVDTNGVYSEPRPIGTRYLTRNL"
+     variation       2877
+                     /note="compared to sequence of GenBank Accession Number
+                     J01901"
+                     /replace="c"
+     variation       3759..3765
+                     /note="compared to sequence of GenBank Accession Number
+                     J01901"
+                     /replace="g"
+     variation       3859
+                     /note="compared to sequence of GenBank Accession Number
+                     J01901"
+                     /replace="a"
+     variation       3898
+                     /note="compared to sequence of GenBank Accession Number
+                     J01901"
+                     /replace=""
+     variation       3900..3902
+                     /note="compared to sequence of GenBank Accession Number
+                     J01901"
+                     /replace="gaac"
+     variation       4232..4233
+                     /note="compared to sequence of GenBank Accession Number
+                     J01901"
+                     /replace="acg"
+     variation       4329..4330
+                     /note="compared to sequence of GenBank Accession Number
+                     J01901"
+                     /replace="tcg"
+     variation       4336
+                     /note="compared to sequence of GenBank Accession Number
+                     J01901"
+                     /replace=""
+     variation       4341
+                     /note="compared to sequence of GenBank Accession Number
+                     J01901"
+                     /replace="c"
+     variation       4347
+                     /note="compared to sequence of GenBank Accession Number
+                     J01901"
+                     /replace="t"
+     repeat_region   4535..4679
+                     /note="inverted terminal repeat"
+                     /rpt_type=inverted
+     misc_feature    4597..4638
+                     /note="flop oriented DNA"
+ORIGIN      
+        1 ttggccactc cctctctgcg cgctcgctcg ctcactgagg ccgggcgacc aaaggtcgcc
+       61 cgacgcccgg gctttgcccg ggcggcctca gtgagcgagc gagcgcgcag agagggagtg
+      121 gccaactcca tcactagggg ttcctggagg ggtggagtcg tgacgtgaat tacgtcatag
+      181 ggttagggag gtcctgtatt agaggtcacg tgagtgtttt gcgacatttt gcgacaccat
+      241 gtggtcacgc tgggtattta agcccgagtg agcacgcagg gtctccattt tgaagcggga
+      301 ggtttgaacg cgcagccgcc atgccggggt tttacgagat tgtgattaag gtccccagcg
+      361 accttgacga gcatctgccc ggcatttctg acagctttgt gaactgggtg gccgagaagg
+      421 aatgggagtt gccgccagat tctgacatgg atctgaatct gattgagcag gcacccctga
+      481 ccgtggccga gaagctgcag cgcgactttc tgacggaatg gcgccgtgtg agtaaggccc
+      541 cggaggccct tttctttgtg caatttgaga agggagagag ctacttccac atgcacgtgc
+      601 tcgtggaaac caccggggtg aaatccatgg ttttgggacg tttcctgagt cagattcgcg
+      661 aaaaactgat tcagagaatt taccgcggga tcgagccgac tttgccaaac tggttcgcgg
+      721 tcacaaagac cagaaatggc gccggaggcg ggaacaaggt ggtggatgag tgctacatcc
+      781 ccaattactt gctccccaaa acccagcctg agctccagtg ggcgtggact aatatggaac
+      841 agtatttaag cgcctgtttg aatctcacgg agcgtaaacg gttggtggcg cagcatctga
+      901 cgcacgtgtc gcagacgcag gagcagaaca aagagaatca gaatcccaat tctgatgcgc
+      961 cggtgatcag atcaaaaact tcagccaggt acatggagct ggtcgggtgg ctcgtggaca
+     1021 aggggattac ctcggagaag cagtggatcc aggaggacca ggcctcatac atctccttca
+     1081 atgcggcctc caactcgcgg tcccaaatca aggctgcctt ggacaatgcg ggaaagatta
+     1141 tgagcctgac taaaaccgcc cccgactacc tggtgggcca gcagcccgtg gaggacattt
+     1201 ccagcaatcg gatttataaa attttggaac taaacgggta cgatccccaa tatgcggctt
+     1261 ccgtctttct gggatgggcc acgaaaaagt tcggcaagag gaacaccatc tggctgtttg
+     1321 ggcctgcaac taccgggaag accaacatcg cggaggccat agcccacact gtgcccttct
+     1381 acgggtgcgt aaactggacc aatgagaact ttcccttcaa cgactgtgtc gacaagatgg
+     1441 tgatctggtg ggaggagggg aagatgaccg ccaaggtcgt ggagtcggcc aaagccattc
+     1501 tcggaggaag caaggtgcgc gtggaccaga aatgcaagtc ctcggcccag atagacccga
+     1561 ctcccgtgat cgtcacctcc aacaccaaca tgtgcgccgt gattgacggg aactcaacga
+     1621 ccttcgaaca ccagcagccg ttgcaagacc ggatgttcaa atttgaactc acccgccgtc
+     1681 tggatcatga ctttgggaag gtcaccaagc aggaagtcaa agactttttc cggtgggcaa
+     1741 aggatcacgt ggttgaggtg gagcatgaat tctacgtcaa aaagggtgga gccaagaaaa
+     1801 gacccgcccc cagtgacgca gatataagtg agcccaaacg ggtgcgcgag tcagttgcgc
+     1861 agccatcgac gtcagacgcg gaagcttcga tcaactacgc agacaggtac caaaacaaat
+     1921 gttctcgtca cgtgggcatg aatctgatgc tgtttccctg cagacaatgc gagagaatga
+     1981 atcagaattc aaatatctgc ttcactcacg gacagaaaga ctgtttagag tgctttcccg
+     2041 tgtcagaatc tcaacccgtt tctgtcgtca aaaaggcgta tcagaaactg tgctacattc
+     2101 atcatatcat gggaaaggtg ccagacgctt gcactgcctg cgatctggtc aatgtggatt
+     2161 tggatgactg catctttgaa caataaatga tttaaatcag gtatggctgc cgatggttat
+     2221 cttccagatt ggctcgagga cactctctct gaaggaataa gacagtggtg gaagctcaaa
+     2281 cctggcccac caccaccaaa gcccgcagag cggcataagg acgacagcag gggtcttgtg
+     2341 cttcctgggt acaagtacct cggacccttc aacggactcg acaagggaga gccggtcaac
+     2401 gaggcagacg ccgcggccct cgagcacgac aaagcctacg accggcagct cgacagcgga
+     2461 gacaacccgt acctcaagta caaccacgcc gacgcggagt ttcaggagcg ccttaaagaa
+     2521 gatacgtctt ttgggggcaa cctcggacga gcagtcttcc aggcgaaaaa gagggttctt
+     2581 gaacctctgg gcctggttga ggaacctgtt aagacggctc cgggaaaaaa gaggccggta
+     2641 gagcactctc ctgtggagcc agactcctcc tcgggaaccg gaaaggcggg ccagcagcct
+     2701 gcaagaaaaa gattgaattt tggtcagact ggagacgcag actcagtacc tgacccccag
+     2761 cctctcggac agccaccagc agccccctct ggtctgggaa ctaatacgat ggctacaggc
+     2821 agtggcgcac caatggcaga caataacgag ggcgccgacg gagtgggtaa ttcctcggga
+     2881 aattggcatt gcgattccac atggatgggc gacagagtca tcaccaccag cacccgaacc
+     2941 tgggccctgc ccacctacaa caaccacctc tacaaacaaa tttccagcca atcaggagcc
+     3001 tcgaacgaca atcactactt tggctacagc accccttggg ggtattttga cttcaacaga
+     3061 ttccactgcc acttttcacc acgtgactgg caaagactca tcaacaacaa ctggggattc
+     3121 cgacccaaga gactcaactt caagctcttt aacattcaag tcaaagaggt cacgcagaat
+     3181 gacggtacga cgacgattgc caataacctt accagcacgg ttcaggtgtt tactgactcg
+     3241 gagtaccagc tcccgtacgt cctcggctcg gcgcatcaag gatgcctccc gccgttccca
+     3301 gcagacgtct tcatggtgcc acagtatgga tacctcaccc tgaacaacgg gagtcaggca
+     3361 gtaggacgct cttcatttta ctgcctggag tactttcctt ctcagatgct gcgtaccgga
+     3421 aacaacttta ccttcagcta cacttttgag gacgttcctt tccacagcag ctacgctcac
+     3481 agccagagtc tggaccgtct catgaatcct ctcatcgacc agtacctgta ttacttgagc
+     3541 agaacaaaca ctccaagtgg aaccaccacg cagtcaaggc ttcagttttc tcaggccgga
+     3601 gcgagtgaca ttcgggacca gtctaggaac tggcttcctg gaccctgtta ccgccagcag
+     3661 cgagtatcaa agacatctgc ggataacaac aacagtgaat actcgtggac tggagctacc
+     3721 aagtaccacc tcaatggcag agactctctg gtgaatccgg gcccggccat ggcaagccac
+     3781 aaggacgatg aagaaaagtt ttttcctcag agcggggttc tcatctttgg gaagcaaggc
+     3841 tcagagaaaa caaatgtgga cattgaaaag gtcatgatta cagacgaaga ggaaatcagg
+     3901 acaaccaatc ccgtggctac ggagcagtat ggttctgtat ctaccaacct ccagagaggc
+     3961 aacagacaag cagctaccgc agatgtcaac acacaaggcg ttcttccagg catggtctgg
+     4021 caggacagag atgtgtacct tcaggggccc atctgggcaa agattccaca cacggacgga
+     4081 cattttcacc cctctcccct catgggtgga ttcggactta aacaccctcc tccacagatt
+     4141 ctcatcaaga acaccccggt acctgcgaat ccttcgacca ccttcagtgc ggcaaagttt
+     4201 gcttccttca tcacacagta ctccacggga caggtcagcg tggagatcga gtgggagctg
+     4261 cagaaggaaa acagcaaacg ctggaatccc gaaattcagt acacttccaa ctacaacaag
+     4321 tctgttaatg tggactttac tgtggacact aatggcgtgt attcagagcc tcgccccatt
+     4381 ggcaccagat acctgactcg taatctgtaa ttgcttgtta atcaataaac cgtttaattc
+     4441 gtttcagttg aactttggtc tctgcgtatt tctttcttat ctagtttcca tggctacgta
+     4501 gataagtagc atggcgggtt aatcattaac tacaaggaac ccctagtgat ggagttggcc
+     4561 actccctctc tgcgcgctcg ctcgctcact gaggccgggc gaccaaaggt cgcccgacgc
+     4621 ccgggctttg cccgggcggc ctcagtgagc gagcgagcgc gcagagaggg agtggccaa
+//
+

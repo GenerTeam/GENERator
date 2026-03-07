@@ -1,0 +1,81 @@
+LOCUS       KU710425                 868 bp    cRNA    linear   VRL 20-JUN-2016
+DEFINITION  Influenza D virus (D/bovine/Mexico/S62/2015) segment 7 NS2 (NS2)
+            and NS1 (NS1) genes, complete cds.
+ACCESSION   KU710425
+VERSION     KU710425.1
+KEYWORDS    .
+SOURCE      Influenza D virus (D/bovine/Mexico/S62/2015)
+  ORGANISM  Influenza D virus (D/bovine/Mexico/S62/2015)
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Deltainfluenzavirus; Deltainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 868)
+  AUTHORS   Mitra,N., Cernicchiaro,N., Torres,S., Li,F. and Hause,B.M.
+  TITLE     Metagenomic characterization of the virome associated with bovine
+            respiratory disease in feedlot cattle identified novel viruses and
+            suggests an etiologic role for influenza D virus
+  JOURNAL   J. Gen. Virol. (2016) In press
+   PUBMED   27154756
+  REMARK    Publication Status: Available-Online prior to print
+REFERENCE   2  (bases 1 to 868)
+  AUTHORS   Mitra,N. and Hause,B.M.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (12-FEB-2016) Veterinary Diagnostic Laboratory and
+            Department of Diagnostic Medicine/Pathobiology, Kansas State
+            University, 1800 Denison Ave, Manhattan, KS 66506, USA
+COMMENT     ##Assembly-Data-START##
+            Assembly Method       :: CLC Genomics Workbench v. v. 8.0
+            Sequencing Technology :: Illumina
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..868
+                     /organism="Influenza D virus (D/bovine/Mexico/S62/2015)"
+                     /mol_type="viral cRNA"
+                     /strain="D/bovine/Mexico/S62/2015"
+                     /host="cattle"
+                     /db_xref="taxon:1758833"
+                     /segment="7"
+                     /geo_loc_name="Mexico"
+                     /collection_date="2015"
+     gene            29..848
+                     /gene="NS2"
+     CDS             join(29..218,484..848)
+                     /gene="NS2"
+                     /codon_start=1
+                     /product="NS2"
+                     /protein_id="AMN87894.1"
+                     /translation="MSENKSVNTTNIRAAISELALGAASWMDSSGLMTFEKMRKSAEN
+                     SLKVEQVYEPRTWEDAVAEETLRNQLTALRISVEEMTQRSQYERYSEFGEVDLLLPLM
+                     RNLEMRSDDTNLDVKQIPSGEEKAQLLERFRSCLVSLIRLKSKLGVAMVNSLTNQDMR
+                     AALDEIKSVSRTISMLKECIRSLV"
+     gene            29..760
+                     /gene="NS1"
+     CDS             29..760
+                     /gene="NS1"
+                     /codon_start=1
+                     /product="NS1"
+                     /protein_id="AMN87893.1"
+                     /translation="MSENKSVNTTNIRAAISELALGAASWMDSSGLMTFEKMRKSAEN
+                     SLKVEQVYEPRTWEDAVAEGREILGFTTIAALRKPEETHAVELGKNIIYPLGGNPFYL
+                     SPCTIDTLYEPKLIKQGEVFGVKYRNCNCFVKTAELLVTDMGEIIVLFCRNTEKPAYC
+                     LKNFRRGDDPEKSVRKILRIWRSGLVVAVDAESRDEIRRYKSGCETDPFWRREGATTG
+                     EVQELLSVIDKVEIQAGSSDGELFD"
+ORIGIN      
+        1 agcataagca gaggtgtaca atttcaatat gtctgaaaat aagtcagtga acacaacaaa
+       61 tatcagagca gcaatctccg aattggcatt gggcgcagcc agctggatgg attcctctgg
+      121 attaatgact ttcgagaaaa tgagaaagtc ggctgagaat tcactgaaag tcgaacaggt
+      181 ttatgaaccg agaacttggg aagatgcagt ggctgaaggt agagaaattc taggattcac
+      241 tactattgcc gccttaagaa aaccagagga gactcatgct gttgaattgg ggaagaacat
+      301 tatctatccc ttaggaggaa accctttcta tctgagccca tgtaccattg acactctgta
+      361 tgagccaaag ctcataaaac aaggagaagt ctttggagta aaatatcgga actgcaattg
+      421 ctttgtaaaa actgctgaac tattagtgac cgacatggga gaaatcattg tgctcttttg
+      481 cagaaacact gagaaaccag cttactgcct taagaatttc cgtagaggag atgacccaga
+      541 gaagtcagta cgaaagatac tcagaatttg gagaagtgga cttgttgttg ccgttgatgc
+      601 ggaatctaga gatgagatca gacgatacaa atctggatgt gaaacagatc ccttctggag
+      661 aagagaaggc gcaactactg gagaggttca ggagttgctt agtgtcattg ataaggttga
+      721 aatccaagct gggagtagcg atggtgaact ctttgactaa ccaggatatg agggccgctt
+      781 tggatgaaat caagtcagtt tcgagaacaa tttcaatgtt aaaagaatgt attcgttctt
+      841 tagtatgaaa aaaccccttg ctactgct
+//
+

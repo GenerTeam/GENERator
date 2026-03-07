@@ -1,0 +1,101 @@
+LOCUS       KU143292                1704 bp    cRNA    linear   VRL 17-DEC-2015
+DEFINITION  Influenza A virus (A/wild bird/Wuhan/CDHN22/2015(H11N9)) segment 4
+            hemagglutinin (HA) gene, complete cds.
+ACCESSION   KU143292
+VERSION     KU143292.1
+KEYWORDS    .
+SOURCE      Influenza A virus (A/wild bird/Wuhan/CDHN22/2015(H11N9))
+  ORGANISM  Influenza A virus (A/wild bird/Wuhan/CDHN22/2015(H11N9))
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Alphainfluenzavirus; Alphainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 1704)
+  AUTHORS   Chen,L.-J., Lin,X.-D., Guo,W.-P., Tian,J.-H. and Zhang,Y.-Z.
+  TITLE     Diversity and evolution of avian influenza viruses in live poultry
+            markets, free range poultry and wetland regions in China
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 1704)
+  AUTHORS   Chen,L.-J., Lin,X.-D., Guo,W.-P., Tian,J.-H. and Zhang,Y.-Z.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (10-NOV-2015) Department of Zoonoses, Chinese Center for
+            Disease Control and Prevention, Changping Liuzi 5, Beijing 102206,
+            China
+COMMENT     GenBank Accession Numbers KU143292, KU143298, KU143371, KU143384,
+            KU143427, KU143470, KU143513, KU143556 represent sequences from the
+            8 segments of Influenza A virus (A/wild
+            bird/Wuhan/CDHN22/2015(H11N9)).
+            
+            ##Assembly-Data-START##
+            Sequencing Technology :: Sanger dideoxy sequencing
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..1704
+                     /organism="Influenza A virus (A/wild
+                     bird/Wuhan/CDHN22/2015(H11N9))"
+                     /mol_type="viral cRNA"
+                     /strain="A/wild bird/Wuhan/CDHN22/2015"
+                     /serotype="H11N9"
+                     /isolation_source="wild bird fecals"
+                     /host="wild bird"
+                     /db_xref="taxon:1756087"
+                     /segment="4"
+                     /geo_loc_name="China"
+                     /collection_date="Jan-2015"
+     gene            1..1698
+                     /gene="HA"
+     CDS             1..1698
+                     /gene="HA"
+                     /codon_start=1
+                     /product="hemagglutinin"
+                     /protein_id="ALR82110.1"
+                     /translation="MKKTLLFAAIFLYVKADEICIGYLSNNSTDKVDTIIENNVTVTS
+                     SVELVETEHTGSFCSINGKQPISLGDCSFAGWILGNPMCDDLIGKTSWSYIVEKPNPA
+                     NGICYPGTLENEEELRLKFSGVLEFNKFEAFTSNGWGAVNSGAGVTAACKFGSSNSFF
+                     RNMVWLIHQSETYPVIKRTFNNIKGRDVLIVWGIHHPATLKEHQDLYKKDSSYVAVGS
+                     ETYNRRFIPEISTRPKVNGQAGRMTFYWTIVKPGESITFESNGAFLAPRYAFEIVSVG
+                     NGKLFRSELNIESCSTKCQTEIGGINTNKSFHSVHRNTIGDCPKYVNVKSLKLATGLR
+                     NVPAIASRGLFGAIAGFIEGGWPGLINGWYGFQHRNEEGTGIAADKESTQRAIDQITS
+                     KVNNIVDRMNTNFESVQHEFSEIEERINQLSKHVDDSVVDIWSYNAQLLVLLENEKTL
+                     DLHDSNVRNLHEKVRRMLKDNAKDEGNGCFTFYHKCDNKCIERVRNGTYNHKEFEEES
+                     KINRQEIEGVKLDSSGNVYKILSIYSCIASSLVLAALIMGFILWACSNGSCRCTICI"
+     sig_peptide     1..48
+                     /gene="HA"
+     mat_peptide     49..1026
+                     /gene="HA"
+                     /product="HA1"
+     mat_peptide     1027..1695
+                     /gene="HA"
+                     /product="HA2"
+ORIGIN      
+        1 atgaagaaaa cactgctatt tgcagctatt ttcctttatg tgaaggcaga tgaaatctgc
+       61 atcggatact taagcaacaa ctcaacagac aaagttgaca caataatcga gaacaatgtc
+      121 acggtaacta gctcagtgga actagtcgaa acagaacaca ctggatcatt ctgttcaatc
+      181 aatgggaaac aaccaataag ccttggagat tgctccttcg ctgggtggat attggggaat
+      241 ccaatgtgtg atgacctaat tggtaagact tcatggtctt acatcgtgga gaaacccaac
+      301 ccagcaaacg gaatctgtta cccaggaaca ttggagaatg aagaagaact gagattgaaa
+      361 ttcagtggag tcctggaatt caacaaattc gaagcattca catcaaacgg atggggtgct
+      421 gtaaattcag gagcaggagt gactgctgca tgtaagtttg ggagctccaa ttctttcttc
+      481 cgaaacatgg tatggctgat acaccaatca gaaacatacc ctgtaataaa gaggaccttc
+      541 aacaacatca aaggaagaga tgtgttgatt gtttggggaa ttcaccaccc tgccacactg
+      601 aaagagcatc aggacctata caagaaggac agctcctatg tagcagtggg ttcagaaacc
+      661 tacaacagga gattcatacc agaaatcagc actaggccca aagttaatgg acaggctgga
+      721 cggatgacat tttattggac aatagtcaaa ccaggggagt caataacatt tgaatctaat
+      781 ggtgcattcc tggctcctag atatgctttt gagattgtct ctgttggaaa tggaaaacta
+      841 ttcaggagtg aactgaatat tgaatcatgc tctaccaagt gtcaaacaga aataggagga
+      901 attaatacaa acaagagctt tcacagtgtt catagaaaca ctatcggaga ctgtcccaaa
+      961 tatgtgaatg tcaaatcttt aaagcttgcc acgggactca gaaatgtccc agcaatagca
+     1021 tcaagaggct tgtttggagc aatagccggg tttatagaag gtggatggcc tggactgatc
+     1081 aatggatggt acgggtttca acacaggaat gaggaaggaa caggtatagc agcagacaag
+     1141 gagtctactc agagggcgat agaccaaata acgtccaaag taaataatat cgtcgacagg
+     1201 atgaatacaa atttcgagtc tgtgcaacac gaattcagtg aaatagagga gaggataaac
+     1261 caattgtcga aacatgtaga tgattctgtg gttgacattt ggtcatataa tgcacaactc
+     1321 ctcgttctgc ttgaaaatga aaagaccctg gacctccacg attccaatgt cagaaatctc
+     1381 catgagaagg ttaggaggat gctaaaggac aatgccaaag atgaggggaa cggatgtttc
+     1441 accttttacc ataagtgtga taacaaatgc atcgaaaggg ttaggaacgg gacatacaat
+     1501 cacaaagaat tcgaggaaga gtctaaaatc aatcgtcagg agatcgaggg agtgaaatta
+     1561 gactccagtg ggaatgtata taaaatactg tcaatttaca gctgcattgc aagcagtctc
+     1621 gtattggcag cactcatcat gggtttcatc ctatgggcgt gcagtaatgg gtcatgtaga
+     1681 tgtaccattt gcatttagaa ttgg
+//
+

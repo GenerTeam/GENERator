@@ -1,0 +1,63 @@
+LOCUS       LN559124                1164 bp    cRNA    linear   VRL 13-APR-2015
+DEFINITION  Influenza D virus (D/bovine/France/2986/2012) viral cRNA for M1 (M
+            gene).
+ACCESSION   LN559124
+VERSION     LN559124.1
+KEYWORDS    .
+SOURCE      Influenza D virus (D/bovine/France/2986/2012)
+  ORGANISM  Influenza D virus (D/bovine/France/2986/2012)
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Deltainfluenzavirus; Deltainfluenzavirus
+            influenzae.
+REFERENCE   1
+  AUTHORS   Ducatez,M.F. and Meyer,G.
+  TITLE     Bovine Influenza D virus, France, 2011-2014
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 1164)
+  AUTHORS   Ducatez,M.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (02-SEP-2014) INRA, Sante Animale IHAP, 23 Chemin des
+            Capelles, 31076, FRANCE
+FEATURES             Location/Qualifiers
+     source          1..1164
+                     /organism="Influenza D virus (D/bovine/France/2986/2012)"
+                     /mol_type="viral cRNA"
+                     /db_xref="taxon:1542973"
+     gene            1..1164
+                     /gene="M"
+     CDS             1..1164
+                     /gene="M"
+                     /codon_start=1
+                     /product="M1"
+                     /protein_id="CEE50064.1"
+                     /translation="MAQEQLLAELEGYLRGVNPMTRQTIMRSAKGGMDSAKEAAKAAK
+                     KGEMQLTSGESIVVHICLRAMYPGIKPWSEAKKDLDKATEGLSGKDSKNIRKALRKAG
+                     DLTGIKEMMMMYEMREDKKAEMVEQIYDDPEDFTEDVRLGTVAAWLQCKNKRSEKYHH
+                     KMSMSGSTALALGDAQKAGMAIENMASVVPMKKEAQALHKDAEVLIELARIAYGSRAM
+                     EGHLQNAMDGIGSKVSGMANLALKRSVLTLLMLVICGIPTCVNAETVEEFCRKKLNQT
+                     EEKVYVHCFNEDDGRAMTLAALILGCFSMLYILIKAILMLLLTIINGRPNGSWDDLKH
+                     VVKCFSETGSENFARDIMVLESRRDGEETSSPEEGLGPPLSGFNENGVFMETL"
+ORIGIN      
+        1 atggcacaag aacaactact tgctgaactt gagggatacc tcagaggagt taacccaatg
+       61 accaggcaaa caattatgag gtctgcaaaa ggtgggatgg atagcgctaa ggaggcagca
+      121 aaagcagcga agaagggaga gatgcaacta acaagtggag agagcatagt ggtgcacata
+      181 tgcctgagag ccatgtaccc tggaataaag ccatggtcag aagccaaaaa agatcttgat
+      241 aaagctacag aaggactgag tggaaaagac agcaaaaaca taagaaaagc tttgaggaag
+      301 gcaggagacc tgacaggaat aaaggagatg atgatgatgt atgaaatgag ggaagacaaa
+      361 aaagcagaaa tggtagagca aatctacgat gatccagagg attttacaga agatgtaagg
+      421 cttgggaccg ttgctgcctg gcttcaatgc aaaaacaaga ggagcgagaa atatcatcac
+      481 aagatgtcaa tgtctggaag cactgcactt gccttgggag atgctcaaaa ggccggaatg
+      541 gccatagaaa atatggctag tgtcgtgcca atgaaaaaag aggcccaggc actgcacaaa
+      601 gacgcagaag ttttgattga actggcaagg atagcatatg ggtcgagagc aatggaaggg
+      661 cacctgcaaa atgcaatgga cggaattgga agcaaagtca gtggaatggc taatcttgcc
+      721 ctaaaaaggt cagttcttac tttattaatg ttggtaattt gtgggatacc cacttgtgta
+      781 aatgctgaaa ctgtggaaga attttgtaga aagaaactaa atcagacgga agaaaaggtt
+      841 tatgtccatt gtttcaatga ggatgatggt cgggcaatga ctttagctgc tttgatactt
+      901 ggatgcttta gtatgcttta cattttaata aaggcaatac tgatgctttt gttgacaatc
+      961 ataaatggaa gaccaaatgg aagttgggat gacttgaaac atgttgtaaa atgtttttca
+     1021 gagactggaa gtgagaactt cgccagggat ataatggtcc tggaatccag gcgagatggg
+     1081 gaggagacaa gctccccaga ggaggggctg ggccctccat tgagtggatt caatgaaaat
+     1141 ggtgtattca tggaaacatt ataa
+//
+

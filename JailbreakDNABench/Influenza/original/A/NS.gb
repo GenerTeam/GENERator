@@ -1,0 +1,73 @@
+LOCUS       DQ864707                 849 bp    cRNA    linear   VRL 15-MAY-2015
+DEFINITION  Influenza A virus (A/duck/Novosibirsk/02/05(H5N1)) nonstructural
+            protein 2 (NS) and nonstructural protein 1 (NS) genes, complete
+            cds.
+ACCESSION   DQ864707
+VERSION     DQ864707.1
+KEYWORDS    .
+SOURCE      Influenza A virus (A/duck/Novosibirsk/02/05(H5N1))
+  ORGANISM  Influenza A virus (A/duck/Novosibirsk/02/05(H5N1))
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Alphainfluenzavirus; Alphainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 849)
+  AUTHORS   Scherbakova,L.O., Pchelkina,I.P., Andriyasov,A.V., Kolosov,S.N.,
+            Manin,T.B., Drygin,V.V. and Gruzdev,K.N.
+  TITLE     Complete genome sequence of avian influenza virus H5N1 isolate from
+            Russia
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 849)
+  AUTHORS   Scherbakova,L.O., Pchelkina,I.P., Andriyasov,A.V., Kolosov,S.N.,
+            Manin,T.B., Drygin,V.V. and Gruzdev,K.N.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (20-JUL-2006) Laboratory for Diagnosis of Avian Diseases,
+            Federal Centre for Animal Health (FGI ARRIAH), Yur'evets, Vladimir
+            600901, Russia
+FEATURES             Location/Qualifiers
+     source          1..849
+                     /organism="Influenza A virus
+                     (A/duck/Novosibirsk/02/05(H5N1))"
+                     /mol_type="viral cRNA"
+                     /strain="A/Novosibirsk/02/05"
+                     /serotype="H5N1"
+                     /db_xref="taxon:397458"
+                     /geo_loc_name="Russia"
+     gene            27..849
+                     /gene="NS"
+     CDS             join(27..56,514..849)
+                     /gene="NS"
+                     /codon_start=1
+                     /product="nonstructural protein 2"
+                     /protein_id="ABH85390.1"
+                     /translation="MDSNTVSSFQDILMRMSKMQLASSSEDLNGMITQFESLKLYRDS
+                     LGEALMRMGDFHSLQIRNGKWREQLSQKFEEIRWLIEEIRHRLKITENSFEQITFMQA
+                     LQLLLEVEQEIRTFSFQLI"
+     CDS             27..704
+                     /gene="NS"
+                     /codon_start=1
+                     /product="nonstructural protein 1"
+                     /protein_id="ABH85389.1"
+                     /translation="MDSNTVSSFQVDCFLWHVRKRFADQELGDAPFLDRLRRDQKSLR
+                     GRGNTLGLDIETATRAGKQIVERILEEESDEALKMPASRYLTDMTLEEMSRDWFMLMP
+                     KQKVTGSLCIKMDQAIMDKTIILKANFSVIYDRLETLILLRAFTEEGAIVGEISPLPS
+                     LPGHTNEDVKNAIGVLIGGLEWNDNTVRVSEIIQRFAWRSIDEDGRLPLPPDQKRKMA
+                     RTIESKV"
+ORIGIN      
+        1 agcaaaagca gggtgacaaa aacataatgg attccaacac tgtgtcaagc tttcaggtag
+       61 actgctttct ttggcatgtc cgcaaacgat ttgcagacca agaactgggt gatgccccat
+      121 tccttgaccg gcttcgccga gatcagaagt ccctaagagg aagaggcaac actcttggtc
+      181 tggacatcga aacagctact cgtgcgggaa agcagatagt ggagcgaatt ctggaggagg
+      241 agtctgatga ggcacttaaa atgccagctt cacgctacct aactgatatg actctcgagg
+      301 aaatgtcaag ggactggttc atgctcatgc ccaagcagaa agtgacaggt tccctttgca
+      361 tcaaaatgga ccaggcaata atggataaaa ccatcatatt gaaagcaaac ttcagtgtga
+      421 tttatgaccg gttagagacc ctaatactac ttagagcttt cacagaagaa ggagcaatcg
+      481 tgggagaaat ctcaccatta ccttctcttc caggacatac taatgaggat gtcaaaaatg
+      541 caattggcgt cctcatcgga ggacttgaat ggaatgataa cacagttcga gtctctgaaa
+      601 ttatacagag attcgcttgg agaagcattg atgaggatgg gagacttcca ctccctccag
+      661 atcagaaacg gaaaatggcg agaacaattg agtcaaaagt ttgaagaaat aaggtggctg
+      721 attgaagaaa tacgacatag attgaaaatt acagaaaaca gcttcgaaca gataacgttt
+      781 atgcaagcct tacaactact gcttgaagtg gagcaagaga taagaacctt ctcgtttcag
+      841 cttatttaa
+//
+

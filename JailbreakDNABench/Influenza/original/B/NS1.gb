@@ -1,0 +1,84 @@
+LOCUS       OL423267                1101 bp    cRNA    linear   VRL 14-NOV-2021
+DEFINITION  Influenza B virus (B/France/IHUMI_InfluenzaB_genome_45206_8/2021)
+            segment 8 nuclear export protein (NEP) and nonstructural protein 1
+            (NS1) genes, complete cds.
+ACCESSION   OL423267
+VERSION     OL423267.1
+KEYWORDS    .
+SOURCE      Influenza B virus
+  ORGANISM  Influenza B virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Betainfluenzavirus; Betainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 1101)
+  AUTHORS   Colson,P. and La Scola,B.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (09-NOV-2021) IHU Mediterranee Infection, IHU
+            Mediterranee Infection, 19-21 boulevard Jean Moulin, Marseille
+            13005, France
+COMMENT     ##Assembly-Data-START##
+            Assembly Method       :: CLC Genomics v. 7
+            Sequencing Technology :: Illumina
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..1101
+                     /organism="Influenza B virus"
+                     /mol_type="viral cRNA"
+                     /strain="B/France/IHUMI_InfluenzaB_genome_45206_8/2021"
+                     /isolate="IHUMI_InfluenzaB_genome_45206_8"
+                     /isolation_source="nasopharyngeal swab"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11520"
+                     /segment="8"
+                     /geo_loc_name="France"
+                     /collection_date="Aug-2021"
+                     /note="City: Marseille"
+     gene            45..1071
+                     /gene="NEP"
+                     /gene_synonym="NS2"
+     CDS             join(45..80,736..1071)
+                     /gene="NEP"
+                     /gene_synonym="NS2"
+                     /note="nonstructural protein 2"
+                     /codon_start=1
+                     /product="nuclear export protein"
+                     /protein_id="UEM45875.1"
+                     /translation="MANNNMTTTQIEWRMKKMAIGSSTHSSSVSMKDIQSQFEQLKLR
+                     WESYPNLVKSTDYHQKRETIRLVTKELYLLSKRIDDNILFHKTVIANSPIIADMVVSL
+                     SLLETLYEMKDVVEVYSRQCL"
+     gene            45..893
+                     /gene="NS1"
+     CDS             45..893
+                     /gene="NS1"
+                     /codon_start=1
+                     /product="nonstructural protein 1"
+                     /protein_id="UEM45874.1"
+                     /translation="MANNNMTTTQIEVGPGATNATINFEAGILECYERLSWQRALDYP
+                     GQDRLNRLKRKLESRIKTHNKSEPESKRMSLEERKAIGVKMMKVLLFMNPSAGIEGFE
+                     PYCMNSFSNSNCTKYNWTDYPSTPERCFDDIEEEPEDVDGPTEIVLRDMNNKDARQKI
+                     KEEVNTQKEGKFRLTIKRDMRNVLSLRVLVNGTFLKHPNGYKSLSTLHRLNAYDQSGR
+                     LVAKLVATDDLTVEDEEDGHRILNSLFERLNEGHSKPIRAAETAVGVLSQFGQEHRLS
+                     PEEGDN"
+ORIGIN      
+        1 cgcagaagca gaggatttgt ttagtcactg gcaaacagag aaaaatggcg aacaacaaca
+       61 tgaccacaac acaaattgag gtgggtccgg gagcaaccaa tgccaccata aactttgaag
+      121 caggaattct ggagtgctat gaaaggcttt catggcaaag agcccttgac taccccggtc
+      181 aagaccgcct aaacagacta aaaagaaaat tagagtcaag aataaagact cacaacaaaa
+      241 gtgagcctga aagtaaaagg atgtcccttg aagagagaaa agcaattgga gtaaaaatga
+      301 tgaaagtact cctatttatg aatccgtctg ctggaattga agggtttgag ccatactgta
+      361 tgaacagttt ctcaaatagc aactgtacga aatacaattg gaccgattac ccttcaacac
+      421 cagagaggtg ctttgatgac atagaggaag aaccagagga tgttgatggc ccaactgaaa
+      481 tagtattaag ggacatgaac aacaaagatg caaggcaaaa gataaaggag gaagtaaaca
+      541 ctcagaaaga agggaagttc cgtttgacaa taaaaaggga tatgcgtaat gtattgtcct
+      601 tgagagtgtt ggtaaatgga acattcctca aacaccccaa tggatacaag tccttatcaa
+      661 ctctgcatag attgaatgca tatgaccaga gtggaaggct tgttgctaaa cttgttgcca
+      721 ctgatgatct tacagtggag gatgaagaag atggccatcg gatcctcaac tcactcttcg
+      781 agcgtctcaa tgaaggacat tcaaagccaa ttcgagcagc tgaaactgcg gtgggagtct
+      841 tatcccaatt tggtcaagag caccgattat caccagaaga gggagacaat tagattggtc
+      901 acgaaagaac tttatctttt aagtaaaaga attgatgata acatactatt ccacaaaaca
+      961 gtgatagcta acagccccat aatagctgac atggttgtat cattatcatt attagaaaca
+     1021 ttgtatgaaa tgaaggatgt ggttgaagtg tacagcaggc agtgcttgtg aatttaaaat
+     1081 aaaaatcctc ttgttactac t
+//
+

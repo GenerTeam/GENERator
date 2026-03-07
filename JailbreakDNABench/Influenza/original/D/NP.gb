@@ -1,0 +1,87 @@
+LOCUS       OR685130                1765 bp    cRNA    linear   VRL 27-DEC-2024
+DEFINITION  Influenza D virus (D/bovine/CHN/JY3002/2022) segment 5
+            nucleoprotein (NP) gene, complete cds.
+ACCESSION   OR685130
+VERSION     OR685130.1
+KEYWORDS    .
+SOURCE      Influenza D virus
+  ORGANISM  Influenza D virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Deltainfluenzavirus; Deltainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 1765)
+  AUTHORS   Yu,J., Wen,Z., Chen,M., Hu,W., Liu,S., Zhai,S.-L., Wei,W.-K., Li,T.
+            and Liao,M.
+  TITLE     Influenza D Virus Infection in China, 2022-2023
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 1765)
+  AUTHORS   Yu,J., Wen,Z., Chen,M., Hu,W., Liu,S., Zhai,S.-L., Wei,W.-K., Li,T.
+            and Liao,M.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (16-OCT-2023) Agro-biological Gene Research Center,
+            Guangdong Academy of Agricultural Sciences, 20 Jinying West Road,
+            Wushan Street, Tianhe District, Guangzhou, Guangdong 510640, China
+COMMENT     ##Assembly-Data-START##
+            Sequencing Technology :: Sanger dideoxy sequencing
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..1765
+                     /organism="Influenza D virus"
+                     /mol_type="viral cRNA"
+                     /strain="D/bovine/CHN/JY3002/2022"
+                     /host="bovine"
+                     /db_xref="taxon:1511084"
+                     /segment="5"
+                     /geo_loc_name="China"
+                     /collection_date="20-Oct-2022"
+     gene            27..1685
+                     /gene="NP"
+     CDS             27..1685
+                     /gene="NP"
+                     /codon_start=1
+                     /product="nucleoprotein"
+                     /protein_id="WWZ68801.1"
+                     /translation="MDSTKVQTPEEQRAKNAKTILENIQIYERMCDLFGVSEDDKLII
+                     ENSISIERMIRVVTDKKYQEKKLKNAGSDLEKIANTGKVFCRLVESTAGKCSARLGMA
+                     LKPNVEAVLTDVLGNDLDRAAVLGKRMGFTAMFKSNLEEVLYQRGKNQLKKRNAAETF
+                     TLSQGASLEARFRPIMEKHLGVGTVVASIKNILASKKNGNYKNKMVRKPGGDRESWTP
+                     LEREISFLNKKLFPGPMRQLCKKFEYLNDQEKQLALNLMLDASLILKPQVTHKMIMPW
+                     SMWLAVKKYAEINKGSPSLEDLAAYSGVRAFMAFNTACYMSKFTIGKGIVGDAEIMEN
+                     GNDKMQTLAMACFGLAYEDTGIVAAMISQPMKKRYQLKVGNFNPPEEGTIKGTSAGYF
+                     HKWAEFGNRLPFNSSGTGESKQISNSGVFAVQRPSTTNIQRLAELMARNTGETNDNFT
+                     QLVQKIREQVGTFADQKASLREFTGGYIYDITDVTKSNPKIPQLGGNSFFFEFTGSDV
+                     PRTGAKRRVGEADDATPGTSQPKKRGRQGAGAESSMDIETVDED"
+ORIGIN      
+        1 gcataagcag gagattattg agcaatatgg actcaacaaa agtccaaacg cctgaagagc
+       61 aaagagcaaa gaatgccaaa accatccttg agaacataca gatatatgaa aggatgtgtg
+      121 atctttttgg ggtgtcagaa gatgacaaac tgataattga gaacagtatt tcaattgaga
+      181 gaatgataag agttgtaacg gataagaaat atcaagaaaa gaaactaaag aatgctggga
+      241 gtgatcttga aaagattgca aatacaggaa aagttttctg ccgattggta gagtcaacag
+      301 ctggaaaatg tagtgcaaga ctgggaatgg cactgaaacc caacgttgag gcagtcttga
+      361 ccgatgtact cggaaatgac ctggataggg ctgctgtgct tgggaaaagg atggggttca
+      421 cagcaatgtt caaatcaaac ctggaagagg ttctgtacca aagagggaaa aatcagctta
+      481 aaaagagaaa tgctgcagaa actttcactc tttcacaagg tgcttcgcta gaagcaagat
+      541 ttaggccaat aatggaaaaa cacctaggtg ttgggactgt tgtggcgtct ataaagaata
+      601 tcctagcaag caaaaagaat gggaactaca agaacaagat ggtgaggaaa cctggaggag
+      661 acagagagag ctggacacca ttggagagag aaatatcctt tctgaacaag aagttgtttc
+      721 ccggaccaat gaggcagctc tgcaagaaat tcgaatactt gaacgaccaa gagaagcaac
+      781 tggccttaaa cctcatgctg gatgcaagtc tcatcctgaa gccacaagtg actcacaaaa
+      841 tgataatgcc ttggtcaatg tggctggctg tgaagaaata tgcagaaata aacaagggat
+      901 cacccagtct tgaagatcta gcagcttatt ctggagtaag agcctttatg gctttcaata
+      961 cagcttgcta catgagtaaa ttcaccattg ggaagggaat tgtgggagat gcagaaatca
+     1021 tggaaaatgg aaacgacaag atgcaaactc tcgcaatggc ttgttttgga ctggcgtatg
+     1081 aggacaccgg aattgttgct gcaatgatct cccaacccat gaagaaaaga tatcagttga
+     1141 aagtggggaa cttcaatcct ccagaagaag gaacaataaa aggaacaagt gccggctatt
+     1201 tccacaagtg ggctgaattt ggaaacaggc tgcctttcaa cagttctgga accggtgaat
+     1261 ccaaacaaat aagcaactca ggagtgtttg cagtgcagag gcccagtact actaatattc
+     1321 aaagactggc agagctaatg gctaggaaca ccggagaaac taatgacaac ttcactcagc
+     1381 tggtccagaa aataagagaa caagtgggga cctttgctga ccaaaaagca agtcttcgag
+     1441 agttcactgg aggatacatt tatgatatta ctgacgtaac aaagagcaac cccaagatac
+     1501 cccagttggg tgggaactct ttcttctttg agttcactgg aagtgacgtt ccaagaactg
+     1561 gagccaaaag aagagtagga gaggctgatg atgcaacccc tggaacttcc cagcccaaga
+     1621 aaagaggaag gcaaggtgcc ggagcagaat caagtatgga tattgaaaca gttgatgaag
+     1681 attaaatcat ctttgaatgg ttctgttgca gtccccagtg ggtgttaaag gtgttggttt
+     1741 gtctcattta acaaaaaatc tcctt
+//
+

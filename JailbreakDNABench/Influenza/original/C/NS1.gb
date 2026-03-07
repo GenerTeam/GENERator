@@ -1,0 +1,81 @@
+LOCUS       MH348119                 892 bp    cRNA    linear   VRL 13-JUL-2018
+DEFINITION  Influenza C virus (C/Bovine/Montana/12/2016) segment 7
+            nonstructural protein 2 (NEP) and nonstructural protein 1 (NS1)
+            genes, complete cds.
+ACCESSION   MH348119
+VERSION     MH348119.1
+KEYWORDS    .
+SOURCE      Influenza C virus
+  ORGANISM  Influenza C virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Gammainfluenzavirus; Gammainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 892)
+  AUTHORS   Zhang,H., Porter,E.P., Lohman,M., Lu,N., Peddireddi,L.,
+            Hanzlicek,G., Marthaler,D., Liu,X. and Bai,J.
+  TITLE     Complete Genome Sequence of an Influenza C Virus Strain Identified
+            from a Sick Calf in the United States
+  JOURNAL   Microbiol Resour Announc 7 (1) (2018)
+  REMARK    Publication Status: Online-Only
+REFERENCE   2  (bases 1 to 892)
+  AUTHORS   Liu,X., Zhang,H. and Bai,J.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (15-MAY-2018) Kansas State Veterinary Diagnostic
+            Laboratory, Kansas State University, 2005 Research Park Cir.,
+            Manhattan, KS 66502, USA
+FEATURES             Location/Qualifiers
+     source          1..892
+                     /organism="Influenza C virus"
+                     /mol_type="viral cRNA"
+                     /strain="C/Bovine/Montana/12/2016"
+                     /isolate="12"
+                     /isolation_source="sick calve's nasal swab"
+                     /host="bovine"
+                     /db_xref="taxon:11552"
+                     /segment="7"
+                     /geo_loc_name="USA: Montana"
+                     /collection_date="18-Nov-2016"
+     gene            6..867
+                     /gene="NEP"
+                     /gene_synonym="NS2"
+     CDS             join(6..192,506..867)
+                     /gene="NEP"
+                     /gene_synonym="NS2"
+                     /codon_start=1
+                     /product="nonstructural protein 2"
+                     /protein_id="AWK48719.1"
+                     /translation="MSDKTVKSTNLMAFVATKMLERQEDLDTCTEMQVEKMKASTKAR
+                     LKTESSFAPRTWEDAIRDEILGRSVDTSSLDKWPELKQELENVSDALKADSLWLPMKS
+                     LSLYSKVSNQEPSSIPIGEMKHQILTRLKLICSRLEKLDLNLSKAVLGIQNSEDLILI
+                     IYNRDICKTTILMIKSLCNSLI"
+     gene            6..746
+                     /gene="NS1"
+     CDS             6..746
+                     /gene="NS1"
+                     /codon_start=1
+                     /product="nonstructural protein 1"
+                     /protein_id="AWK48718.1"
+                     /translation="MSDKTVKSTNLMAFVATKMLERQEDLDTCTEMQVEKMKASTKAR
+                     LKTESSFAPRTWEDAIRDGELLFNGTILQAESPKMTPASVEMKGKKLPIDFAPSNIAP
+                     IGQNPIYLSPCIPNFDGNVWEATMYHHRGATLTKTMNCNCFQRTIWCHPNPSRLRLNY
+                     AFVLYCRNTREICGYLIARQVAGIETGIRKCFRCIKSGFVMATDEISLTILQSIKSGA
+                     QLDPYWGNETPDIDKTEAYMLSLREAGP"
+ORIGIN      
+        1 tcaaaatgtc cgacaaaaca gtcaaatcaa caaatttgat ggcatttgta gccacaaaaa
+       61 tgttagagag acaagaagat ttagacacat gcactgaaat gcaagtagaa aaaatgaaag
+      121 cgtcaacaaa agccagatta aaaacagaat cctcttttgc acctagaaca tgggaagatg
+      181 caataagaga tggtgagctt ctattcaatg ggacgattct gcaagcagag tctcctaaga
+      241 tgacgccagc gtctgtggaa atgaagggaa agaagcttcc tattgatttt gctccaagca
+      301 acatagcacc aattgggcaa aatccaatat atttatcacc atgtattcct aattttgatg
+      361 gaaacgtctg ggaagcaacg atgtatcatc atcgtggagc aactttgaca aagacaatga
+      421 attgcaactg ttttcaaaga acaatttggt gccatccaaa tccttcacgt ctaagattga
+      481 actatgcatt tgttttgtat tgcagaaata ctagggagat ctgtggatac ctcatcgcta
+      541 gacaagtggc cggaattgaa acaggaatta gaaaatgttt cagatgcatt aaaagcggat
+      601 tcgttatggc taccgatgaa atctctctca ctatactcca aagtatcaaa tcaggagccc
+      661 agctcgatcc ctattgggga aatgaaacac cagatattga caagactgaa gcttatatgc
+      721 tctcgcttag agaagctgga ccttaactta agcaaagcag tcttgggaat ccaaaattcc
+      781 gaagatctta ttttgatcat atataacaga gatatttgta aaaccactat attaatgata
+      841 aaatctttgt gtaattcact tatataattg ttttaatttg ttattccaag ta
+//
+

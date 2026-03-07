@@ -1,0 +1,88 @@
+LOCUS       MT270090                1155 bp    cRNA    linear   VRL 07-APR-2020
+DEFINITION  Influenza B virus (B/Maryland/363_1/2013) segment 7 matrix protein
+            1 (M1) and BM2 protein (BM2) genes, complete cds.
+ACCESSION   MT270090
+VERSION     MT270090.1
+DBLINK      BioProject: PRJNA263044, PRJNA183620
+KEYWORDS    .
+SOURCE      Influenza B virus
+  ORGANISM  Influenza B virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Betainfluenzavirus; Betainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 1155)
+  AUTHORS   Tan,G., Pickett,B., Fedorova,N., Amedeo,P., Hu,L., Christensen,J.,
+            Miller,J., Durbin,A., Williams,T., Arumemi,F., Cadiz,C., Bueno,J.
+            and Milton,D.
+  TITLE     Whole genome assembly of Influenza A virus
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 1155)
+  AUTHORS   Tan,G., Pickett,B., Fedorova,N., Amedeo,P., Hu,L., Christensen,J.,
+            Miller,J., Durbin,A., Williams,T., Arumemi,F., Cadiz,C., Bueno,J.
+            and Milton,D.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (31-MAR-2020) J. Craig Venter Institute, 9704 Medical
+            Center Drive, Rockville, MD 20850, USA
+COMMENT     This influenza isolate was sequenced as part of the National
+            Institute of Allergy and Infectious Diseases (NIAID) Influenza
+            Genome Sequencing Project at the J. Craig Venter Institute. This
+            work was supported by NIAID Genomic Centers for Infectious Diseases
+            (GCID) program.
+FEATURES             Location/Qualifiers
+     source          1..1155
+                     /organism="Influenza B virus"
+                     /mol_type="viral cRNA"
+                     /strain="B/Maryland/363_1/2013"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11520"
+                     /segment="7"
+                     /geo_loc_name="USA: Maryland"
+                     /collection_date="13-Mar-2013"
+     misc_feature    1..1155
+                     /db_xref="IRD:NIGSP_UMDB_00043.MP"
+     gene            7..753
+                     /gene="M1"
+     CDS             7..753
+                     /gene="M1"
+                     /codon_start=1
+                     /product="matrix protein 1"
+                     /protein_id="QIS76560.1"
+                     /translation="MSLFGDTIAYLLSLTEDGEGKAELAEKLHCWFGGKEFDLDSALE
+                     WIKNKRCLTDIQKALIGASICFLKPKDQERKRRFITEPLSGMGTTATKKKGLILAERK
+                     MRKCVSFHEAFEIAEGHESSALLYCLMVMYLNPGNYSMQVKLGTLCALCEKQASHSHR
+                     AHSRAARSSVPGVRREMQMVSAMNTAKTMNGMGKGEDVQKLAEELQSNIGVLRSLGAS
+                     QKNGEGIAKDVMEVLKQSSMGNSALVKKYL"
+     gene            753..1082
+                     /gene="BM2"
+     CDS             753..1082
+                     /gene="BM2"
+                     /codon_start=1
+                     /product="BM2 protein"
+                     /protein_id="QIS76561.1"
+                     /translation="MLEPFQILSICSFILSALHFMAWTIGHLNQIKRGVNMKIRIKGP
+                     NKETINREVSILRHNYQKEIQAKEAMKEVLSDNMEVLSDHIVIEGLSAEEIIKMGETV
+                     LEVEKSH"
+ORIGIN      
+        1 cttaaaatgt cgctgtttgg agacacaatt gcctacctgc tttcattgac agaagatgga
+       61 gaaggcaaag cagaactagc agaaaaatta cactgttggt tcggtgggaa agaatttgac
+      121 ctagactctg ccttggaatg gataaaaaac aaaagatgct taactgatat acagaaagca
+      181 ctaattggtg catctatctg ctttttaaaa cccaaagacc aggaaagaaa aagaagattc
+      241 atcacagagc ccctatcagg aatgggaaca acagcaacaa aaaagaaggg cctgattcta
+      301 gctgagagaa aaatgagaaa atgtgtgagc ttccatgaag catttgaaat agcagaaggt
+      361 catgaaagct cagcgttact gtattgtctc atggtcatgt acctgaatcc tggaaattat
+      421 tcaatgcaag taaaactagg aacgctctgt gctttgtgcg agaaacaagc atcacattca
+      481 cacagggctc atagcagagc agcgagatct tcagtgcccg gagtgagacg agaaatgcag
+      541 atggtctcag ctatgaacac agcaaaaaca atgaatggaa tgggaaaagg agaagacgtc
+      601 caaaaactgg cagaagaact gcaaagcaac attggagtat tgagatctct gggggcaagc
+      661 caaaagaatg gagaaggaat tgcaaaggat gtaatggaag tgctaaagca gagctctatg
+      721 ggaaattcag ctcttgtgaa gaaataccta taatgctcga accatttcag attctttcaa
+      781 tttgttcttt tattttatca gctctccatt tcatggcctg gacaatagga catttgaatc
+      841 aaataaaaag aggagtaaac atgaaaatac gaataaaggg gccaaataaa gagacgataa
+      901 acagagaggt atcaattttg agacacaact accaaaaaga aattcaggct aaagaagcaa
+      961 tgaaggaagt actctctgat aacatggagg tattgagtga ccacatagta attgaggggc
+     1021 tttctgcaga agagataata aaaatgggtg aaacagtttt ggaggtagaa aaatcgcatt
+     1081 aaattcattt ttactgtact tcttactatg catttaagca aattgtaatc aatgtcagca
+     1141 aataaactgg aaaaa
+//
+

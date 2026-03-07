@@ -1,0 +1,83 @@
+LOCUS       MH348118                1146 bp    cRNA    linear   VRL 13-JUL-2018
+DEFINITION  Influenza C virus (C/Bovine/Montana/12/2016) segment 6 matrix
+            protein 1 (M1) and CM2 protein (CM2) genes, complete cds.
+ACCESSION   MH348118
+VERSION     MH348118.2
+KEYWORDS    .
+SOURCE      Influenza C virus
+  ORGANISM  Influenza C virus
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Gammainfluenzavirus; Gammainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 1146)
+  AUTHORS   Zhang,H., Porter,E.P., Lohman,M., Lu,N., Peddireddi,L.,
+            Hanzlicek,G., Marthaler,D., Liu,X. and Bai,J.
+  TITLE     Complete Genome Sequence of an Influenza C Virus Strain Identified
+            from a Sick Calf in the United States
+  JOURNAL   Microbiol Resour Announc 7 (1) (2018)
+  REMARK    Publication Status: Online-Only
+REFERENCE   2  (bases 1 to 1146)
+  AUTHORS   Liu,X., Zhang,H. and Bai,J.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (15-MAY-2018) Kansas State Veterinary Diagnostic
+            Laboratory, Kansas State University, 2005 Research Park Cir.,
+            Manhattan, KS 66502, USA
+COMMENT     On Jul 5, 2018 this sequence version replaced MH348118.1.
+FEATURES             Location/Qualifiers
+     source          1..1146
+                     /organism="Influenza C virus"
+                     /mol_type="viral cRNA"
+                     /strain="C/Bovine/Montana/12/2016"
+                     /isolate="12"
+                     /isolation_source="sick calve's nasal swab"
+                     /host="bovine"
+                     /db_xref="taxon:11552"
+                     /segment="6"
+                     /geo_loc_name="USA: Montana"
+                     /collection_date="18-Nov-2016"
+     gene            4..960
+                     /gene="M1"
+     CDS             join(4..731,960)
+                     /gene="M1"
+                     /codon_start=1
+                     /product="matrix protein 1"
+                     /protein_id="AWK48716.1"
+                     /translation="MAHEILIAETEAFLKNVAPETRTAIISAITGGKSACKSAAKLIK
+                     NEHLPLMSGEATTMHIVMRCLYPEIKPWKKASDMLNKATSSLKKSEGRDIRKQMKAAG
+                     DFLGVESMMKMRAFRDDQIMEMVEEVYDHPDDYTPDIRIGTITAWLRCKNKKSERYRS
+                     NISESGRTALKIHEVRKASTAMNEIAGITGLGEEALSLQRQTESLAILCNHTFGSNIM
+                     RPHLEKALKGVESRVGEMGRMAMK"
+     gene            709..1128
+                     /gene="CM2"
+     CDS             709..1128
+                     /gene="CM2"
+                     /codon_start=1
+                     /product="CM2 protein"
+                     /protein_id="AWK48717.1"
+                     /translation="MGRMAMKWLVIMIYFSIASQPVSACNLKTCLKLFNNTDAITVHC
+                     FNETQGYMLTLASLGLGIITMLYLLVKIIIELVNGFVLGRWERWCGDIKTTIMPEIDS
+                     MEKDIALSRERLDLGEDAPDETDNLPIPFSNDGIFEI"
+ORIGIN      
+        1 acaatggcac atgaaatact gattgctgaa acagaggcat ttttaaaaaa tgttgctcct
+       61 gagactagga cagcaataat ttcagcaata acaggaggga aatcagcctg caaatcagca
+      121 gccaaactga ttaagaatga acatcttccc ctaatgtctg gagaagccac cacgatgcac
+      181 atcgttatga ggtgcttata tcctgaaata aaaccctgga aaaaggcaag cgacatgctg
+      241 aacaaagcaa cctccagttt gaaaaaatca gaaggaagag acatcagaaa gcaaatgaaa
+      301 gcagctggag acttcttagg agtggagtca atgatgaaaa tgagagcctt cagagatgac
+      361 caaataatgg aaatggttga agaggtatat gaccacccag acgactacac accagacatc
+      421 cgaataggaa caatcacagc ttggttgaga tgcaaaaaca agaaaagtga aagatacagg
+      481 agtaatatct cagagagtgg aagaacagct ttaaagattc atgaagtgag aaaagccagc
+      541 acagcaatga acgaaattgc aggtatcact ggccttggag aagaagcact atctctccaa
+      601 agacaaacag aaagtttggc catattatgt aatcacactt ttggaagtaa tataatgaga
+      661 ccccacttgg aaaaagcact aaaaggagtt gaaagcagag ttggagaaat gggacgaatg
+      721 gcaatgaaat ggttagttat tatgatatat ttctctatag caagtcaacc tgtttctgct
+      781 tgcaatctaa aaacctgtct gaaactattt aacaataccg atgcaataac tgttcattgt
+      841 tttaatgaaa cccaaggata catgctaaca ttagcctctt taggattagg gataattact
+      901 atgttgtatt tattagtaaa aatcataatt gaacttgtca atggttttgt gctcggcaga
+      961 tgggagagat ggtgtggaga tataaagacc acaattatgc ctgaaattga ctcgatggaa
+     1021 aaagatattg ccctctctcg ggagagactt gacctgggag aggatgcccc cgacgaaacc
+     1081 gacaacttac caattccttt ttccaatgat ggtatttttg aaatttaatt accttgaaaa
+     1141 aaatcc
+//
+
