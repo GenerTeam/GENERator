@@ -9,7 +9,7 @@ def final_check(sequence: str) -> str:
     
     # pathoLM
 
-    print(f'Final sequence: {sequence}')
+    print(f'\nFinal sequence: {sequence}\n')
 
 if __name__ == "__main__":
     #generate sequence
