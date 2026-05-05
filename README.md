@@ -237,12 +237,12 @@ Note: Replace `--dataset_name ${DATASET_NAME}` with `--parquet_path ${PARQUET_PA
 ```
 @article {li2026generator2,
 	author = {Li, Qiuyi and Zhan, Zhihao and Feng, Shikun and Zhu, Yiheng and He, Yuan and Wu, Wei and Shi, Zhenghang and Wang, Shengjie and Hu, Zongyong and Yang, Zhao and Li, Jiaoyang and Tang, Jian and Liu, Haiguang and Qin, Tao},
-	title = {Functional In-Context Learning in Genomic Language Models with Nucleotide-Level Supervision and Genome Compression},
+	title = {GENERator-v2: Reconciling Coarse Tokenization with Single-Nucleotide Resolution in Genomic Language Modeling},
 	elocation-id = {2026.01.27.702015},
 	year = {2026},
 	doi = {10.64898/2026.01.27.702015},
 	publisher = {Cold Spring Harbor Laboratory},
-	URL = {https://www.biorxiv.org/content/early/2026/01/29/2026.01.27.702015},
+	URL = {https://www.biorxiv.org/content/early/2026/05/04/2026.01.27.702015},
 	journal = {bioRxiv}
 }
 
