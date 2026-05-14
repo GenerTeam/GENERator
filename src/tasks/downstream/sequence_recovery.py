@@ -92,13 +92,14 @@ def process_data_shard(shard_id, sequences_data, args, dtype):
     
     # Load model and tokenizer
     tokenizer = AutoTokenizer.from_pretrained(args.model_path, trust_remote_code=True)
+    tokenizer.padding_side = "left"
+    
     model = AutoModelForCausalLM.from_pretrained(
         args.model_path, 
         trust_remote_code=True,
         dtype=dtype
     ).to(device)
-    
-    tokenizer.padding_side = "left"
+    model.setup_tokenizer(tokenizer)
     
     # Set up logits processor
     special_token_ids = tokenizer.convert_tokens_to_ids(tokenizer.special_tokens)
