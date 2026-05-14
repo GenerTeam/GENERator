@@ -138,7 +138,7 @@ def process_data_shard(shard_id, sequences_data, args, dtype):
             
             # Generate
             with torch.inference_mode():
-                outputs = model.generate(
+                outputs = model.generate_bp(
                     **inputs, 
                     max_new_tokens=args.gen_len, 
                     pad_token_id=tokenizer.pad_token_id, 
