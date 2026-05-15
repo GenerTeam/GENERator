@@ -99,7 +99,6 @@ def process_data_shard(shard_id, sequences_data, args, dtype):
         trust_remote_code=True,
         dtype=dtype
     ).to(device)
-    model.setup_tokenizer(tokenizer)
     
     # Set up logits processor
     special_token_ids = tokenizer.convert_tokens_to_ids(tokenizer.special_tokens)
@@ -138,7 +137,7 @@ def process_data_shard(shard_id, sequences_data, args, dtype):
             
             # Generate
             with torch.inference_mode():
-                outputs = model.generate_bp(
+                outputs = model.generate(
                     **inputs, 
                     max_new_tokens=args.gen_len, 
                     pad_token_id=tokenizer.pad_token_id, 
