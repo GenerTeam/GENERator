@@ -65,8 +65,6 @@ class BPTrainer(Trainer):
             total_loss = torch.tensor(0.0, device=device)
         else:
             total_loss = (bp_loss * bp_count + token_loss * special_count) / total
-        
-        total_loss = total_loss / self.args.gradient_accumulation_steps
 
         if self.bp_loss_only:
             return (bp_loss, logits) if return_outputs else bp_loss
