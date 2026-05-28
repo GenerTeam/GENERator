@@ -14,6 +14,7 @@ class BPTrainer(Trainer):
         self._special_ids = None
         self._nucleotide_indices = None        # [V, k]  long
         self._nucleotide_map = {'A': 0, 'T': 1, 'C': 2, 'G': 3}
+        self.model_accepts_loss_kwargs = False
 
     # ------------------ Entry point ------------------
     def compute_loss(self, model, inputs, return_outputs=False, num_items_in_batch=None):
