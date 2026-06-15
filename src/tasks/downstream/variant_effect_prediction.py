@@ -68,7 +68,7 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument(
         "--context_length",
         type=int,
-        default=6144,
+        default=8192,
         help="Context length in base pairs (bp) for sequence extraction",
     )
     parser.add_argument(
@@ -150,8 +150,9 @@ def compute_logits_shard(args):
     
     # Load model and tokenizer
     tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
+    tokenizer.padding_side = 'left'  # Use left padding for easier logit extraction
     model = AutoModelForCausalLM.from_pretrained(
-        model_path, 
+        model_path,
         trust_remote_code=True,
         dtype=getattr(torch, dtype)
     ).to(device)
@@ -176,8 +177,7 @@ def compute_logits_shard(args):
                 batch_sequences,
                 add_special_tokens=False,
                 return_tensors="pt",
-                padding=True,
-                padding_side="left",
+                padding=True
             )
             inputs = {k: v.to(device) for k, v in inputs.items()}
 
@@ -186,10 +186,10 @@ def compute_logits_shard(args):
                 outputs = model(**inputs)
 
             # Get logits for the last token in each sequence
-            for j, seq in enumerate(batch_sequences):
-                seq_len = len(tokenizer(seq).input_ids)
-                last_token_logits = outputs.logits[j, seq_len - 1, :]
-                
+            # With left padding, all sequences' last tokens are aligned at position -1
+            for j in range(len(batch_sequences)):
+                last_token_logits = outputs.logits[j, -1, :]
+
                 # Apply softmax to get probabilities
                 probs = F.softmax(last_token_logits, dim=0).cpu().float().numpy().tolist()
                 logits_shard.append({
