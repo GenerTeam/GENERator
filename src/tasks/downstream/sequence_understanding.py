@@ -319,12 +319,14 @@ def setup_dataset(
                 "No sequence column found in dataset. Expected 'sequence', 'seq', 'dna_sequence', 'dna_seq', or 'text'."
             )
 
+        sequences = ["<s>" + seq + "<s>" for seq in sequences]  # Use separator embedding for downstream finetuning
+
         # Tokenize sequences
         tokenized = tokenizer(
             sequences,
             truncation=True,
             max_length=max_length,
-            add_special_tokens=True,
+            add_special_tokens=False,
             padding=False,
         )
 
