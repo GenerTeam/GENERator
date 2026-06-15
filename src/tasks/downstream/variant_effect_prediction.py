@@ -168,10 +168,17 @@ def compute_logits_shard(args):
     with tqdm(total=total_sequences, desc=f"Shard {shard_id}", unit="seq") as pbar:
         for i in range(0, total_sequences, batch_size):
             batch_sequences = sequences_shard[i:i + batch_size]
+            batch_sequences = ['<s>' + seq for seq in batch_sequences]
             batch_indices = indices_shard[i:i + batch_size]
 
             # Tokenize sequences
-            inputs = tokenizer(batch_sequences, return_tensors="pt", padding=True)
+            inputs = tokenizer(
+                batch_sequences,
+                add_special_tokens=False,
+                return_tensors="pt",
+                padding=True,
+                padding_side="left",
+            )
             inputs = {k: v.to(device) for k, v in inputs.items()}
 
             # Get model predictions
@@ -181,7 +188,7 @@ def compute_logits_shard(args):
             # Get logits for the last token in each sequence
             for j, seq in enumerate(batch_sequences):
                 seq_len = len(tokenizer(seq).input_ids)
-                last_token_logits = outputs.logits[j, seq_len - 2, :]
+                last_token_logits = outputs.logits[j, seq_len - 1, :]
                 
                 # Apply softmax to get probabilities
                 probs = F.softmax(last_token_logits, dim=0).cpu().float().numpy().tolist()
