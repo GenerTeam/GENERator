@@ -78,7 +78,7 @@ class SequenceDataCollator:
         tokenizer,
         max_length: int = 16384,
         pad_to_multiple_of: Optional[int] = None,
-        add_special_tokens: bool = False,  # Let tokenizer add <s> 
+        add_special_tokens: bool = True,  # Let tokenizer add <s> and </s>
         padding_mode: str = "pad",  # "truncate" or "pad"
     ):
         self.tokenizer = tokenizer
@@ -107,10 +107,13 @@ class SequenceDataCollator:
             texts = [t + 'A' * ((k - len(t) % k) % k) for t in texts]
         else:
             raise ValueError(f"Invalid padding_mode: {self.padding_mode}")
+        
+        if self.add_special_tokens:
+            texts = ["<s>" + t + "</s>" for t in texts]
 
         enc = self.tokenizer(
             texts,
-            add_special_tokens=self.add_special_tokens,
+            add_special_tokens=False,
             padding=True,
             truncation=True,
             max_length=self.max_length,
