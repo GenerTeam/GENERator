@@ -357,8 +357,8 @@ def main():
     data_collator = SequenceDataCollator(
         tokenizer=tokenizer,
         max_length=args.max_token_length,
-        pad_to_multiple_of=None,
-        add_special_tokens=True,  # Let tokenizer add <s> and </s>
+        padding_mode="pad",  # Right-pad with 'A' to a multiple of 6
+        # padding_mode="truncate",  # Right-truncate to a multiple of 6
     )
     
     # Training arguments
@@ -378,7 +378,7 @@ def main():
         args=training_args,
         train_dataset=train_dataset,
         processing_class=tokenizer,
-        bp_loss_only=True,
+        bp_loss_only=False,  # Compute loss for both DNA and special tokens
         data_collator=data_collator,
     )
     
