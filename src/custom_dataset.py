@@ -78,12 +78,17 @@ class SequenceDataCollator:
         tokenizer,
         max_length: int = 16384,
         pad_to_multiple_of: Optional[int] = None,
-        add_special_tokens: bool = True,  # Let tokenizer add <s> and </s>
+        add_special_tokens: bool = False,  # Let tokenizer add <s> 
+        padding_mode: str = "pad",  # "truncate" or "pad"
     ):
         self.tokenizer = tokenizer
         self.max_length = max_length
         self.pad_to_multiple_of = pad_to_multiple_of
         self.add_special_tokens = add_special_tokens
+        self.padding_mode = padding_mode
+
+        if self.padding_mode not in ["truncate", "pad"]:
+            raise ValueError(f"padding_mode must be 'truncate' or 'pad', got: {self.padding_mode}")
 
         # Ensure pad_token is set, even if the tokenizer doesn't register it.
         if self.tokenizer.pad_token is None:
@@ -92,9 +97,16 @@ class SequenceDataCollator:
     def __call__(self, features: List[Dict[str, Any]]) -> Dict[str, torch.Tensor]:
         texts = [f["text"] for f in features]
 
-        # Right-truncate to a multiple of tokenizer.k before tokenization.
+        # Adjust sequence length to a multiple of tokenizer.k before tokenization.
         k = self.tokenizer.k
-        texts = [t[:len(t) - (len(t) % k)] for t in texts]
+        if self.padding_mode == "truncate":
+            # Right-truncate to a multiple of k
+            texts = [t[:len(t) - (len(t) % k)] for t in texts]
+        elif self.padding_mode == "pad":
+            # Right-pad with 'A' to a multiple of k
+            texts = [t + 'A' * ((k - len(t) % k) % k) for t in texts]
+        else:
+            raise ValueError(f"Invalid padding_mode: {self.padding_mode}")
 
         enc = self.tokenizer(
             texts,
